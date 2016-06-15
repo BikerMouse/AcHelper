@@ -1,2 +1,2 @@
-# NG-Toolbox
-Toolbox to use with AutoCAD and WPF/MVVM
+# AcHelper
+Toolbox to use with AutoCAD
