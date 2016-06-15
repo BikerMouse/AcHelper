@@ -1,0 +1,13 @@
+C:\Users\sbu\Documents\Visual Studio 2012\Projects\AcHelper\AcWPF\bin\R_2014\AcHelper.dll
+C:\Users\sbu\Documents\Visual Studio 2012\Projects\AcHelper\AcWPF\bin\R_2014\AcHelper.pdb
+C:\Users\sbu\Documents\Visual Studio 2012\Projects\AcHelper\AcWPF\bin\R_2014\accoremgd.dll
+C:\Users\sbu\Documents\Visual Studio 2012\Projects\AcHelper\AcWPF\bin\R_2014\acdbmgd.dll
+C:\Users\sbu\Documents\Visual Studio 2012\Projects\AcHelper\AcWPF\bin\R_2014\acmgd.dll
+C:\Users\sbu\Documents\Visual Studio 2012\Projects\AcHelper\AcWPF\bin\R_2014\NedGraphics.Logging.dll
+C:\Users\sbu\Documents\Visual Studio 2012\Projects\AcHelper\AcWPF\bin\R_2014\AdWindows.dll
+C:\Users\sbu\Documents\Visual Studio 2012\Projects\AcHelper\AcWPF\bin\R_2014\AcCui.dll
+C:\Users\sbu\Documents\Visual Studio 2012\Projects\AcHelper\AcWPF\obj\R_2014\AcHelper.csprojResolveAssemblyReference.cache
+C:\Users\sbu\Documents\Visual Studio 2012\Projects\AcHelper\AcWPF\obj\R_2014\AcHelper.dll
+C:\Users\sbu\Documents\Visual Studio 2012\Projects\AcHelper\AcWPF\obj\R_2014\AcHelper.pdb
+C:\Users\sbu\Documents\4. References\R_2014\AcHelper.dll
+C:\Users\sbu\Documents\4. References\R_2014\AcHelper.pdb

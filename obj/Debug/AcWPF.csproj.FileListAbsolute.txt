@@ -1,0 +1,12 @@
+C:\Users\sbu\Documents\Visual Studio 2012\Projects\AcWPF\AcWPF\bin\Debug\AcWPF.dll
+C:\Users\sbu\Documents\Visual Studio 2012\Projects\AcWPF\AcWPF\bin\Debug\AcWPF.pdb
+C:\Users\sbu\Documents\Visual Studio 2012\Projects\AcWPF\AcWPF\bin\Debug\accoremgd.dll
+C:\Users\sbu\Documents\Visual Studio 2012\Projects\AcWPF\AcWPF\bin\Debug\acdbmgd.dll
+C:\Users\sbu\Documents\Visual Studio 2012\Projects\AcWPF\AcWPF\bin\Debug\acmgd.dll
+C:\Users\sbu\Documents\Visual Studio 2012\Projects\AcWPF\AcWPF\bin\Debug\SVB.Logger.dll
+C:\Users\sbu\Documents\Visual Studio 2012\Projects\AcWPF\AcWPF\bin\Debug\AdWindows.dll
+C:\Users\sbu\Documents\Visual Studio 2012\Projects\AcWPF\AcWPF\bin\Debug\AcCui.dll
+C:\Users\sbu\Documents\Visual Studio 2012\Projects\AcWPF\AcWPF\bin\Debug\SVB.Logger.pdb
+C:\Users\sbu\Documents\Visual Studio 2012\Projects\AcWPF\AcWPF\obj\Debug\AcWPF.csprojResolveAssemblyReference.cache
+C:\Users\sbu\Documents\Visual Studio 2012\Projects\AcWPF\AcWPF\obj\Debug\AcWPF.dll
+C:\Users\sbu\Documents\Visual Studio 2012\Projects\AcWPF\AcWPF\obj\Debug\AcWPF.pdb

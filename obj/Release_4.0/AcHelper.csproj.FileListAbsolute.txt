@@ -1,0 +1,12 @@
+C:\Users\sbu\Documents\Visual Studio 2012\Projects\AcWPF\AcWPF\obj\Release_4.0\AcHelper.csprojResolveAssemblyReference.cache
+C:\Users\sbu\Documents\Visual Studio 2012\Projects\AcWPF\AcWPF\bin\Release_4.0\AcHelper.dll
+C:\Users\sbu\Documents\Visual Studio 2012\Projects\AcWPF\AcWPF\bin\Release_4.0\AcHelper.pdb
+C:\Users\sbu\Documents\Visual Studio 2012\Projects\AcWPF\AcWPF\bin\Release_4.0\accoremgd.dll
+C:\Users\sbu\Documents\Visual Studio 2012\Projects\AcWPF\AcWPF\bin\Release_4.0\acdbmgd.dll
+C:\Users\sbu\Documents\Visual Studio 2012\Projects\AcWPF\AcWPF\bin\Release_4.0\acmgd.dll
+C:\Users\sbu\Documents\Visual Studio 2012\Projects\AcWPF\AcWPF\bin\Release_4.0\SVB.Logger.dll
+C:\Users\sbu\Documents\Visual Studio 2012\Projects\AcWPF\AcWPF\bin\Release_4.0\AdWindows.dll
+C:\Users\sbu\Documents\Visual Studio 2012\Projects\AcWPF\AcWPF\bin\Release_4.0\AcCui.dll
+C:\Users\sbu\Documents\Visual Studio 2012\Projects\AcWPF\AcWPF\bin\Release_4.0\SVB.Logger.pdb
+C:\Users\sbu\Documents\Visual Studio 2012\Projects\AcWPF\AcWPF\obj\Release_4.0\AcHelper.dll
+C:\Users\sbu\Documents\Visual Studio 2012\Projects\AcWPF\AcWPF\obj\Release_4.0\AcHelper.pdb
