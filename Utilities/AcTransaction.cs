@@ -28,15 +28,21 @@ namespace AcHelper.Utilities
         /// <summary>
         /// Starts a transaction if needed
         /// </summary>
-        /// <param name="dbobject"></param>
         public AcTransaction()
+            : this(Active.Document)
+        { }
+        /// <summary>
+        /// Starts a transaction if needed
+        /// </summary>
+        /// <param name="doc"></param>
+        public AcTransaction(Document doc)
         {
             try
             {
                 // is a transaction already running
                 if (_transaction == null)
                 {
-                    _document = Active.Document;
+                    _document = doc;
                     if (_document != null)
                     {
                         // no current transaction running; create one
@@ -76,6 +82,13 @@ namespace AcHelper.Utilities
         {
             get { return _started; }
         }
+        /// <summary>
+        /// Document of the transaction.
+        /// </summary>
+        public Document Document
+        {
+            get { return _document; }
+        }
         #endregion
 
         #region Methods ...
@@ -109,8 +122,8 @@ namespace AcHelper.Utilities
         #region Helpers ...
         private BlockTableRecord GetModelSpace()
         {
-            BlockTable block_table = _transaction.GetObject(_db.BlockTableId, OpenMode.ForRead) as BlockTable;
-            BlockTableRecord model_space = _transaction.GetObject(block_table[BlockTableRecord.ModelSpace], OpenMode.ForRead) as BlockTableRecord;
+            var block_table = _transaction.GetObject<BlockTable>(_db.BlockTableId, OpenMode.ForRead);
+            var model_space = _transaction.GetObject<BlockTableRecord>(block_table[BlockTableRecord.ModelSpace], OpenMode.ForRead);
 
             return model_space;
         }
