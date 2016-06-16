@@ -13,8 +13,10 @@ namespace AcHelper
         {
             try
             {
-                Common.UsingModelSpace((tr, modelspace) =>
+                Common.UsingTransaction((tr) =>
                 {
+                    Transaction t = tr.Transaction;
+                    var modelspace = tr.ModelSpace;
                     RXClass ent_type = RXClass.GetClass(typeof(T));
 
                     // Loop through the entities in modelspace
@@ -23,60 +25,71 @@ namespace AcHelper
                         // Look for entities of th ecorrect type
                         if (id.ObjectClass.IsDerivedFrom(ent_type))
                         {
-                            T entity = tr.GetObject(id, OpenMode.ForRead) as T;
+                            T entity = t.GetObject(id, OpenMode.ForRead) as T;
                             action(entity);
                         }
                     }
                 });
             }
+            catch (Autodesk.AutoCAD.Runtime.Exception ex) 
+            {
+                Active.WriteMessage(ex.Message);
+            }
             catch (System.Exception)
             {
                 throw;
             }
-            #region old (but worked) ...
-            ////using (var tr = database.TransactionManager.StartTransaction())
-            ////{
-            ////    // Get the block table for the current database.
-            ////    var blockTable =
-            ////        (BlockTable)tr.GetObject(
-            ////        database.BlockTableId, OpenMode.ForRead);
+        }
+        public static void ForEach<T>(this Document doc, Action<T> action) where T : Entity
+        {
+            Database database = doc.Database;
+            try
+            {
+                RXClass ent_type = RXClass.GetClass(typeof(T));
+                Common.UsingTransaction(doc, (tr) =>
+                {
+                    Transaction t = tr.Transaction;
+                    var modelspace = tr.ModelSpace;
 
-            ////    // Get the model space block table record.
-            ////    var modelSpace =
-            ////        (BlockTableRecord)tr.GetObject(
-            ////        blockTable[BlockTableRecord.ModelSpace], OpenMode.ForRead);
-
-            ////    RXClass theClass = RXClass.GetClass(typeof(T));
-
-            ////    // Loop throug the entities in modelspace.
-            ////    foreach (ObjectId objectId in modelSpace)
-            ////    {
-            ////        // Look for entities of the correct type
-            ////        if (objectId.ObjectClass.IsDerivedFrom(theClass))
-            ////        {
-            ////            var entity =
-            ////                (T)tr.GetObject(
-            ////                objectId, OpenMode.ForRead);
-
-            ////            action(entity);
-            ////        }
-            ////    }
-            ////    tr.Commit();
-            ////}
-            #endregion
+                    // Loop through the entities in modelspace
+                    foreach (ObjectId id in modelspace)
+                    {
+                        // Look for entities of th ecorrect type
+                        if (id.ObjectClass.IsDerivedFrom(ent_type))
+                        {
+                            T entity = t.GetObject<T>(id, OpenMode.ForRead);
+                            action(entity);
+                        }
+                    }
+                });
+            }
+            catch (Autodesk.AutoCAD.Runtime.Exception ex)
+            {
+                Active.WriteMessage(ex.Message);
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
         }
         public static IEnumerable<T> OfType<T>(this IEnumerable<ObjectId> enumerable, Transaction tr, OpenMode openMode) where T : DBObject
         {
             return new DbObjectEnumerable<T>(enumerable, tr, openMode);
         }
 
-        public static void UsingModelSpace(this Document document, Action<Transaction, BlockTableRecord> action, string CommandName = "")
+        public static void UsingModelSpace(this Document document, Action<Utilities.AcTransaction, BlockTableRecord> action, string CommandName = "")
         {
-            Common.UsingModelSpace((t, ms) => action(t, ms), CommandName);
+            Common.UsingModelSpace(document, CommandName, action);
         }
-        public static void UsingTransaction(this Document document, Action<Transaction> action, string commandName = "")
+        public static void UsingTransaction(this Document document, Action<Utilities.AcTransaction> action, string commandName = "")
         {
-            Common.UsingTransaction(t => action(t), commandName);
+            Common.UsingTransaction(document, commandName, action);
+        }
+
+        public static T GetObject<T>(this Transaction tr, ObjectId objectId, OpenMode openMode, bool openErased = false) where T : DBObject
+        {
+            T dbObject = tr.GetObject(objectId, openMode, openErased) as T;
+            return dbObject;
         }
     }
 }
