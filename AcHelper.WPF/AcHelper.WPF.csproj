@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EB1287B5-AC16-44D2-A83F-B1408F339E96}</ProjectGuid>
+    <ProjectGuid>{E18AD61D-EC64-4260-BDC1-1A16D0007E70}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AcHelper.Demo</RootNamespace>
-    <AssemblyName>AcHelper.Demo</AssemblyName>
+    <RootNamespace>AcHelper.WPF</RootNamespace>
+    <AssemblyName>AcHelper.WPF</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -16,7 +16,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\bin\Debug\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -32,38 +32,33 @@
   <ItemGroup>
     <Reference Include="accoremgd">
       <HintPath>..\..\..\Users\sbu\Documents\4. References\_autocad\accoremgd.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="acdbmgd">
       <HintPath>..\..\..\Users\sbu\Documents\4. References\_autocad\acdbmgd.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="acmgd">
       <HintPath>..\..\..\Users\sbu\Documents\4. References\_autocad\acmgd.dll</HintPath>
-      <Private>False</Private>
     </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandHandler.cs" />
-    <Compile Include="Commands\CreateCircle.cs" />
-    <Compile Include="Commands\CreateCircleWithParameters.cs" />
-    <Compile Include="Commands\ThrowErrorCommand.cs" />
-    <Compile Include="DemoApplication.cs" />
+    <Compile Include="Palettes\IPalette.cs" />
+    <Compile Include="Palettes\WpfPalette.cs" />
+    <Compile Include="Palettes\WpfPaletteSet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utilities.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AcHelper\AcHelper.csproj">
-      <Project>{f5e87f07-0d0a-48a7-b02b-66802b64997f}</Project>
-      <Name>AcHelper</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

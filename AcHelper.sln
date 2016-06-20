@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcHelper", "AcHelper\AcHelp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcHelper.Demo", "AcHelper.Demo\AcHelper.Demo.csproj", "{EB1287B5-AC16-44D2-A83F-B1408F339E96}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcHelper.WPF", "AcHelper.WPF\AcHelper.WPF.csproj", "{E18AD61D-EC64-4260-BDC1-1A16D0007E70}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,18 @@ Global
 		{EB1287B5-AC16-44D2-A83F-B1408F339E96}.Release_4.0|Any CPU.Build.0 = Release|Any CPU
 		{EB1287B5-AC16-44D2-A83F-B1408F339E96}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB1287B5-AC16-44D2-A83F-B1408F339E96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E18AD61D-EC64-4260-BDC1-1A16D0007E70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E18AD61D-EC64-4260-BDC1-1A16D0007E70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E18AD61D-EC64-4260-BDC1-1A16D0007E70}.R_2014|Any CPU.ActiveCfg = Release|Any CPU
+		{E18AD61D-EC64-4260-BDC1-1A16D0007E70}.R_2014|Any CPU.Build.0 = Release|Any CPU
+		{E18AD61D-EC64-4260-BDC1-1A16D0007E70}.R_2015|Any CPU.ActiveCfg = Release|Any CPU
+		{E18AD61D-EC64-4260-BDC1-1A16D0007E70}.R_2015|Any CPU.Build.0 = Release|Any CPU
+		{E18AD61D-EC64-4260-BDC1-1A16D0007E70}.R_2016|Any CPU.ActiveCfg = Release|Any CPU
+		{E18AD61D-EC64-4260-BDC1-1A16D0007E70}.R_2016|Any CPU.Build.0 = Release|Any CPU
+		{E18AD61D-EC64-4260-BDC1-1A16D0007E70}.Release_4.0|Any CPU.ActiveCfg = Release|Any CPU
+		{E18AD61D-EC64-4260-BDC1-1A16D0007E70}.Release_4.0|Any CPU.Build.0 = Release|Any CPU
+		{E18AD61D-EC64-4260-BDC1-1A16D0007E70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E18AD61D-EC64-4260-BDC1-1A16D0007E70}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
