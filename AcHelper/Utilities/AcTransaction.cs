@@ -1,7 +1,6 @@
 ﻿using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.DatabaseServices;
 using System;
-using AcadTransaction = Autodesk.AutoCAD.DatabaseServices.Transaction;
 
 namespace AcHelper.Utilities
 {
@@ -12,7 +11,7 @@ namespace AcHelper.Utilities
         /// <summary>
         /// The current transaction.
         /// </summary>
-        private static AcadTransaction _transaction = null;
+        private static Transaction _transaction = null;
         private static Document _document = null;
         private static Database _db = null;
 
@@ -64,7 +63,7 @@ namespace AcHelper.Utilities
         /// <summary>
         /// <see cref="Autodesk.AutoCAD.DatabaseServices.Database.Transaction"/>
         /// </summary>
-        public AcadTransaction Transaction
+        public Transaction Transaction
         {
             get { return _transaction; }
         }
