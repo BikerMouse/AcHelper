@@ -31,15 +31,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="accoremgd">
-      <HintPath>..\..\Users\sbu\Documents\4. References\_autocad\accoremgd.dll</HintPath>
+      <HintPath>..\..\..\Users\sbu\Documents\4. References\_autocad\accoremgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="acdbmgd">
-      <HintPath>..\..\Users\sbu\Documents\4. References\_autocad\acdbmgd.dll</HintPath>
+      <HintPath>..\..\..\Users\sbu\Documents\4. References\_autocad\acdbmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="acmgd">
-      <HintPath>..\..\Users\sbu\Documents\4. References\_autocad\acmgd.dll</HintPath>
+      <HintPath>..\..\..\Users\sbu\Documents\4. References\_autocad\acmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
