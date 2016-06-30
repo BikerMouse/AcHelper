@@ -103,7 +103,7 @@ namespace AcHelper.Utilities
                             else if (!nod.Contains(xKey))
                             {
                                 string err_message = string.Format("Xrecord '{0}' not found in Named Objects Dictionary '{1}'", xKey, dictionaryName);
-                                throw new XRecordHandlerException(dictionaryName, xKey, ErrorCode.XrecordNotFound, err_message);
+                                throw new XRecordHandlerException(dictionaryName, xKey, err_message, ErrorCode.XrecordNotFound);
                             }
                         }
                     });
@@ -112,7 +112,7 @@ namespace AcHelper.Utilities
             catch (System.Exception ex)
             {
                 string err_message = string.Format("Unexpected error occured while retrieving xRecord '{0}' from Named Objects Dictionary '{1}'.", xKey, dictionaryName);
-                throw new XRecordHandlerException(dictionaryName, xKey, ErrorCode.XrecordNotFound, err_message, ex);
+                throw new XRecordHandlerException(dictionaryName, xKey, err_message, ex, ErrorCode.XrecordNotFound);
             }
 
             return result;
@@ -141,10 +141,10 @@ namespace AcHelper.Utilities
 
                     });
                 }
-                catch (Exception ex)
+                catch (System.Exception ex)
                 {
                 string err_message = string.Format("Unexpected error occured while retrieving xRecord '{0}' from Named Objects Dictionary '{1}'.", xKey, dictionaryName);
-                throw new XRecordHandlerException(dictionaryName, xKey, ErrorCode.XrecordNotFound, err_message, ex);
+                throw new XRecordHandlerException(dictionaryName, xKey, err_message, ex, ErrorCode.XrecordNotFound);
                 }
                 
             }
@@ -315,16 +315,18 @@ namespace AcHelper.Utilities
             get { return _error_code; }
         }
 
-        public XRecordHandlerException(ErrorCode errorCode, )
-
-        public XRecordHandlerException(string dictionaryName, string xKey, ErrorCode errorCode, string message)
+        public XRecordHandlerException(string message, ErrorCode errorCode)
             : base(message)
         {
-            _key = xKey;
-            _dictionary_name = dictionaryName;
             _error_code = errorCode;
         }
-        public XRecordHandlerException(string dictionaryName, string xKey, ErrorCode errorCode, string message, System.Exception inner)
+        public XRecordHandlerException(string dictionaryName, string xKey, string message, ErrorCode errorCode = Utilities.ErrorCode.Error) : base(message)
+        {
+            _dictionary_name = dictionaryName;
+            _key = xKey;
+            _error_code = errorCode;
+        }
+        public XRecordHandlerException(string dictionaryName, string xKey, string message, System.Exception inner, ErrorCode errorCode = Utilities.ErrorCode.Error)
             : base(message, inner)
         {
             _key = xKey;

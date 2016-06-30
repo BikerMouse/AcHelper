@@ -51,8 +51,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands.cs" />
+    <Compile Include="CommandHandler.cs" />
+    <Compile Include="Commands\CreateCircle.cs" />
+    <Compile Include="Commands\ThrowErrorCommand.cs" />
     <Compile Include="DemoApplication.cs" />
+    <Compile Include="IAcadCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities.cs" />
   </ItemGroup>

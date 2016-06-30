@@ -1,10 +1,14 @@
 ﻿using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.EditorInput;
 using Autodesk.AutoCAD.Runtime;
+using System;
+using System.Windows.Input;
+using AcHelper.Demo.Commands;
+using Autodesk.AutoCAD.Geometry;
 
 namespace AcHelper.Demo
 {
-    public class Commands
+    public class CommandHandler
     {
         [CommandMethod("DEMO_HELP")]
         public static void Demo_Help()
@@ -20,7 +24,12 @@ namespace AcHelper.Demo
         [CommandMethod("DEMO_DRAWCIRCLE")]
         public static void Demo_DrawCircle()
         {
-            Utilities.DrawCircle(Active.Document, 50);
+            ExecuteCommand<CreateCircle>();
+        }
+        [CommandMethod("DEMO_THROWERROR")]
+        public static void Demo_ThrowError()
+        {
+            ExecuteCommand<ThrowErrorCommand>();
         }
 
         [CommandMethod("DEMO_ADDXRECORDTOENTITY")]
@@ -79,5 +88,20 @@ namespace AcHelper.Demo
                 }
             }
         }
+
+        #region Command Executer ...
+        private static void ExecuteCommand<T>() where T : IAcadCommand
+        {
+            try
+            {
+                var cmd = Activator.CreateInstance<T>();
+                cmd.Execute();
+            }
+            catch (System.Exception ex)
+            {
+                Active.WriteMessage(ex.Message);
+            }
+        }
+        #endregion
     }
 }

@@ -2,7 +2,7 @@
 using System;
 
 [assembly: ExtensionApplication(typeof(AcHelper.Demo.DemoApplication))]
-[assembly: CommandClass(typeof(AcHelper.Demo.Commands))]
+[assembly: CommandClass(typeof(AcHelper.Demo.CommandHandler))]
 [assembly: CLSCompliant(false)]
 namespace AcHelper.Demo
 {
