@@ -3,12 +3,13 @@ using Autodesk.AutoCAD.EditorInput;
 using Autodesk.AutoCAD.Runtime;
 using System;
 using System.Windows.Input;
-using AcHelper.Demo.Commands;
+using AcHelper.Command;
 using Autodesk.AutoCAD.Geometry;
+using AcHelper.Demo.Commands;
 
 namespace AcHelper.Demo
 {
-    public class CommandHandler
+    public class CommandHandler : CommandHandlerBase
     {
         [CommandMethod("DEMO_HELP")]
         public static void Demo_Help()
@@ -88,20 +89,5 @@ namespace AcHelper.Demo
                 }
             }
         }
-
-        #region Command Executer ...
-        private static void ExecuteCommand<T>() where T : IAcadCommand
-        {
-            try
-            {
-                var cmd = Activator.CreateInstance<T>();
-                cmd.Execute();
-            }
-            catch (System.Exception ex)
-            {
-                Active.WriteMessage(ex.Message);
-            }
-        }
-        #endregion
     }
 }
