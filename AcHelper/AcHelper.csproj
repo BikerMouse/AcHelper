@@ -72,17 +72,17 @@
   <ItemGroup>
     <Reference Include="accoremgd, Version=20.0.0.0, Culture=neutral, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Users\sbu\Documents\4. References\_autocad\accoremgd.dll</HintPath>
+      <HintPath>..\..\..\Users\sbu\Documents\4. References\_autocad\accoremgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="acdbmgd, Version=20.0.0.0, Culture=neutral, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Users\sbu\Documents\4. References\_autocad\acdbmgd.dll</HintPath>
+      <HintPath>..\..\..\Users\sbu\Documents\4. References\_autocad\acdbmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="acmgd, Version=20.0.0.0, Culture=neutral, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Users\sbu\Documents\4. References\_autocad\acmgd.dll</HintPath>
+      <HintPath>..\..\..\Users\sbu\Documents\4. References\_autocad\acmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -95,6 +95,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Active.cs" />
+    <Compile Include="Command\CommandHandlerBase.cs" />
+    <Compile Include="Command\IAcadCommand.cs" />
     <Compile Include="Common.cs" />
     <Compile Include="Exceptions\TransactionException.cs" />
     <Compile Include="Utilities\AcTransaction.cs" />
@@ -104,6 +106,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Themes\ThemeHandler.cs" />
     <Compile Include="Utilities\WriteEnabler.cs" />
+    <Compile Include="Utilities\XRecordHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
