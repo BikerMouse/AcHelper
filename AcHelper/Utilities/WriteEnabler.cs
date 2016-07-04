@@ -19,6 +19,7 @@ namespace AcHelper.Utilities
         /// </summary>
         /// <param name="dbObject">Object to open for write.</param>
         /// <exception cref="AcHelper.Utilities.WriteEnablerException"/>
+        /// <exception cref="Autodesk.AutoCAD.Runtime.Exception"/>
         public WriteEnabler(DBObject dbObject)
             : this(Active.Document, dbObject)
         { }
@@ -27,6 +28,8 @@ namespace AcHelper.Utilities
         /// </summary>
         /// <param name="doc">Document where the object is being found.</param>
         /// <param name="dbObject">Object to open for write.</param>
+        /// <exception cref="AcHelper.Utilities.WriteEnablerException"/>
+        /// <exception cref="Autodesk.AutoCAD.Runtime.Exception"/>
         public WriteEnabler(Document doc, DBObject dbObject)
         {
             if (doc != null)
@@ -60,12 +63,20 @@ namespace AcHelper.Utilities
                                 throw new WriteEnablerException(err_message);
                             }
                         }
-                        catch (Autodesk.AutoCAD.Runtime.Exception)
+                        catch (Exception)
                         {
                             throw;
                         }
                     }
                 }
+                else
+                {
+                    throw new Autodesk.AutoCAD.Runtime.Exception(Autodesk.AutoCAD.Runtime.ErrorStatus.NullObjectPointer, "DBObject is Null");
+                }
+            }
+            else
+            {
+                throw new Autodesk.AutoCAD.Runtime.Exception(Autodesk.AutoCAD.Runtime.ErrorStatus.NoDocument, "No active document.");
             }
         }
         #endregion

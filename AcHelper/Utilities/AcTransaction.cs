@@ -27,6 +27,7 @@ namespace AcHelper.Utilities
         /// <summary>
         /// Starts a transaction if needed
         /// </summary>
+        /// <exception cref="Autodesk.AutoCAD.Runtime.Exception"/>
         public AcTransaction()
             : this(Active.Document)
         { }
@@ -34,6 +35,7 @@ namespace AcHelper.Utilities
         /// Starts a transaction if needed
         /// </summary>
         /// <param name="doc"></param>
+        /// <exception cref="Autodesk.AutoCAD.Runtime.Exception"/>
         public AcTransaction(Document doc)
         {
             try
@@ -49,6 +51,10 @@ namespace AcHelper.Utilities
                         _transaction = _document.TransactionManager.StartTransaction();
                         _model_space = GetModelSpace();
                         _started = true;
+                    }
+                    else
+                    {
+                        throw new Autodesk.AutoCAD.Runtime.Exception(Autodesk.AutoCAD.Runtime.ErrorStatus.NoDocument, "No active document");
                     }
                 }
             }

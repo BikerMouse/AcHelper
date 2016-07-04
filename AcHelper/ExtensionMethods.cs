@@ -116,7 +116,7 @@ namespace AcHelper
         /// <param name="objectId"></param>
         /// <param name="openMode"></param>
         /// <param name="openErased">Open object if erased</param>
-        /// <returns></returns>
+        /// <returns>DBObject as T</returns>
         public static T GetObject<T>(this Transaction tr, ObjectId objectId, OpenMode openMode, bool openErased = false) where T : DBObject
         {
             T dbObject = tr.GetObject(objectId, openMode, openErased) as T;

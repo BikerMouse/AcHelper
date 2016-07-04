@@ -29,6 +29,11 @@ namespace AcHelper.Utilities
         #endregion
 
         #region Properties ...
+        /// <summary>
+        /// Gets a Named Objects Dictionary with the given key
+        /// </summary>
+        /// <param name="key">Name of the Named objects Dictionary</param>
+        /// <returns>DBDictionary</returns>
         public DBDictionary GetNamedObjectsDictionary(string key)
         {
             DBDictionary nod = null;                // Named Objects Dictionary
@@ -80,6 +85,7 @@ namespace AcHelper.Utilities
         /// <param name="dictionaryName">Name of Named Objects Dictionary</param>
         /// <param name="xKey">Key of Xrecord</param>
         /// <returns>ResultBuffer with data or Null if nothing found.</returns>
+        /// <exception cref="AcHelper.Utilities.XRecordException"/>
         public ResultBuffer GetXrecord(string dictionaryName, string xKey)
         {
             ResultBuffer result = null;
@@ -117,6 +123,13 @@ namespace AcHelper.Utilities
 
             return result;
         }
+        /// <summary>
+        /// Gets the data from an Entity Xrecord.
+        /// </summary>
+        /// <param name="oid">ObjectId of the entity</param>
+        /// <param name="dictionaryName"></param>
+        /// <param name="xKey"></param>
+        /// <returns></returns>
         public ResultBuffer GetEntityXrecord(ObjectId oid, string dictionaryName, string xKey)
         {
             ResultBuffer resbuf = null;
@@ -146,9 +159,7 @@ namespace AcHelper.Utilities
                 string err_message = string.Format("Unexpected error occured while retrieving xRecord '{0}' from Named Objects Dictionary '{1}'.", xKey, dictionaryName);
                 throw new XRecordHandlerException(dictionaryName, xKey, err_message, ex, ErrorCode.XrecordNotFound);
                 }
-                
             }
-
             return resbuf;
         }
         #endregion
