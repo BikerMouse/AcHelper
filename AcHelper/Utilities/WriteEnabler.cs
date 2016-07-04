@@ -14,9 +14,22 @@ namespace AcHelper.Utilities
         #endregion
 
         #region Ctor ...
+        /// <summary>
+        /// Opens a DBObject for write within the current Document.
+        /// </summary>
+        /// <param name="dbObject">Object to open for write.</param>
+        /// <exception cref="AcHelper.Utilities.WriteEnablerException"/>
+        /// <exception cref="Autodesk.AutoCAD.Runtime.Exception"/>
         public WriteEnabler(DBObject dbObject)
             : this(Active.Document, dbObject)
         { }
+        /// <summary>
+        /// Opens a DBObject for write.
+        /// </summary>
+        /// <param name="doc">Document where the object is being found.</param>
+        /// <param name="dbObject">Object to open for write.</param>
+        /// <exception cref="AcHelper.Utilities.WriteEnablerException"/>
+        /// <exception cref="Autodesk.AutoCAD.Runtime.Exception"/>
         public WriteEnabler(Document doc, DBObject dbObject)
         {
             if (doc != null)
@@ -46,54 +59,29 @@ namespace AcHelper.Utilities
                             }
                             else
                             {
-                                Active.WriteMessage("\n*** Document not locked ***");
+                                string err_message = "\nDocument is not locked, object cannot be opened for write.";
+                                throw new WriteEnablerException(err_message);
                             }
                         }
-                        catch (Autodesk.AutoCAD.Runtime.Exception)
+                        catch (Exception)
                         {
                             throw;
                         }
                     }
                 }
+                else
+                {
+                    throw new Autodesk.AutoCAD.Runtime.Exception(Autodesk.AutoCAD.Runtime.ErrorStatus.NullObjectPointer, "DBObject is Null");
+                }
+            }
+            else
+            {
+                throw new Autodesk.AutoCAD.Runtime.Exception(Autodesk.AutoCAD.Runtime.ErrorStatus.NoDocument, "No active document.");
             }
         }
         #endregion
 
-        #region Dispose ...
-        /// <summary>
-        /// Calls DowngradeOpen if necessary
-        /// </summary>
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        /// <summary>
-        /// disposes the object
-        /// </summary>
-        /// <param name="disposing">the disposing status input parameter</param>
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                if (_db_object != null)
-                {
-                    if (_is_upgraded)
-                    {
-                        _db_object.DowngradeOpen();
-                        _is_upgraded = false;
-                    }
-
-                    if (_layer_id != ObjectId.Null)
-                    {
-                        // layer was locked, lock it again
-                        LockLayer(_layer_id);
-                    } //if
-                } //if
-            } //if
-        }
-
+        #region Members ...
         private void LockLayer(ObjectId layerId)
         {
             if (layerId != ObjectId.Null)
@@ -137,5 +125,52 @@ namespace AcHelper.Utilities
             }
         }
         #endregion
+
+        #region Dispose ...
+        /// <summary>
+        /// Calls DowngradeOpen if necessary
+        /// </summary>
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+        /// <summary>
+        /// disposes the object
+        /// </summary>
+        /// <param name="disposing">the disposing status input parameter</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (_db_object != null)
+                {
+                    if (_is_upgraded)
+                    {
+                        _db_object.DowngradeOpen();
+                        _is_upgraded = false;
+                    }
+
+                    if (_layer_id != ObjectId.Null)
+                    {
+                        // layer was locked, lock it again
+                        LockLayer(_layer_id);
+                    } //if
+                } //if
+            } //if
+        }
+        #endregion
+    }
+
+    [Serializable]
+    public class WriteEnablerException : Exception
+    {
+        public WriteEnablerException() { }
+        public WriteEnablerException(string message) : base(message) { }
+        public WriteEnablerException(string message, Exception inner) : base(message, inner) { }
+        protected WriteEnablerException(
+          System.Runtime.Serialization.SerializationInfo info,
+          System.Runtime.Serialization.StreamingContext context)
+            : base(info, context) { }
     }
 }

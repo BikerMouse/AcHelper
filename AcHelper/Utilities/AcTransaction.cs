@@ -1,7 +1,6 @@
 ﻿using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.DatabaseServices;
 using System;
-using AcadTransaction = Autodesk.AutoCAD.DatabaseServices.Transaction;
 
 namespace AcHelper.Utilities
 {
@@ -12,7 +11,7 @@ namespace AcHelper.Utilities
         /// <summary>
         /// The current transaction.
         /// </summary>
-        private static AcadTransaction _transaction = null;
+        private static Transaction _transaction = null;
         private static Document _document = null;
         private static Database _db = null;
 
@@ -28,6 +27,7 @@ namespace AcHelper.Utilities
         /// <summary>
         /// Starts a transaction if needed
         /// </summary>
+        /// <exception cref="Autodesk.AutoCAD.Runtime.Exception"/>
         public AcTransaction()
             : this(Active.Document)
         { }
@@ -35,6 +35,7 @@ namespace AcHelper.Utilities
         /// Starts a transaction if needed
         /// </summary>
         /// <param name="doc"></param>
+        /// <exception cref="Autodesk.AutoCAD.Runtime.Exception"/>
         public AcTransaction(Document doc)
         {
             try
@@ -51,6 +52,10 @@ namespace AcHelper.Utilities
                         _model_space = GetModelSpace();
                         _started = true;
                     }
+                    else
+                    {
+                        throw new Autodesk.AutoCAD.Runtime.Exception(Autodesk.AutoCAD.Runtime.ErrorStatus.NoDocument, "No active document");
+                    }
                 }
             }
             catch (System.Exception)
@@ -64,7 +69,7 @@ namespace AcHelper.Utilities
         /// <summary>
         /// <see cref="Autodesk.AutoCAD.DatabaseServices.Database.Transaction"/>
         /// </summary>
-        public AcadTransaction Transaction
+        public Transaction Transaction
         {
             get { return _transaction; }
         }
