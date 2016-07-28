@@ -9,47 +9,25 @@ namespace AcHelper.Demo.Commands
     public class CreateCircle : IAcadCommand
     {
         #region IAcadCommand Members
-
         public void Execute()
         {
             Document document = Active.Document;
             Editor ed = document.Editor;
-            Point3d location;
             double radius;
 
-            PromptPointOptions optLoc = new PromptPointOptions("Select location for circle");
             PromptDoubleOptions optRad = new PromptDoubleOptions("Insert the radius for the circle");
-
-            PromptPointResult res = ed.GetPoint(optLoc);
-            if (res.Status != PromptStatus.OK)
-            {
-                return;
-            }
-            location = res.Value;
             PromptDoubleResult resRad = ed.GetDouble(optRad);
-
-            if (resRad.Status != PromptStatus.OK)
+            if (resRad.Status == PromptStatus.OK)
             {
-                return;
+                radius = resRad.Value;
+
+                Utilities.DrawCircle(document, radius);
             }
-            radius = resRad.Value;
-
-            document.UsingModelSpace((tr, ms) =>
+            else if (resRad.Status == PromptStatus.Cancel)
             {
-                Transaction t = tr.Transaction;
-                Circle c = new Circle(location, Vector3d.ZAxis, radius);
-                c.ColorIndex = 3;
-                ms.AppendEntity(c);
-                t.AddNewlyCreatedDBObject(c, true);
-            });
-
+                Active.WriteMessage("User canceled Command.");
+            }
         }
-
-        public bool CanExecute()
-        {
-            return true;
-        }
-
         #endregion
     }
 }

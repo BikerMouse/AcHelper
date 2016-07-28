@@ -4,9 +4,6 @@ using System.Windows.Forms.Integration;
 
 namespace AcHelper.WPF.Palettes
 {
-    public delegate void WpfPaletteVisibleStateChangedEventHandler(object sender, WpfPaletteVisibleStateChangedEventArgs arg);
-    public delegate void WpfPaletteClosingEventHandler(object sender, WpfPaletteClosingEventArgs arg);
-
     public class WpfPalette : ElementHost, IPalette, IDisposable
     {
         #region Fields ...
@@ -67,36 +64,35 @@ namespace AcHelper.WPF.Palettes
         #endregion
 
         #region Methods ...
-        // Methods
         public void ClosePaletteSet()
         {
             if (_parent != null)
             {
-                // TODO: Set visibility
-                
+                // TODO: Set visibility PaletteSet.
             }
         }
         public void Close()
         {
-            if (PaletteClosing != null)
-            {
-                OnPaletteClosing(PaletteName);
-            }
+            OnPaletteClosing(PaletteName);
+
             VisibleStateChanged = null;
             VisibleState = Palettes.VisibleState.Hide;
             _closed = true;
+
+            OnPaletteClosed(PaletteName);
         }
         #endregion
 
         #region Events ...
-        public event WpfPaletteClosingEventHandler PaletteClosing;
+        public event WpfPaletteClosingEventHandler WpfPaletteClosing;
         public event WpfPaletteVisibleStateChangedEventHandler VisibleStateChanged;
+        public event WpfPaletteClosedEventHandler WpfPaletteClosed;
         
         protected virtual void OnPaletteClosing(string paletteName)
         {
-            if (PaletteClosing != null)
+            if (WpfPaletteClosing != null)
             {
-                PaletteClosing(this, new WpfPaletteClosingEventArgs(paletteName));
+                WpfPaletteClosing(this, new WpfPaletteClosingEventArgs(paletteName));
             }
         }
         protected virtual void OnVisibleStateChanged(VisibleState newVisibleState)
@@ -104,6 +100,13 @@ namespace AcHelper.WPF.Palettes
             if (VisibleStateChanged != null)
             {
                 VisibleStateChanged(this, new WpfPaletteVisibleStateChangedEventArgs(VisibleState, newVisibleState));
+            }
+        }
+        protected virtual void OnPaletteClosed(string paletteName)
+        {
+            if (WpfPaletteClosed != null)
+            {
+                WpfPaletteClosed(this, new WpfPaletteClosedEventArgs(paletteName));
             }
         }
         #endregion
@@ -136,42 +139,9 @@ namespace AcHelper.WPF.Palettes
                     _parent = null;
                 }
             }
+
+            disposed = true;
         }
         #endregion
-    }
-
-    public class WpfPaletteVisibleStateChangedEventArgs : EventArgs
-    {
-        private VisibleState _new_visible_state;
-        private VisibleState _old_visible_state;
-
-        public WpfPaletteVisibleStateChangedEventArgs(VisibleState oldVisibleState, VisibleState newVisibleState)
-        {
-            _old_visible_state = oldVisibleState;
-            _new_visible_state = newVisibleState;
-        }
-
-        public VisibleState NewVisibleState
-        {
-            get { return _new_visible_state; }
-        }
-        public VisibleState OldVisibleState
-        {
-            get { return _old_visible_state; }
-        }
-    }
-    public class WpfPaletteClosingEventArgs
-    {
-        private string _name;
-
-        public WpfPaletteClosingEventArgs(string paletteName)
-        {
-            _name = paletteName;
-        }
-
-        public string PaletteName
-        {
-            get { return _name; }
-        }
     }
 }

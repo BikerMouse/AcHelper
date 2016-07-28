@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="Palettes\IPalette.cs" />
     <Compile Include="Palettes\WpfPalette.cs" />
+    <Compile Include="Palettes\WpfPaletteEventArgs.cs" />
     <Compile Include="Palettes\WpfPaletteSet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

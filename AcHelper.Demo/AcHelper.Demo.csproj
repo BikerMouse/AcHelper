@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="CommandHandler.cs" />
     <Compile Include="Commands\CreateCircle.cs" />
+    <Compile Include="Commands\CreateCircleWithParameters.cs" />
     <Compile Include="Commands\ThrowErrorCommand.cs" />
     <Compile Include="DemoApplication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
