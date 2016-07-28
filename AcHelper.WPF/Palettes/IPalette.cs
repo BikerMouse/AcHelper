@@ -2,6 +2,10 @@
 
 namespace AcHelper.WPF.Palettes
 {
+    public delegate void WpfPaletteVisibleStateChangedEventHandler(object sender, WpfPaletteVisibleStateChangedEventArgs arg);
+    public delegate void WpfPaletteClosingEventHandler(object sender, WpfPaletteClosingEventArgs arg);
+    public delegate void WpfPaletteClosedEventHandler(object sender, WpfPaletteClosedEventArgs arg);
+
     public enum VisibleState
     {
         Unknown = 0,
@@ -22,7 +26,8 @@ namespace AcHelper.WPF.Palettes
         void ClosePaletteSet();
 
         // Events
-        event WpfPaletteClosingEventHandler PaletteClosing;
+        event WpfPaletteClosingEventHandler WpfPaletteClosing;
+        event WpfPaletteClosedEventHandler WpfPaletteClosed;
         event WpfPaletteVisibleStateChangedEventHandler VisibleStateChanged;
 
         void Close();
