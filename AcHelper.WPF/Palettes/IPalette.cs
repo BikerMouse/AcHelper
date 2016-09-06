@@ -1,4 +1,5 @@
 ﻿using Autodesk.AutoCAD.ApplicationServices;
+using System;
 
 namespace AcHelper.WPF.Palettes
 {
@@ -13,7 +14,7 @@ namespace AcHelper.WPF.Palettes
         Hide = 2
     }
 
-    public interface IPalette
+    public interface IPalette : IDisposable
     {
         // State
         VisibleState VisibleState { get; set; }

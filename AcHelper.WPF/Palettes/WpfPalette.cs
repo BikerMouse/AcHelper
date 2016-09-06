@@ -4,7 +4,7 @@ using System.Windows.Forms.Integration;
 
 namespace AcHelper.WPF.Palettes
 {
-    public class WpfPalette : ElementHost, IPalette, IDisposable
+    public class WpfPalette : ElementHost, IPalette
     {
         #region Fields ...
         private UserControl _view = null;
@@ -38,7 +38,7 @@ namespace AcHelper.WPF.Palettes
             get { return _visible_state; }
             set 
             {
-                if (_visible_state != value && value != null)
+                if (_visible_state != value)
                 {
                     OnVisibleStateChanged(value);
                 }
@@ -68,7 +68,7 @@ namespace AcHelper.WPF.Palettes
         {
             if (_parent != null)
             {
-                // TODO: Set visibility PaletteSet.
+                _parent.Visible = false;
             }
         }
         public void Close()
@@ -113,7 +113,7 @@ namespace AcHelper.WPF.Palettes
 
         #region Dispose ...
         private bool disposed = false;
-        void IDisposable.Dispose()
+        public void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this);

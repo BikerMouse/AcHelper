@@ -40,7 +40,7 @@ namespace AcHelper.WPF.Palettes
     {
         private string _name;
 
-        public WpfPaletteClosingEventArgs(string paletteName)
+        public WpfPaletteClosedEventArgs(string paletteName)
         {
             _name = paletteName;
         }

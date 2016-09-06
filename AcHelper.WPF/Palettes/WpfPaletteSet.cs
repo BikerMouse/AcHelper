@@ -7,6 +7,8 @@ using System.Windows.Forms;
 
 namespace AcHelper.WPF.Palettes
 {
+    public delegate void WpfPaletteSetVisibleStateChangedEventHandler(object sender, WpfPaletteSetVisibleStateChangedEventArgs arg);
+
     public class WpfPaletteSet : PaletteSet
     {
         private string _name;
@@ -20,9 +22,7 @@ namespace AcHelper.WPF.Palettes
             _name = name;
             Size = size ?? new Size(400, 600);
             MinimumSize = minimumSize ?? new Size(200, 250);
-            StateChanged += WpfPaletteSet_StateChanged;
         }
-
 
         #region Properties ...
         public string PaletteSetName
@@ -101,38 +101,40 @@ namespace AcHelper.WPF.Palettes
         {
             string error_message = string.Format("Something went wrong while removing palette: '{0}'", name);
 
-            var palette = _palettes.FirstOrDefault(p => p.PaletteName.ToUpper() == name.ToUpper());
+            IPalette palette = _palettes.FirstOrDefault(p => p.PaletteName.ToUpper() == name.ToUpper());
             if (palette != null)
             {
                 try
                 {
                     int i = _palettes.IndexOf(palette);
-                    Control control = palette as Control;
-                    if (control != null)
-                    {
-                        this.Remove(i);
-                        _palettes.RemoveAt(i);
-                        control.Dispose();
+                    this.Remove(i);
+                    _palettes.RemoveAt(i);
+                    palette.Dispose();
 
-                        if (Count == 0)
-                        {
-                            Visible = false;
-                        }
+                    if (Count < 0)
+                    {
+                        Visible = false;
                     }
+                    #region old ...
+                    ////Control control = palette as Control;
+                    ////if (control != null)
+                    ////{
+                    ////    this.Remove(i);
+                    ////    _palettes.RemoveAt(i);
+                    ////    control.Dispose();
+
+                    ////    if (Count == 0)
+                    ////    {
+                    ////        Visible = false;
+                    ////    }
+                    ////}
+                    #endregion
                 }
                 catch (Exception ex)
                 {
                     throw new WpfPaletteSetException(error_message, PaletteSetName, ex);
                 }
             }
-        }
-        #endregion
-
-        #region Events ...
-        // TODO: Write logic of WpfPaletteSet_StateChanged.
-        void WpfPaletteSet_StateChanged(object sender, PaletteSetStateEventArgs e)
-        {
-            throw new NotImplementedException();
         }
         #endregion
     }
