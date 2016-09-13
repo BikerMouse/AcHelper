@@ -20,7 +20,7 @@ namespace AcHelper.Demo
                 if (res.Status == PromptStatus.OK)
                 {
                     Circle c = new Circle(res.Value, Vector3d.ZAxis, radius);
-                    c.ColorIndex = 3;
+                    c.ColorIndex = 1;
                     ms.AppendEntity(c);
                     t.AddNewlyCreatedDBObject(c, true);
                 }
@@ -76,7 +76,7 @@ namespace AcHelper.Demo
             });
         }
 
-        internal static void SetXrecord(ObjectId id, string key, ResultBuffer resbuf)
+        internal static void SetEntityXrecord(ObjectId id, string key, ResultBuffer resbuf)
         {
             Document doc = Active.Document;
             Database db = doc.Database;
@@ -96,18 +96,49 @@ namespace AcHelper.Demo
                 tr.Commit();
             }
         }
+        internal static void DisplayEntityXrecord(ObjectId id, string key)
+        {
+            string[] xValue;
+            ResultBuffer resbuf;
+
+            using (var xh = new XRecordHandler())
+            {
+                resbuf = xh.GetEntityXrecord(id, key);
+            }
+
+            TypedValue[] typedValues = resbuf.AsArray();
+            xValue = new string[typedValues.Length];
+
+            for (int i = 0; i < typedValues.Length; i++)
+            {
+                Active.WriteMessage(typedValues[i].Value.ToString());
+            }
+        }
 
         internal static void AddXrecordToDocument(string dictionaryName, string xKey, string text)
         {
-            XRecordHandler xh = new XRecordHandler(Active.Document);
             ResultBuffer resbuf = new ResultBuffer(new TypedValue((int)DxfCode.Text, text));
-            xh.UpdateXrecord(dictionaryName, xKey, resbuf);
+            using (XRecordHandler xh = new XRecordHandler(Active.Document))
+            {
+                xh.UpdateDocumentXrecord(dictionaryName, xKey, resbuf);
+            }
         }
         internal static void DisplayDocumentXrecord(string dictionaryName, string xKey)
         {
             string[] xValue;
-            XRecordHandler xh = new XRecordHandler(Active.Document);
-            ResultBuffer resbuf = xh.GetXrecord(dictionaryName, xKey);
+            ResultBuffer resbuf;
+            
+            using (XRecordHandler xh = new XRecordHandler(Active.Document))
+            {
+                resbuf = xh.GetXrecord(dictionaryName, xKey);
+            }
+
+            if (resbuf == null)
+            {
+                Active.WriteMessage("No Xrecord '{0}' found in dictionary: {1}", xKey, dictionaryName);
+                return;
+            }
+
             TypedValue[] typed_values = resbuf.AsArray();
             xValue = new string[typed_values.Length];
 

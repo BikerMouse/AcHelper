@@ -13,21 +13,23 @@ namespace AcHelper.Demo
     {
         public const string CMD_DRAWCIRCLE = "DEMO_DRAWCIRCLE";
         public const string CMD_THROWERROR = "DEMO_THROWERROR";
-        public const string CMD_ADDXRECORD = "DEMO_ADDXRECORD";
+        public const string CMD_ADDXRECORDTOENTITY = "DEMO_ADDXRECORDTOENTITY";
+        public const string CMD_ADDXRECORDTODOCUMENT = "DEMO_ADDXRECORDTODOCUMENT";
+        public const string CMD_DISPLAYENTITYXRECORD = "DEMO_DISPLAYENTITYXRECORD";
+        public const string CMD_HELP = "DEMO_HELP";
         public const string CMD_DISPLAYDOCUMENTXRECORD = "DEMO_DISPLAYDOCUMENTXRECORD";
+        public const string CMD_OPENPALETTESET = "DEMO_OPENPALETTESET";
 
-        [CommandMethod("DEMO_HELP")]
+        [CommandMethod(CMD_HELP)]
         public static void Demo_Help()
         {
-            Active.WriteMessage("\n=========================================");
-            Active.WriteMessage("\nWelcome to the AcHelper Demo for AutoCAD");
-            Active.WriteMessage("\nThe next commands are available:");
-            Active.WriteMessage("\n\t- DEMO_DRAWCIRCLE");
-            Active.WriteMessage("\n\t- DEMO_THROWERROR");
-            Active.WriteMessage("\n\t- DEMO_ADDXRECORD");
-            Active.WriteMessage("\n=========================================\n");
+            ExecuteCommand<HelpCommand>();
         }
-
+        [CommandMethod(CMD_OPENPALETTESET)]
+        public static void Demo_OpenPaletteSet()
+        {
+            ExecuteCommand<OpenPaletteSet>();
+        }
         [CommandMethod(CMD_DRAWCIRCLE)]
         public static void Demo_DrawCircle()
         {
@@ -38,49 +40,18 @@ namespace AcHelper.Demo
         {
             ExecuteCommand<ThrowErrorCommand>();
         }
-
-        [CommandMethod(CMD_ADDXRECORD)]
+        [CommandMethod(CMD_ADDXRECORDTOENTITY)]
         public static void Demo_AddXrecordToEntity()
         {
-            Editor ed = Active.Editor;
-            try
-            {
-                PromptEntityOptions opt = new PromptEntityOptions("\nSelect an entity to add xRecord");
-                PromptEntityResult res = ed.GetEntity(opt);
-                if (res.Status == PromptStatus.OK)
-                {
-                    ObjectId oid = res.ObjectId;
-                    ResultBuffer resbuf = new ResultBuffer();
-                    resbuf.Add(new TypedValue((int)DxfCode.Text, "Hello AutoCAD MAP 3D"));
-                    Utilities.SetXrecord(oid, "DEMO_XRECORD", resbuf);
-                }
-                //Utilities.AddTextDataToEntity("DEMO_XRECORD", "Hello AutoCAD MAP 3D");
-            }
-            catch (System.Exception ex)
-            {
-                Active.WriteMessage(ex.Message);
-                if (ex.InnerException != null)
-                {
-                    Active.WriteMessage(ex.InnerException.Message);
-                }
-            }
-
-            try
-            {
-                Utilities.AddXrecordToDocument("DEMO_NOD", "DEMO_KEY", "Hello AutoCAD");
-            }
-            catch (System.Exception ex)
-            {
-                Active.WriteMessage(ex.Message);
-                if (ex.InnerException != null)
-                {
-                    Active.WriteMessage(ex.InnerException.Message);
-                }
-            }
+            ExecuteCommand<AddXrecordToEntity>();
         }
-
+        [CommandMethod(CMD_DISPLAYENTITYXRECORD)]
+        public static void Demo_DisplayEntityXrecord()
+        {
+            ExecuteCommand<DisplayEntityXrecord>();
+        }
         [CommandMethod(CMD_DISPLAYDOCUMENTXRECORD)]
-        public static void DisplayDocumentXrecord()
+        public static void Demo_DisplayDocumentXrecord()
         {
             try
             {
@@ -88,12 +59,13 @@ namespace AcHelper.Demo
             }
             catch (System.Exception ex)
             {
-                Active.WriteMessage(ex.Message);
-                if (ex.InnerException != null)
-                {
-                    Active.WriteMessage(ex.InnerException.Message);
-                }
+                ExceptionHandler.WriteToCommandLine(ex);
             }
+        }
+        [CommandMethod(CMD_ADDXRECORDTODOCUMENT)]
+        public static void Demo_AddXrecordToDocument()
+        {
+            ExecuteCommand<AddXrecordToDocument>();
         }
 
 
@@ -197,11 +169,6 @@ namespace AcHelper.Demo
             }
         }
 
-
-
-
-
-
         [CommandMethod("TestVariousTypeCheck")]
         public static void TestVariousTypeCheck_Method()
         {
@@ -259,7 +226,6 @@ namespace AcHelper.Demo
 
             return ids;
         }
-
         public static ObjectIdCollection TypeCheckApproach2()
         {
             ObjectIdCollection ids = new ObjectIdCollection();
@@ -281,7 +247,6 @@ namespace AcHelper.Demo
 
             return ids;
         }
-
         public static ObjectIdCollection TypeCheckApproach3()
         {
             ObjectIdCollection ids = new ObjectIdCollection();
@@ -302,7 +267,6 @@ namespace AcHelper.Demo
 
             return ids;
         }
-
         public static ObjectIdCollection TypeCheckApproach4()
         {
             ObjectIdCollection ids = new ObjectIdCollection();
@@ -323,7 +287,6 @@ namespace AcHelper.Demo
 
             return ids;
         }
-
         public static ObjectIdCollection TypeCheckApproach5()
         {
             ObjectIdCollection ids = new ObjectIdCollection();
@@ -345,10 +308,6 @@ namespace AcHelper.Demo
 
             return ids;
         }
-
-
-
-
         [CommandMethod("Example_1")]
         public static void Example_1()
         {
@@ -394,11 +353,6 @@ namespace AcHelper.Demo
                 }
             }
         }
-
-
-
-
-
         [CommandMethod("Example_2")]
         public static void Example_2()
         {
@@ -447,6 +401,5 @@ namespace AcHelper.Demo
                 }
             }
         }
-
     }
 }

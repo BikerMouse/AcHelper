@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Forms.Integration;
 
@@ -21,11 +22,13 @@ namespace AcHelper.WPF.Palettes
             _view = view;
             _name = name;
 
-            this.AutoSize = true;
             this.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AutoSize = true;
+            this.SetAutoSizeMode(System.Windows.Forms.AutoSizeMode.GrowAndShrink);
             this.Child = _view;
 
             _closed = false;
+
         }
         #endregion
 
