@@ -59,6 +59,10 @@
       <HintPath>..\..\..\Users\sbu\Documents\4. References\_autocad\acmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="ManagedMapApi">
+      <HintPath>..\..\..\Users\sbu\Documents\4. References\_autocad\ManagedMapApi.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -76,6 +80,7 @@
     <Compile Include="Command\CommandHandlerBase.cs" />
     <Compile Include="Command\IAcadCommand.cs" />
     <Compile Include="Common.cs" />
+    <Compile Include="ExceptionHandler.cs" />
     <Compile Include="Exceptions\TransactionException.cs" />
     <Compile Include="Utilities\AcTransaction.cs" />
     <Compile Include="Enumerables\DbObjectEnumerable.cs" />

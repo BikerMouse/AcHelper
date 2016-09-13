@@ -39,7 +39,6 @@ namespace AcHelper
         public static void UsingTransaction(Document doc, string commandName, Action<AcTransaction> action)
         {
             commandName = commandName == "" ? "Acad_Transaction" : commandName;
-            string err_message = "Couldn't open a transaction.";
 
             try
             {
@@ -47,14 +46,13 @@ namespace AcHelper
                 {
                     using (AcTransaction tr = new AcTransaction(doc))
                     {
-                        Transaction t = tr.Transaction;
                         action(tr);
                     }
                 }
             }
-            catch (System.Exception ex)
+            catch (Exception)
             {
-                throw new TransactionException(err_message, commandName, ex);
+                throw;
             }
         }
 
@@ -90,7 +88,6 @@ namespace AcHelper
         public static void UsingModelSpace(Document doc, string commandName, Action<AcTransaction, BlockTableRecord> action)
         {
             commandName = commandName == "" ? "Acad_Transaction" : commandName;
-            string err_message = "Could not open a transaction.";
             try
             {
                 using (DocumentLock doclock = doc.LockDocument(DocumentLockMode.Write, commandName, commandName, true))
@@ -98,7 +95,6 @@ namespace AcHelper
                     doc.TransactionManager.EnableGraphicsFlush(true);
                     using (AcTransaction tr = new AcTransaction(doc))
                     {
-                        Transaction t = tr.Transaction;     // Transaction
                         var modelspace = tr.ModelSpace;     // Modelspace
 
                         using (WriteEnabler we = new WriteEnabler(doc, modelspace))
@@ -111,9 +107,9 @@ namespace AcHelper
                     }
                 }
             }
-            catch (System.Exception ex)
+            catch (Exception)
             {
-                throw new TransactionException(err_message, commandName, ex);
+                throw;
             }
         }
     }
