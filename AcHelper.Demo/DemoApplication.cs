@@ -12,6 +12,7 @@ namespace AcHelper.Demo
     public class DemoApplication : IExtensionApplication
     {
         #region Fields ...
+        private static WpfPaletteSetsHandler _paletteSetsHandler = WpfPaletteSetsHandler.Instance;
         private static ResourceDictionary _genericResources
         {
             get
@@ -23,6 +24,13 @@ namespace AcHelper.Demo
         #endregion
         
         #region Properties ...
+        #region PaletteSetsHandler ...
+        public static WpfPaletteSetsHandler PaletteSetsHandler
+        {
+            get { return _paletteSetsHandler; }
+        }
+        #endregion
+
         #region PaletteSet ...
         private static WpfPaletteSet _paletteSet;
         public static WpfPaletteSet PaletteSet
@@ -61,7 +69,17 @@ namespace AcHelper.Demo
 
             SecureResources();
 
+            PreparePaletteSets();
+
             Active.WriteMessage("\n*** AcHelper Demo loaded ***");
+        }
+
+        private void PreparePaletteSets()
+        {
+            // Main paletteset
+            PaletteSetsHandler.CreatePaletteSet(DemoConstants.GUID_MAINPALETTESET
+                , DemoConstants.PLTS_MAINPALETTESET
+                , new System.Drawing.Size(300, 800));
         }
 
         public void Terminate()

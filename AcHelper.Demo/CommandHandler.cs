@@ -20,16 +20,17 @@ namespace AcHelper.Demo
         public const string CMD_DISPLAYDOCUMENTXRECORD = "DEMO_DISPLAYDOCUMENTXRECORD";
         public const string CMD_OPENPALETTESET = "DEMO_OPENPALETTESET";
 
-        [CommandMethod(CMD_HELP)]
-        public static void Demo_Help()
-        {
-            ExecuteCommand<HelpCommand>();
-        }
         [CommandMethod(CMD_OPENPALETTESET)]
         public static void Demo_OpenPaletteSet()
         {
             ExecuteCommand<OpenPaletteSet>();
         }
+        [CommandMethod(CMD_HELP)]
+        public static void Demo_Help()
+        {
+            ExecuteCommand<HelpCommand>();
+        }
+        
         [CommandMethod(CMD_DRAWCIRCLE)]
         public static void Demo_DrawCircle()
         {
