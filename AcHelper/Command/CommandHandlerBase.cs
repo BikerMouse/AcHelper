@@ -40,12 +40,18 @@ namespace AcHelper.Command
         }
         #endregion
 
+        public static void ExecuteFromCommandLine(string cmd, params object[] parameters)
+        {
+            ExecuteFromCommandLine(true, cmd, parameters);
+        }
+
         /// <summary>
         /// Executes a command from the commandline.
         /// </summary>
+        /// <param name="echo">true to echo command in commandline.</param>
         /// <param name="cmd">Command name.</param>
         /// <param name="parameters">Optional parameters.</param>
-        public static void ExecuteFromCommandLine(string cmd, params object[] parameters)
+        public static void ExecuteFromCommandLine(bool echo, string cmd, params object[] parameters)
         {
             AcLog.Logger.Debug("Firing command from the commandline: " + cmd);
 
@@ -69,7 +75,7 @@ namespace AcHelper.Command
             {
                 AcLog.Logger.Debug("Executing ...");
                 // Execute
-                Active.Document.SendStringToExecute(execute, true, false, true);
+                Active.Document.SendStringToExecute(execute, true, false, echo);
 
                 AcLog.Logger.Debug("Command succeeded: " + cmd);
             }
