@@ -79,7 +79,7 @@ namespace AcHelper
         /// <param name="parameter">The variables to substitue into the format string.</param>
         public static void WriteMessage(string message, params object[] parameter)
         {
-            Editor.WriteMessage(message, parameter);
+            Editor.WriteMessage("\n" + message, parameter);
         }
         /// <summary>
         /// Regenerates active modelspace. Equivalent of Editor.Regen().

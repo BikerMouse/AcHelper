@@ -1,6 +1,4 @@
-﻿using BuerTech.Utilities.Logger;
-using System;
-using System.Windows.Input;
+﻿using System;
 using AcLog = AcHelper.Logging;
 
 namespace AcHelper.Command
@@ -39,7 +37,11 @@ namespace AcHelper.Command
             }
         }
         #endregion
-
+        /// <summary>
+        /// Executes a command from the commandline.
+        /// </summary>
+        /// <param name="cmd">Command name.</param>
+        /// <param name="parameters">Optional parameters.</param>
         public static void ExecuteFromCommandLine(string cmd, params object[] parameters)
         {
             ExecuteFromCommandLine(true, cmd, parameters);

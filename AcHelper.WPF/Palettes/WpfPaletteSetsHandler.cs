@@ -1,9 +1,6 @@
 ﻿using Autodesk.AutoCAD.Windows;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AcHelper.WPF.Palettes
 {
