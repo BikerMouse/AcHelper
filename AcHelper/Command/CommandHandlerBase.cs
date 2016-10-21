@@ -1,10 +1,13 @@
-﻿using System;
+﻿using BuerTech.Utilities.Logger;
+using System;
 using System.Windows.Input;
+using AcLog = AcHelper.Logging;
 
 namespace AcHelper.Command
 {
     /// <summary>
     /// This class handles as a base of every AutoCad command.
+    /// If you use this feature, make sure you have created an instance of the <see cref="AcHelper.Logging"/>.LogWriter first.
     /// </summary>
     public class CommandHandlerBase
     {
@@ -27,39 +30,62 @@ namespace AcHelper.Command
             }
             catch (System.Exception ex)
             {
-                ExceptionHandler.ShowDialog(ex, cmdLine: true);
+                ExceptionHandler.ShowDialog(ex, true, true);
+
+                if (AcLog.IsInitialized)
+                {
+                    AcLog.Logger.WriteToLog(ex, BuerTech.Utilities.Logger.LogPrior.Critical); 
+                }
             }
         }
         #endregion
 
+        public static void ExecuteFromCommandLine(string cmd, params object[] parameters)
+        {
+            ExecuteFromCommandLine(true, cmd, parameters);
+        }
+
         /// <summary>
         /// Executes a command from the commandline.
         /// </summary>
+        /// <param name="echo">true to echo command in commandline.</param>
         /// <param name="cmd">Command name.</param>
         /// <param name="parameters">Optional parameters.</param>
-        public static void ExecuteFromCommandLine(string cmd, params object[] parameters)
+        public static void ExecuteFromCommandLine(bool echo, string cmd, params object[] parameters)
         {
+            AcLog.Logger.Debug("Firing command from the commandline: " + cmd);
+
             // Prepare Command and potential parameters.
-            cmd += NEWLINE;
+            string execute = cmd;
+            execute += NEWLINE;
             if (parameters != null && parameters.Length > 0)
             {
                 // if parameters are present
                 // add every parameter to the command.
                 foreach (var item in parameters)
                 {
+                    AcLog.Logger.Debug("Adding parameter: " + item.ToString());
+
                     // end parameter with a whitespace so it will be passed through.
-                    cmd += item.ToString() + WHITESPACE;
+                    execute += item.ToString() + WHITESPACE;
                 }
             }
 
             try
             {
+                AcLog.Logger.Debug("Executing ...");
                 // Execute
-                Active.Document.SendStringToExecute(cmd, true, false, true);
+                Active.Document.SendStringToExecute(execute, true, false, echo);
+
+                AcLog.Logger.Debug("Command succeeded: " + cmd);
             }
             catch (Exception ex)
             {
                 ExceptionHandler.ShowDialog(ex, true, true);
+                if (AcLog.IsInitialized)
+                {
+                    AcLog.Logger.WriteToLog(ex, BuerTech.Utilities.Logger.LogPrior.Critical);
+                }
             }
         }
     }

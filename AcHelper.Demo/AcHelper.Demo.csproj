@@ -87,13 +87,13 @@
     <Compile Include="Commands\AddXrecordToEntity.cs" />
     <Compile Include="Commands\CreateCircle.cs" />
     <Compile Include="Commands\CreateCircleWithParameters.cs" />
+    <Compile Include="Commands\CreateInnerExceptionsCommand.cs" />
     <Compile Include="Commands\DisplayEntityXrecord.cs" />
     <Compile Include="Commands\HelpCommand.cs" />
     <Compile Include="Commands\OpenPaletteSet.cs" />
     <Compile Include="Commands\ThrowErrorCommand.cs" />
     <Compile Include="DemoApplication.cs" />
     <Compile Include="DemoConstants.cs" />
-    <Compile Include="Logging.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />

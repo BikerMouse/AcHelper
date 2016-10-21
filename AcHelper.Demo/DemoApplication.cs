@@ -1,7 +1,9 @@
-﻿using Autodesk.AutoCAD.Runtime;
+﻿using AcHelper.WPF.Palettes;
+using Autodesk.AutoCAD.Runtime;
+using BuerTech.Utilities.Logger;
 using System;
 using System.Drawing;
-using AcHelper.WPF.Palettes;
+using System.IO;
 using System.Windows;
 
 [assembly: ExtensionApplication(typeof(AcHelper.Demo.DemoApplication))]
@@ -9,6 +11,8 @@ using System.Windows;
 [assembly: CLSCompliant(false)]
 namespace AcHelper.Demo
 {
+    using AcLog = AcHelper.Logging;
+
     public class DemoApplication : IExtensionApplication
     {
         #region Fields ...
@@ -67,11 +71,25 @@ namespace AcHelper.Demo
         {
             Active.WriteMessage("\n*** Loading AcHelper Demo ***");
 
+            SetupLogger();
+
             SecureResources();
 
             PreparePaletteSets();
 
             Active.WriteMessage("\n*** AcHelper Demo loaded ***");
+        }
+
+        private void SetupLogger()
+        {
+            LogSetup setup = new LogSetup()
+            {
+                ApplicationName = "AcHelper Demo",
+                MaxAge = 0,
+                MaxQueueSize = 1,
+                SaveLocation = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "LogFiles")
+            };
+            AcLog.InitializeLogger(setup);
         }
 
         private void PreparePaletteSets()
@@ -84,6 +102,7 @@ namespace AcHelper.Demo
 
         public void Terminate()
         {
+            AcHelper.Logging.Dispose();
         }
         #endregion
 
