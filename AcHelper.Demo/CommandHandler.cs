@@ -66,6 +66,7 @@ namespace AcHelper.Demo
             }
             catch (System.Exception ex)
             {
+                Logger.WriteToLog(ex);
                 ExceptionHandler.WriteToCommandLine(ex);
             }
         }
@@ -123,7 +124,7 @@ namespace AcHelper.Demo
             }
             catch (System.Exception ex)
             {
-                Active.WriteMessage(ex.Message);
+                ExceptionHandler.WriteToCommandLine(ex);
             }
         }
 
@@ -171,8 +172,7 @@ namespace AcHelper.Demo
             }
             catch (System.Exception ex)
             {
-                
-                Active.WriteMessage(ex.Message);
+                ExceptionHandler.WriteToCommandLine(ex);
             }
         }
 

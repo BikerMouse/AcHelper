@@ -11,7 +11,7 @@ using System.Windows;
 [assembly: CLSCompliant(false)]
 namespace AcHelper.Demo
 {
-    using AcLog = AcHelper.Logging;
+    ////using AcLog = AcHelper.Logging;
 
     public class DemoApplication : IExtensionApplication
     {
@@ -89,7 +89,8 @@ namespace AcHelper.Demo
                 MaxQueueSize = 1,
                 SaveLocation = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "LogFiles")
             };
-            AcLog.InitializeLogger(setup);
+            Logger.Initialize(setup);
+            ////AcLog.InitializeLogger(setup);
         }
 
         private void PreparePaletteSets()
@@ -102,7 +103,8 @@ namespace AcHelper.Demo
 
         public void Terminate()
         {
-            AcHelper.Logging.Dispose();
+            Logger.Dispose();
+            ////AcHelper.Logging.Dispose();
         }
         #endregion
 
