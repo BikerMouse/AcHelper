@@ -68,18 +68,21 @@
   <ItemGroup>
     <Reference Include="accoremgd" Condition="'$(Configuration)' == 'Release_2015' OR '$(Configuration)' == 'Debug_2015'">
       <HintPath>..\packages\R200\References\accoremgd.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="accoremgd" Condition="'$(Configuration)' == 'Release_2016' OR '$(Configuration)' == 'Debug_2016'">
       <HintPath>..\packages\R201\References\accoremgd.dll</HintPath>
     </Reference>
     <Reference Include="acdbmgd" Condition="'$(Configuration)' == 'Release_2015' OR '$(Configuration)' == 'Debug_2015'">
       <HintPath>..\packages\R200\References\acdbmgd.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="acdbmgd" Condition="'$(Configuration)' == 'Release_2016' OR '$(Configuration)' == 'Debug_2016'">
       <HintPath>..\packages\R201\References\acdbmgd.dll</HintPath>
     </Reference>
     <Reference Include="acmgd" Condition="'$(Configuration)' == 'Release_2015' OR '$(Configuration)' == 'Debug_2015'">
       <HintPath>..\packages\R200\References\acmgd.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="acmgd" Condition="'$(Configuration)' == 'Release_2016' OR '$(Configuration)' == 'Debug_2016'">
       <HintPath>..\packages\R201\References\acmgd.dll</HintPath>
