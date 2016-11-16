@@ -2,7 +2,7 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug_2016</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{E18AD61D-EC64-4260-BDC1-1A16D0007E70}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -12,7 +12,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+  <!--<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -40,25 +40,63 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <DocumentationFile>C:\Users\sbu\Documents\2_Projects\Sander\AcHelper\Releases\R_2016\AcHelper.WPF.XML</DocumentationFile>
+  </PropertyGroup>-->
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug_2016|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug_2016\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;R201</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug_2015|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug_2015\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;R200</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release_2015|AnyCPU'">
+    <OutputPath>bin\Release_2015\</OutputPath>
+    <DefineConstants>TRACE;R200</DefineConstants>
+    <DocumentationFile>C:\Users\sbu\Documents\2_Projects\Sander\AcHelper\Releases\R_2015\\AcHelper.WPF.XML</DocumentationFile>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release_2016|AnyCPU'">
+    <OutputPath>bin\Release_2016\</OutputPath>
+    <DefineConstants>TRACE;R201</DefineConstants>
+    <DocumentationFile>C:\Users\sbu\Documents\2_Projects\Sander\AcHelper\Releases\R_2016\AcHelper.WPF.XML</DocumentationFile>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="accoremgd" Condition="'$(Configuration)' == 'R_2015'">
-      <HintPath>..\..\..\TFS-NG\CadAlgemeen\AutoCAD\R200\References\accoremgd.dll</HintPath>
+    <Reference Include="accoremgd" Condition="'$(Configuration)' == 'Release_2015' OR '$(Configuration)' == 'Debug_2015'">
+      <HintPath>..\packages\R200\References\accoremgd.dll</HintPath>
     </Reference>
-    <Reference Include="accoremgd" Condition="'$(Configuration)' == 'R_2016'">
-      <HintPath>..\..\..\TFS-NG\CadAlgemeen\AutoCAD\R201\References\accoremgd.dll</HintPath>
+    <Reference Include="accoremgd" Condition="'$(Configuration)' == 'Release_2016' OR '$(Configuration)' == 'Debug_2016'">
+      <HintPath>..\packages\R201\References\accoremgd.dll</HintPath>
     </Reference>
-    <Reference Include="acdbmgd" Condition="'$(Configuration)' == 'R_2015'">
-      <HintPath>..\..\..\TFS-NG\CadAlgemeen\AutoCAD\R200\References\acdbmgd.dll</HintPath>
+    <Reference Include="acdbmgd" Condition="'$(Configuration)' == 'Release_2015' OR '$(Configuration)' == 'Debug_2015'">
+      <HintPath>..\packages\R200\References\acdbmgd.dll</HintPath>
     </Reference>
-    <Reference Include="acdbmgd" Condition="'$(Configuration)' == 'R_2016'">
-      <HintPath>..\..\..\TFS-NG\CadAlgemeen\AutoCAD\R201\References\acdbmgd.dll</HintPath>
+    <Reference Include="acdbmgd" Condition="'$(Configuration)' == 'Release_2016' OR '$(Configuration)' == 'Debug_2016'">
+      <HintPath>..\packages\R201\References\acdbmgd.dll</HintPath>
     </Reference>
-    <Reference Include="acmgd" Condition="'$(Configuration)' == 'R_2015'">
-      <HintPath>..\..\..\TFS-NG\CadAlgemeen\AutoCAD\R200\References\acmgd.dll</HintPath>
+    <Reference Include="acmgd" Condition="'$(Configuration)' == 'Release_2015' OR '$(Configuration)' == 'Debug_2015'">
+      <HintPath>..\packages\R200\References\acmgd.dll</HintPath>
     </Reference>
-    <Reference Include="acmgd" Condition="'$(Configuration)' == 'R_2016'">
-      <HintPath>..\..\..\TFS-NG\CadAlgemeen\AutoCAD\R201\References\acmgd.dll</HintPath>
+    <Reference Include="acmgd" Condition="'$(Configuration)' == 'Release_2016' OR '$(Configuration)' == 'Debug_2016'">
+      <HintPath>..\packages\R201\References\acmgd.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />

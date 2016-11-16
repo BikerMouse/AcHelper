@@ -2,7 +2,7 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug_2016</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{EB1287B5-AC16-44D2-A83F-B1408F339E96}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -12,7 +12,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+  <!--<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -28,19 +28,61 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>-->
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug_2016|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug_2016\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;R201</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug_2015|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug_2015\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;R200</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release_2015|AnyCPU'">
+    <OutputPath>bin\Release_2015\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release_2016|AnyCPU'">
+    <OutputPath>bin\Release_2016\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="accoremgd">
-      <HintPath>..\..\..\Users\sbu\Documents\4. References\_autocad\accoremgd.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="accoremgd" Condition="'$(Configuration)' == 'Release_2015' OR '$(Configuration)' == 'Debug_2015'">
+      <HintPath>..\packages\R200\References\accoremgd.dll</HintPath>
     </Reference>
-    <Reference Include="acdbmgd">
-      <HintPath>..\..\..\Users\sbu\Documents\4. References\_autocad\acdbmgd.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="accoremgd" Condition="'$(Configuration)' == 'Release_2016' OR '$(Configuration)' == 'Debug_2016'">
+      <HintPath>..\packages\R201\References\accoremgd.dll</HintPath>
     </Reference>
-    <Reference Include="acmgd">
-      <HintPath>..\..\..\Users\sbu\Documents\4. References\_autocad\acmgd.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="acdbmgd" Condition="'$(Configuration)' == 'Release_2015' OR '$(Configuration)' == 'Debug_2015'">
+      <HintPath>..\packages\R200\References\acdbmgd.dll</HintPath>
+    </Reference>
+    <Reference Include="acdbmgd" Condition="'$(Configuration)' == 'Release_2016' OR '$(Configuration)' == 'Debug_2016'">
+      <HintPath>..\packages\R201\References\acdbmgd.dll</HintPath>
+    </Reference>
+    <Reference Include="acmgd" Condition="'$(Configuration)' == 'Release_2015' OR '$(Configuration)' == 'Debug_2015'">
+      <HintPath>..\packages\R200\References\acmgd.dll</HintPath>
+    </Reference>
+    <Reference Include="acmgd" Condition="'$(Configuration)' == 'Release_2016' OR '$(Configuration)' == 'Debug_2016'">
+      <HintPath>..\packages\R201\References\acmgd.dll</HintPath>
     </Reference>
     <Reference Include="BuerTech.Utilities.Logger">
       <HintPath>..\..\..\Users\sbu\Documents\2_Projects\Sander\AcHelper\Releases\R_2016\BuerTech.Utilities.Logger.dll</HintPath>
