@@ -23,7 +23,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'R_2015|AnyCPU'">
     <OutputPath>..\..\..\Users\sbu\Documents\2_Projects\Sander\AcHelper\Releases\R_2015\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>TRACE;R200</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,7 +33,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'R_2016|AnyCPU'">
     <OutputPath>..\..\..\Users\sbu\Documents\2_Projects\Sander\AcHelper\Releases\R_2016\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>TRACE;R201</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -89,7 +89,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent><!--REM *************************************************************************
+    <PreBuildEvent>
+      <!--REM *************************************************************************
 REM Maakt een symbolic link to the directory met de AutoCAD references
 REM *************************************************************************
 
@@ -104,7 +105,8 @@ IF EXIST _topocad RMDIR _topocad
 
 REM REFERENTIE LINK: maak nieuwe link
 mklink /j _autocad $(ConfigurationName)
-mklink /j _topocad TopoCad\$(ConfigurationName)--></PreBuildEvent>
+mklink /j _topocad TopoCad\$(ConfigurationName)-->
+    </PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
