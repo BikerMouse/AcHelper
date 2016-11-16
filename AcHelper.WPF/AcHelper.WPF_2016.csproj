@@ -42,17 +42,23 @@
     <DocumentationFile>C:\Users\sbu\Documents\2_Projects\Sander\AcHelper\Releases\R_2016\AcHelper.WPF.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="accoremgd">
-      <HintPath>..\..\..\Users\sbu\Documents\4. References\_autocad\accoremgd.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="accoremgd" Condition="'$(Configuration)' == 'R_2015'">
+      <HintPath>..\..\..\TFS-NG\CadAlgemeen\AutoCAD\R200\References\accoremgd.dll</HintPath>
     </Reference>
-    <Reference Include="acdbmgd">
-      <HintPath>..\..\..\Users\sbu\Documents\4. References\_autocad\acdbmgd.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="accoremgd" Condition="'$(Configuration)' == 'R_2016'">
+      <HintPath>..\..\..\TFS-NG\CadAlgemeen\AutoCAD\R201\References\accoremgd.dll</HintPath>
     </Reference>
-    <Reference Include="acmgd">
-      <HintPath>..\..\..\Users\sbu\Documents\4. References\_autocad\acmgd.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="acdbmgd" Condition="'$(Configuration)' == 'R_2015'">
+      <HintPath>..\..\..\TFS-NG\CadAlgemeen\AutoCAD\R200\References\acdbmgd.dll</HintPath>
+    </Reference>
+    <Reference Include="acdbmgd" Condition="'$(Configuration)' == 'R_2016'">
+      <HintPath>..\..\..\TFS-NG\CadAlgemeen\AutoCAD\R201\References\acdbmgd.dll</HintPath>
+    </Reference>
+    <Reference Include="acmgd" Condition="'$(Configuration)' == 'R_2015'">
+      <HintPath>..\..\..\TFS-NG\CadAlgemeen\AutoCAD\R200\References\acmgd.dll</HintPath>
+    </Reference>
+    <Reference Include="acmgd" Condition="'$(Configuration)' == 'R_2016'">
+      <HintPath>..\..\..\TFS-NG\CadAlgemeen\AutoCAD\R201\References\acmgd.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -83,7 +89,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>REM *************************************************************************
+    <PreBuildEvent><!--REM *************************************************************************
 REM Maakt een symbolic link to the directory met de AutoCAD references
 REM *************************************************************************
 
@@ -98,7 +104,7 @@ IF EXIST _topocad RMDIR _topocad
 
 REM REFERENTIE LINK: maak nieuwe link
 mklink /j _autocad $(ConfigurationName)
-mklink /j _topocad TopoCad\$(ConfigurationName)</PreBuildEvent>
+mklink /j _topocad TopoCad\$(ConfigurationName)--></PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

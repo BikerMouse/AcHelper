@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcHelper", "AcHelper\AcHelper.csproj", "{F5E87F07-0D0A-48A7-B02B-66802B64997F}"
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcHelper_2016", "AcHelper\AcHelper_2016.csproj", "{F5E87F07-0D0A-48A7-B02B-66802B64997F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcHelper.Demo", "AcHelper.Demo\AcHelper.Demo.csproj", "{EB1287B5-AC16-44D2-A83F-B1408F339E96}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcHelper.Demo_2016", "AcHelper.Demo\AcHelper.Demo_2016.csproj", "{EB1287B5-AC16-44D2-A83F-B1408F339E96}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcHelper.WPF", "AcHelper.WPF\AcHelper.WPF.csproj", "{E18AD61D-EC64-4260-BDC1-1A16D0007E70}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcHelper.WPF_2016", "AcHelper.WPF\AcHelper.WPF_2016.csproj", "{E18AD61D-EC64-4260-BDC1-1A16D0007E70}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

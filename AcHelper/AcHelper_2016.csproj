@@ -34,30 +34,33 @@
     <DocumentationFile>C:\Users\sbu\Documents\2_Projects\Sander\AcHelper\Releases\R_2015\\AcHelper.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'R_2016|AnyCPU'">
-    <OutputPath>..\..\..\Users\sbu\Documents\2_Projects\Sander\AcHelper\Releases\R_2016\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <OutputPath>..\..\..\Users\sbu\Documents\2_Projects\Sander\AcHelper\Releases\R201\</OutputPath>
+    <DefineConstants>TRACE;R201</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>C:\Users\sbu\Documents\2_Projects\Sander\AcHelper\Releases\R_2015\\AcHelper.XML</DocumentationFile>
+    <DocumentationFile>..\..\..\Users\sbu\Documents\2_Projects\Sander\AcHelper\Releases\R201\AcHelper.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="accoremgd, Version=20.0.0.0, Culture=neutral, processorArchitecture=AMD64">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Users\sbu\Documents\4. References\_autocad\accoremgd.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="accoremgd" Condition="'$(Configuration)' == 'R_2015'">
+      <HintPath>..\..\..\TFS-NG\CadAlgemeen\AutoCAD\R200\References\accoremgd.dll</HintPath>
     </Reference>
-    <Reference Include="acdbmgd, Version=20.0.0.0, Culture=neutral, processorArchitecture=AMD64">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Users\sbu\Documents\4. References\_autocad\acdbmgd.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="accoremgd" Condition="'$(Configuration)' == 'R_2016'">
+      <HintPath>..\..\..\TFS-NG\CadAlgemeen\AutoCAD\R201\References\accoremgd.dll</HintPath>
     </Reference>
-    <Reference Include="acmgd, Version=20.0.0.0, Culture=neutral, processorArchitecture=AMD64">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Users\sbu\Documents\4. References\_autocad\acmgd.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="acdbmgd" Condition="'$(Configuration)' == 'R_2015'">
+      <HintPath>..\..\..\TFS-NG\CadAlgemeen\AutoCAD\R200\References\acdbmgd.dll</HintPath>
+    </Reference>
+    <Reference Include="acdbmgd" Condition="'$(Configuration)' == 'R_2016'">
+      <HintPath>..\..\..\TFS-NG\CadAlgemeen\AutoCAD\R201\References\acdbmgd.dll</HintPath>
+    </Reference>
+    <Reference Include="acmgd" Condition="'$(Configuration)' == 'R_2015'">
+      <HintPath>..\..\..\TFS-NG\CadAlgemeen\AutoCAD\R200\References\acmgd.dll</HintPath>
+    </Reference>
+    <Reference Include="acmgd" Condition="'$(Configuration)' == 'R_2016'">
+      <HintPath>..\..\..\TFS-NG\CadAlgemeen\AutoCAD\R201\References\acmgd.dll</HintPath>
     </Reference>
     <Reference Include="BuerTech.Utilities.Logger">
       <HintPath>..\..\..\Users\sbu\Documents\2_Projects\Sander\BuerTech\Release\BuerTech.Utilities.Logger.dll</HintPath>
@@ -122,22 +125,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>REM *************************************************************************
-REM Maakt een symbolic link to the directory met de AutoCAD references
-REM *************************************************************************
-
-IF $(ConfigurationName) == Debug EXIT
-
-REM REFERENTIE LINK: ga naar directorie met referenties
-CD "C:\Users\sbu\Documents\4. References"
-
-REM REFERENTIE LINK: verwijder bestaande link
-IF EXIST _autocad RMDIR _autocad
-IF EXIST _topocad RMDIR _topocad
-
-REM REFERENTIE LINK: maak nieuwe link
-mklink /j _autocad $(ConfigurationName)
-mklink /j _topocad TopoCad\$(ConfigurationName)</PreBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

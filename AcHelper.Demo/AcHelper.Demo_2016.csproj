@@ -103,13 +103,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AcHelper.WPF\AcHelper.WPF.csproj">
+    <ProjectReference Include="..\AcHelper.WPF\AcHelper.WPF_2016.csproj">
       <Project>{e18ad61d-ec64-4260-bdc1-1a16d0007e70}</Project>
-      <Name>AcHelper.WPF</Name>
+      <Name>AcHelper.WPF_2016</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AcHelper\AcHelper.csproj">
+    <ProjectReference Include="..\AcHelper\AcHelper_2016.csproj">
       <Project>{f5e87f07-0d0a-48a7-b02b-66802b64997f}</Project>
-      <Name>AcHelper</Name>
+      <Name>AcHelper_2016</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
