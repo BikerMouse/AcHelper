@@ -81,6 +81,7 @@ namespace AcHelper.Demo
         private void SetupLogger()
         {
             Logger.Initialize("AcHelper Demo", Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "LogFiles"), 0, 1);
+            Active.WriteMessage("Logger setup ...");
         }
 
         private void PreparePaletteSets()
@@ -89,6 +90,8 @@ namespace AcHelper.Demo
             PaletteSetsHandler.CreatePaletteSet(DemoConstants.GUID_MAINPALETTESET
                 , DemoConstants.PLTS_MAINPALETTESET
                 , new System.Drawing.Size(300, 800));
+
+            Active.WriteMessage("Paletteset created ...");
         }
 
         public void Terminate()
@@ -109,6 +112,7 @@ namespace AcHelper.Demo
         {
             App.Resources.MergedDictionaries.Clear();
             App.Resources.MergedDictionaries.Add(_genericResources);    // Locator
+            Active.WriteMessage("Resources secured ...");
         }
 
         private static void SecureAppFile()
