@@ -3,62 +3,8 @@ using System;
 
 namespace AcHelper
 {
-    [Obsolete("This Class will be replaced by Logger")]
-    public class Logging
-    {
-        private static bool _initialized = false;
-        public static bool IsInitialized
-        {
-            get { return _initialized; }
-        }
-
-        private static LogWriter _logger = null;
-        /// <summary>
-        /// Instance of the LogWriter.
-        /// Lo
-        /// </summary>
-        public static LogWriter Logger
-        {
-            get 
-            {
-                if (!_initialized)
-                {
-                    throw new LoggerNotInitializedException();
-                }
-                return _logger; 
-            }
-        }
-
-        public static void InitializeLogger(LogSetup setup)
-        {
-            if (!_initialized)
-            {
-                _logger = new LogWriter(setup);
-                _initialized = true;
-            }
-        }
-
-        #region Dispose ...
-
-        public static void Dispose()
-        {
-            if (_initialized)
-            {
-                if (_logger != null)
-                {
-                    _logger.Dispose();
-                    _logger = null;
-                    _initialized = false;
-                }
-            }
-        }
-
-        #endregion
-
-    }
-
     /// <summary>
-    /// The logger provides an easy access to the <see cref="BuerTech.Utilities.Logger.LogWriter"/>LogWriter.
+    /// The logger provides an easy access to the <see cref="BuerTech.Utilities.Logger.LogWriter"/>.
     /// </summary>
     public class Logger
     {
@@ -82,6 +28,26 @@ namespace AcHelper
             }
         }
         /// <summary>
+        /// Initializes the Logger before it's available for use.
+        /// </summary>
+        /// <param name="application">Name of the appication using the LogWriter.</param>
+        /// <param name="saveLocation">Path to the directory where to save the logfile.</param>
+        /// <param name="maxAge">Max age of cached logs in seconds.</param>
+        /// <param name="maxQueueSize">Max amount of logs in cache.</param>
+        public static void Initialize(string application, string saveLocation, int maxAge, int maxQueueSize)
+        {
+            if (_instance == null)
+            {
+                LogSetup setup = new LogSetup();
+                setup.ApplicationName = application;
+                setup.MaxAge = maxAge;
+                setup.MaxQueueSize = maxQueueSize;
+                setup.SaveLocation = saveLocation;
+
+                _instance = new Logger(setup);
+            }
+        }
+        /// <summary>
         /// Logs a message to the logfile.
         /// </summary>
         /// <param name="message"></param>
@@ -98,7 +64,7 @@ namespace AcHelper
             }
         }
         /// <summary>
-        /// Logs an <see cref="Exception"/>Exception to the logfile
+        /// Logs an <see cref="Exception"/> to the logfile
         /// </summary>
         /// <param name="exception"></param>
         /// <param name="priority"></param>

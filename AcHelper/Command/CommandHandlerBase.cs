@@ -5,7 +5,6 @@ namespace AcHelper.Command
 {
     /// <summary>
     /// The CommandHandlerBase provides base functionalities for the class containing AutoCAD commands. 
-    /// If you use this feature, make sure you have created an instance of the <see cref="AcHelper.Logging"/>.LogWriter first.
     /// </summary>
     public class CommandHandlerBase
     {
@@ -30,10 +29,6 @@ namespace AcHelper.Command
                 ExceptionHandler.ShowDialog(ex, true, true);
 
                 Logger.WriteToLog(ex, LogPrior.Critical);
-                ////if (AcLog.IsInitialized)
-                ////{
-                ////    AcLog.Logger.WriteToLog(ex, BuerTech.Utilities.Logger.LogPrior.Critical); 
-                ////}
             }
         }
         /// <summary>
@@ -77,10 +72,6 @@ namespace AcHelper.Command
                 ExceptionHandler.ShowDialog(ex, true, true);
 
                 Logger.WriteToLog(ex, LogPrior.Error);
-                ////if (AcLog.IsInitialized)
-                ////{
-                ////    AcLog.Logger.WriteToLog(ex, BuerTech.Utilities.Logger.LogPrior.Critical);
-                ////}
             }
         }
     }

@@ -1,8 +1,6 @@
 ﻿using AcHelper.WPF.Palettes;
 using Autodesk.AutoCAD.Runtime;
-using BuerTech.Utilities.Logger;
 using System;
-using System.Drawing;
 using System.IO;
 using System.Windows;
 
@@ -22,7 +20,7 @@ namespace AcHelper.Demo
             get
             {
                 string uri = @"/AcHelper.Demo;component/Resources/Generic.xaml";
-                return System.Windows.Application.LoadComponent(new Uri(uri, UriKind.Relative)) as ResourceDictionary;
+                return Application.LoadComponent(new Uri(uri, UriKind.Relative)) as ResourceDictionary;
             }
         }
         #endregion
@@ -82,15 +80,7 @@ namespace AcHelper.Demo
 
         private void SetupLogger()
         {
-            LogSetup setup = new LogSetup()
-            {
-                ApplicationName = "AcHelper Demo",
-                MaxAge = 0,
-                MaxQueueSize = 1,
-                SaveLocation = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "LogFiles")
-            };
-            Logger.Initialize(setup);
-            ////AcLog.InitializeLogger(setup);
+            Logger.Initialize("AcHelper Demo", Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "LogFiles"), 0, 1);
         }
 
         private void PreparePaletteSets()
@@ -104,7 +94,6 @@ namespace AcHelper.Demo
         public void Terminate()
         {
             Logger.Dispose();
-            ////AcHelper.Logging.Dispose();
         }
         #endregion
 
