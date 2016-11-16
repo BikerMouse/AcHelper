@@ -1,11 +1,6 @@
 ﻿using AcHelper.Command;
-using AcHelper.Utilities;
 using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.EditorInput;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace AcHelper.Demo.Commands
 {
@@ -28,11 +23,8 @@ namespace AcHelper.Demo.Commands
             }
             catch (System.Exception ex)
             {
-                Active.WriteMessage(ex.Message);
-                if (ex.InnerException != null)
-                {
-                    Active.WriteMessage(ex.InnerException.Message);
-                }
+                Logger.WriteToLog(ex);
+                ExceptionHandler.WriteToCommandLine(ex);
             }
         }
 

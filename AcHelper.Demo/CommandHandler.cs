@@ -19,17 +19,19 @@ namespace AcHelper.Demo
         public const string CMD_HELP = "DEMO_HELP";
         public const string CMD_DISPLAYDOCUMENTXRECORD = "DEMO_DISPLAYDOCUMENTXRECORD";
         public const string CMD_OPENPALETTESET = "DEMO_OPENPALETTESET";
+        public const string CMD_CREATEINNEREXCEPTION = "DEMO_CREATEINNEREXCEPTION";
 
-        [CommandMethod(CMD_HELP)]
-        public static void Demo_Help()
-        {
-            ExecuteCommand<HelpCommand>();
-        }
         [CommandMethod(CMD_OPENPALETTESET)]
         public static void Demo_OpenPaletteSet()
         {
             ExecuteCommand<OpenPaletteSet>();
         }
+        [CommandMethod(CMD_HELP)]
+        public static void Demo_Help()
+        {
+            ExecuteCommand<HelpCommand>();
+        }
+        
         [CommandMethod(CMD_DRAWCIRCLE)]
         public static void Demo_DrawCircle()
         {
@@ -39,6 +41,11 @@ namespace AcHelper.Demo
         public static void Demo_ThrowError()
         {
             ExecuteCommand<ThrowErrorCommand>();
+        }
+        [CommandMethod(CMD_CREATEINNEREXCEPTION)]
+        public static void Demo_CreateInnerException()
+        {
+            ExecuteCommand<CreateInnerExceptionsCommand>();
         }
         [CommandMethod(CMD_ADDXRECORDTOENTITY)]
         public static void Demo_AddXrecordToEntity()
@@ -59,6 +66,7 @@ namespace AcHelper.Demo
             }
             catch (System.Exception ex)
             {
+                Logger.WriteToLog(ex);
                 ExceptionHandler.WriteToCommandLine(ex);
             }
         }
@@ -116,7 +124,7 @@ namespace AcHelper.Demo
             }
             catch (System.Exception ex)
             {
-                Active.WriteMessage(ex.Message);
+                ExceptionHandler.WriteToCommandLine(ex);
             }
         }
 
@@ -164,8 +172,7 @@ namespace AcHelper.Demo
             }
             catch (System.Exception ex)
             {
-                
-                Active.WriteMessage(ex.Message);
+                ExceptionHandler.WriteToCommandLine(ex);
             }
         }
 

@@ -10,7 +10,7 @@ namespace AcHelper.Themes
     public class ThemeHandler
     {
         #region Fields ...
-        private string _current_theme;
+        private string _currentTheme;
         #endregion
 
         #region Singleton ...
@@ -33,13 +33,13 @@ namespace AcHelper.Themes
         /// </summary>
         public string CurrentTheme
         {
-            get { return _current_theme; }
+            get { return _currentTheme; }
             set 
             {
-                if (_current_theme != value && value != null)
+                if (_currentTheme != value && value != null)
                 {
-                    _current_theme = value;
-                    OnThemeChanged(new ThemeChangedEventArgs(_current_theme));
+                    _currentTheme = value;
+                    OnThemeChanged(new ThemeChangedEventArgs(_currentTheme));
                 }
             }
         }

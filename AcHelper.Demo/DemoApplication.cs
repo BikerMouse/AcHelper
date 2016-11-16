@@ -1,7 +1,7 @@
-﻿using Autodesk.AutoCAD.Runtime;
+﻿using AcHelper.WPF.Palettes;
+using Autodesk.AutoCAD.Runtime;
 using System;
-using System.Drawing;
-using AcHelper.WPF.Palettes;
+using System.IO;
 using System.Windows;
 
 [assembly: ExtensionApplication(typeof(AcHelper.Demo.DemoApplication))]
@@ -9,20 +9,30 @@ using System.Windows;
 [assembly: CLSCompliant(false)]
 namespace AcHelper.Demo
 {
+    ////using AcLog = AcHelper.Logging;
+
     public class DemoApplication : IExtensionApplication
     {
         #region Fields ...
+        private static WpfPaletteSetsHandler _paletteSetsHandler = WpfPaletteSetsHandler.Instance;
         private static ResourceDictionary _genericResources
         {
             get
             {
                 string uri = @"/AcHelper.Demo;component/Resources/Generic.xaml";
-                return System.Windows.Application.LoadComponent(new Uri(uri, UriKind.Relative)) as ResourceDictionary;
+                return Application.LoadComponent(new Uri(uri, UriKind.Relative)) as ResourceDictionary;
             }
         }
         #endregion
         
         #region Properties ...
+        #region PaletteSetsHandler ...
+        public static WpfPaletteSetsHandler PaletteSetsHandler
+        {
+            get { return _paletteSetsHandler; }
+        }
+        #endregion
+
         #region PaletteSet ...
         private static WpfPaletteSet _paletteSet;
         public static WpfPaletteSet PaletteSet
@@ -59,13 +69,34 @@ namespace AcHelper.Demo
         {
             Active.WriteMessage("\n*** Loading AcHelper Demo ***");
 
+            SetupLogger();
+
             SecureResources();
+
+            PreparePaletteSets();
 
             Active.WriteMessage("\n*** AcHelper Demo loaded ***");
         }
 
+        private void SetupLogger()
+        {
+            Logger.Initialize("AcHelper Demo", Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "LogFiles"), 0, 1);
+            Active.WriteMessage("Logger setup ...");
+        }
+
+        private void PreparePaletteSets()
+        {
+            // Main paletteset
+            PaletteSetsHandler.CreatePaletteSet(DemoConstants.GUID_MAINPALETTESET
+                , DemoConstants.PLTS_MAINPALETTESET
+                , new System.Drawing.Size(300, 800));
+
+            Active.WriteMessage("Paletteset created ...");
+        }
+
         public void Terminate()
         {
+            Logger.Dispose();
         }
         #endregion
 
@@ -81,6 +112,7 @@ namespace AcHelper.Demo
         {
             App.Resources.MergedDictionaries.Clear();
             App.Resources.MergedDictionaries.Add(_genericResources);    // Locator
+            Active.WriteMessage("Resources secured ...");
         }
 
         private static void SecureAppFile()

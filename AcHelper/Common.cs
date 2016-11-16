@@ -1,5 +1,4 @@
-﻿using AcHelper.Exceptions;
-using AcHelper.Utilities;
+﻿using AcHelper.Utilities;
 using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.DatabaseServices;
 using System;

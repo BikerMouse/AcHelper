@@ -1,5 +1,4 @@
-﻿using Autodesk.AutoCAD.ApplicationServices;
-using System;
+﻿using System;
 
 namespace AcHelper.WPF.Palettes
 {

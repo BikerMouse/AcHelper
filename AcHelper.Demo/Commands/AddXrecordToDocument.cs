@@ -29,11 +29,7 @@ namespace AcHelper.Demo.Commands
             }
             catch (System.Exception ex)
             {
-                Active.WriteMessage(ex.Message);
-                if (ex.InnerException != null)
-                {
-                    Active.WriteMessage(ex.InnerException.Message);
-                }
+                ExceptionHandler.WriteToCommandLine(ex);
             }
         }
 

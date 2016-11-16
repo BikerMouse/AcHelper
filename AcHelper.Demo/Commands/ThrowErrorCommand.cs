@@ -1,4 +1,5 @@
-﻿using AcHelper.Command;
+﻿using AcHelper;
+using AcHelper.Command;
 using System;
 
 namespace AcHelper.Demo.Commands
@@ -12,12 +13,6 @@ namespace AcHelper.Demo.Commands
             object o = null;
             o.ToString();
         }
-
-        public bool CanExecute()
-        {
-            throw new NotImplementedException();
-        }
-
         #endregion
     }
 }
