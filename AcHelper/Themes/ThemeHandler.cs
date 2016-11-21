@@ -49,13 +49,10 @@ namespace AcHelper.Themes
         /// <summary>
         /// Fires when the Current theme changes.
         /// </summary>
-        public event ThemeEventHandler ThemeChanged;
+        public static event ThemeEventHandler ThemeChanged;
         protected virtual void OnThemeChanged(ThemeChangedEventArgs e)
         {
-            if (ThemeChanged != null)
-            {
-                ThemeChanged(this, e);
-            }
+            ThemeChanged?.Invoke(this, e);
         }
         #endregion
     }
