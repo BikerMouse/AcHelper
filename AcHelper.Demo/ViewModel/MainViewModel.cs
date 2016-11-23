@@ -1,6 +1,6 @@
 ﻿using Autodesk.AutoCAD.Geometry;
 using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.CommandWpf;
+using GalaSoft.MvvmLight.Command;
 
 namespace AcHelper.Demo.ViewModel
 {
