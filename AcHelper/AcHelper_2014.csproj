@@ -94,7 +94,6 @@
     <Compile Include="Enumerables\DbObjectEnumerator.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Themes\ThemeHandler.cs" />
     <Compile Include="Utilities\WriteEnabler.cs" />
     <Compile Include="Utilities\XRecordHandler.cs" />
   </ItemGroup>
