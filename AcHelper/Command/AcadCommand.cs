@@ -14,6 +14,9 @@ namespace AcHelper.Command
             remove { CommandManager.RequerySuggested -= value; }
         }
 
+        
+        public AcadCommand(Action<object> execute) : this(execute, null)
+        { }
         public AcadCommand(Action<object> execute, Func<object, bool> canExecute = null)
         {
             _execute = execute;

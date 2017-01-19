@@ -1,7 +1,9 @@
-﻿using AcHelper.WPF.Palettes;
+﻿using AcHelper.Demo.View;
+using AcHelper.WPF.Palettes;
 using Autodesk.AutoCAD.Runtime;
 using System;
 using System.IO;
+using System.Linq;
 using System.Windows;
 
 [assembly: ExtensionApplication(typeof(AcHelper.Demo.DemoApplication))]
@@ -87,9 +89,17 @@ namespace AcHelper.Demo
         private void PreparePaletteSets()
         {
             // Main paletteset
-            PaletteSetsHandler.CreatePaletteSet(DemoConstants.GUID_MAINPALETTESET
+            WpfPaletteSet paletteSet = PaletteSetsHandler.CreatePaletteSet(DemoConstants.GUID_MAINPALETTESET
                 , DemoConstants.PLTS_MAINPALETTESET
                 , new System.Drawing.Size(300, 800));
+
+            WpfPalette mainPalette = paletteSet.Palettes
+                .FirstOrDefault(p => p.PaletteName.ToUpper() == "MainPalette") as WpfPalette;
+            if (mainPalette == null)
+            {
+                MainPaletteView v = new MainPaletteView();
+                paletteSet.AddPalette(new WpfPalette(v, "MainPalette"));
+            }
 
             Active.WriteMessage("Paletteset created ...");
         }

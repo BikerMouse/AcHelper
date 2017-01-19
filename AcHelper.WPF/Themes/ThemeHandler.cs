@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AcHelper.Themes
+namespace AcHelper.WPF.Themes
 {
     public delegate void ThemeEventHandler(object sender, ThemeChangedEventArgs e);
 
@@ -34,7 +34,7 @@ namespace AcHelper.Themes
         public string CurrentTheme
         {
             get { return _currentTheme; }
-            set 
+            set
             {
                 if (_currentTheme != value && value != null)
                 {
@@ -57,6 +57,9 @@ namespace AcHelper.Themes
         #endregion
     }
 
+    /// <summary>
+    /// Event arguments for the Theme Changed event.
+    /// </summary>
     public class ThemeChangedEventArgs : EventArgs
     {
         private string _theme;

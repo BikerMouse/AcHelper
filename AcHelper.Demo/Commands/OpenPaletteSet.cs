@@ -16,7 +16,7 @@ namespace AcHelper.Demo.Commands
 
         public void Execute()
         {
-            WpfPaletteSet paletteSet = DemoApplication.PaletteSetsHandler[DemoConstants.GUID_MAINPALETTESET];
+            DemoApplication.PaletteSetsHandler[DemoConstants.GUID_MAINPALETTESET].Visible = true;
             //WpfPaletteSet paletteSet =  DemoApplication.PaletteSet;
             //WpfPalette mainPalette = paletteSet.Palettes
             //    .FirstOrDefault(p => p.PaletteName.ToUpper() == "MainPalette") as WpfPalette;

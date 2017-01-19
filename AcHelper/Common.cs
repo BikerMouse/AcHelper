@@ -25,7 +25,7 @@ namespace AcHelper
         /// <param name="action">Method which uses the Transaction.</param>
         public static void UsingTransaction(Document doc, Action<AcTransaction> action)
         {
-            UsingTransaction(doc, "", action);
+            UsingTransaction(doc, string.Empty, action);
         }
         /// <summary>
         /// Wrapper for the active Database's TransactionManager.
@@ -37,7 +37,7 @@ namespace AcHelper
         /// <exception cref="AcHelper.Exceptions.TransactionException"/>
         public static void UsingTransaction(Document doc, string commandName, Action<AcTransaction> action)
         {
-            commandName = commandName == "" ? "Acad_Transaction" : commandName;
+            commandName = commandName ?? "Acad_Transaction"; // commandName == "" ? "Acad_Transaction" : commandName;
 
             try
             {

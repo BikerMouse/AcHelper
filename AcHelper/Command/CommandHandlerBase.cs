@@ -21,10 +21,11 @@ namespace AcHelper.Command
         {
             try
             {
+                // Create an instance of the command class
                 var cmd = Activator.CreateInstance<T>();
                 cmd.Execute();
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 ExceptionHandler.ShowDialog(ex, true, true);
 
@@ -51,13 +52,14 @@ namespace AcHelper.Command
             // Prepare Command and potential parameters.
             string execute = cmd;
             execute += NEWLINE;
+            // Check for potential parameters
             if (parameters != null && parameters.Length > 0)
             {
                 // if parameters are present
                 // add every parameter to the command.
                 foreach (var item in parameters)
                 {
-                    // end parameter with a whitespace so it will be passed through.
+                    // end parameter with a whitespace so it will be executed.
                     execute += item.ToString() + WHITESPACE;
                 }
             }
