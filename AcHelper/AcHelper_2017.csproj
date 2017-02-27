@@ -113,9 +113,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Active.cs" />
-    <Compile Include="Command\AcadCommand.cs" />
-    <Compile Include="Command\CommandHandlerBase.cs" />
-    <Compile Include="Command\IAcadCommand.cs" />
+    <Compile Include="Commands\CommandHandlerBase.cs" />
+    <Compile Include="Commands\IAcadCommand.cs" />
     <Compile Include="Common.cs" />
     <Compile Include="ExceptionHandler.cs" />
     <Compile Include="Exceptions\TransactionException.cs" />

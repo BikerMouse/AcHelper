@@ -1,5 +1,5 @@
 ﻿using AcHelper;
-using AcHelper.Command;
+using AcHelper.Commands;
 using System;
 
 namespace AcHelper.Demo.Commands

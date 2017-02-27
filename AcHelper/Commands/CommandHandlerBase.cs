@@ -1,7 +1,7 @@
 ﻿using BuerTech.Utilities.Logger;
 using System;
 
-namespace AcHelper.Command
+namespace AcHelper.Commands
 {
     /// <summary>
     /// The CommandHandlerBase provides base functionalities for the class containing AutoCAD commands. 
