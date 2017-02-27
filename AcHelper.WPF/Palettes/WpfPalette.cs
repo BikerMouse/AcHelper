@@ -10,7 +10,7 @@ namespace AcHelper.WPF.Palettes
         private UserControl _view = null;
         private string _name = string.Empty;
 
-        private VisibleState _visible_state = VisibleState.Unknown;
+        private VisibleState _visible_state = VisibleState.Show;
         private WpfPaletteSet _parent = null;
         private bool _closed = true;
         #endregion
@@ -21,10 +21,11 @@ namespace AcHelper.WPF.Palettes
             _view = view;
             _name = name;
 
-            this.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AutoSize = true;
-            this.SetAutoSizeMode(System.Windows.Forms.AutoSizeMode.GrowAndShrink);
-            this.Child = _view;
+            Dock = System.Windows.Forms.DockStyle.Fill;
+            AutoSize = true;
+            SetAutoSizeMode(System.Windows.Forms.AutoSizeMode.GrowAndShrink);
+            Child = _view;
+            
 
             _closed = false;
 
@@ -92,24 +93,15 @@ namespace AcHelper.WPF.Palettes
         
         protected virtual void OnPaletteClosing(string paletteName)
         {
-            if (WpfPaletteClosing != null)
-            {
-                WpfPaletteClosing(this, new WpfPaletteClosingEventArgs(paletteName));
-            }
+            WpfPaletteClosing?.Invoke(this, new WpfPaletteClosingEventArgs(paletteName));
         }
         protected virtual void OnVisibleStateChanged(VisibleState newVisibleState)
         {
-            if (VisibleStateChanged != null)
-            {
-                VisibleStateChanged(this, new WpfPaletteVisibleStateChangedEventArgs(VisibleState, newVisibleState));
-            }
+            VisibleStateChanged?.Invoke(this, new WpfPaletteVisibleStateChangedEventArgs(VisibleState, newVisibleState));
         }
         protected virtual void OnPaletteClosed(string paletteName)
         {
-            if (WpfPaletteClosed != null)
-            {
-                WpfPaletteClosed(this, new WpfPaletteClosedEventArgs(paletteName));
-            }
+            WpfPaletteClosed?.Invoke(this, new WpfPaletteClosedEventArgs(paletteName));
         }
         #endregion
 

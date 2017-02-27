@@ -20,8 +20,8 @@ namespace AcHelper.WPF.Palettes
             : base(name, guid)
         {
             _name = name;
-            Size = size ?? new Size(400, 600);
-            MinimumSize = minimumSize ?? new Size(200, 250);
+            Size = size ?? new Size(300, 400);
+            MinimumSize = minimumSize ?? new Size(300, 400);
         }
 
         #region Properties ...

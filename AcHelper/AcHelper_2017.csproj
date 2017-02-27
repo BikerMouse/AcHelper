@@ -45,7 +45,7 @@
   </PropertyGroup>-->
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug_2017|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\Debug_2017\</OutputPath>
+    <OutputPath>..\bin\Debug_2017\</OutputPath>
     <DefineConstants>TRACE;DEBUG;R210</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>

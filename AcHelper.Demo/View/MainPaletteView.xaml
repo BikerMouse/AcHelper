@@ -4,8 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ignore="http://www.ignore.com"
+             xmlns:theme="clr-namespace:AcHelper.WPF.Themes;assembly=AcHelper.WPF"
         mc:Ignorable="d ignore"
+             theme:PaletteControlExtension.Theme="Light"
         DataContext="{Binding Main, Source={StaticResource Locator}}">
+    <!--<UserControl.Resources>
+        <ResourceDictionary Source="LightTheme.xaml"/>
+    </UserControl.Resources>-->
 
     <Grid>
         <Grid.Resources>
@@ -20,7 +25,8 @@
         <StackPanel Orientation="Vertical">
             <Button Content="Add Circle" Command="{Binding AddCircleCommand}"/>
             <Separator/>
-            <Button Content="Add Xrecord to Entity"/>
+            <Button Content="Add Xrecord to Entity"
+                    Style="{StaticResource ButtonTestStyle}"/>
             <Button Content="Display Xrecord of Entity"/>
             <Separator/>
             <Button Content="Add Xrecord to Document"/>

@@ -76,8 +76,6 @@ namespace AcHelper.Demo
             ExecuteCommand<AddXrecordToDocument>();
         }
 
-
-
         [CommandMethod("DEMO_OPENCLOSETRANSACTION")]
         public static void Demo_OpenCloseTransaction()
         {
@@ -127,7 +125,6 @@ namespace AcHelper.Demo
                 ExceptionHandler.WriteToCommandLine(ex);
             }
         }
-
 
         [CommandMethod("DEMO_STARTTRANSACTION")]
         public static void Demo_StartTransaction()
@@ -407,6 +404,12 @@ namespace AcHelper.Demo
                     }
                 }
             }
+        }
+
+        [CommandMethod("GetCommandHistory")]
+        public static void GetCommandHistory()
+        {
+
         }
     }
 }
