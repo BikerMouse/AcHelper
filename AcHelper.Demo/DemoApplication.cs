@@ -89,9 +89,10 @@ namespace AcHelper.Demo
         private void PreparePaletteSets()
         {
             // Main paletteset
-            WpfPaletteSet paletteSet = PaletteSetsHandler.CreatePaletteSet(DemoConstants.GUID_MAINPALETTESET
-                , DemoConstants.PLTS_MAINPALETTESET
-                , new System.Drawing.Size(300, 800));
+            WpfPaletteSet paletteSet = PaletteSetsHandler.CreatePaletteSet(DemoConstants.PLTS_MAINPALETTESET
+            , DemoConstants.GUID_MAINPALETTESET
+            , new System.Drawing.Size(300, 800)
+            , new System.Drawing.Size(300, 450));
 
             WpfPalette mainPalette = paletteSet.Palettes
                 .FirstOrDefault(p => p.PaletteName.ToUpper() == "MainPalette") as WpfPalette;
@@ -114,7 +115,8 @@ namespace AcHelper.Demo
         private static WpfPaletteSet CreatePaletteSet(string name, Guid guid)
         {
             var paletteSet = new WpfPaletteSet(name, guid
-                , new System.Drawing.Size(300, 800));
+                , new System.Drawing.Size(300, 800)
+                , new System.Drawing.Size(300, 450));
 
             return paletteSet;
         }

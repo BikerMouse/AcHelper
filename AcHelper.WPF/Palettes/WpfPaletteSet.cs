@@ -7,34 +7,109 @@ using System.Windows.Forms;
 
 namespace AcHelper.WPF.Palettes
 {
+    /// <summary>
+    /// Represents the method that handles the 
+    /// WpfPalet5teSetVisibleStateChanged event of a WpfPaletteset.
+    /// </summary>
+    /// <param name="sender">The source of the event.</param>
+    /// <param name="arg">A WpfPaletteSetVisibleStatChangedEventArgs that contains the event data.</param>
     public delegate void WpfPaletteSetVisibleStateChangedEventHandler(object sender, WpfPaletteSetVisibleStateChangedEventArgs arg);
 
     public class WpfPaletteSet : PaletteSet
     {
-        private string _name;
+        private string _name = string.Empty;
         private List<IPalette> _palettes = new List<IPalette>();
+        private static Size _size, _minimumSize = Size.Empty;
 
-        public WpfPaletteSet(string name, Guid guid, Size? size = null, Size? minimumSize = null,
-            DockSides? dockSide = DockSides.Left,
-            DockSides? dockEnabled = DockSides.None | DockSides.Left | DockSides.Right)
+        /// <summary>
+        /// Creates a WpfPaletteset.
+        /// </summary>
+        /// <param name="name">Name of the paletteset to create.</param>
+        /// <param name="guid">Guid of the paletteset to create.</param>
+        public WpfPaletteSet(string name, Guid guid)
+            : this(name, guid, new Size(350,450), new Size(350,450))
+        { }
+        /// <summary>
+        /// Creates a WpfPaletteset.
+        /// </summary>
+        /// <param name="name">Name of the paletteset to create.</param>
+        /// <param name="guid">Guid of the paletteset to create.</param>
+        /// <param name="size">Size of the paletteset to create.
+        /// Default size is Width: 350, Height: 450.</param>
+        /// <param name="minimumSize">Minimum size of the paletteset to create.
+        /// Default size is Width: 350, Height: 450.</param>
+        public WpfPaletteSet(string name, Guid guid
+            , Size size
+            , Size minimumSize)
+            : this(name, guid, size, minimumSize, DockSides.Left, DockSides.None | DockSides.Left | DockSides.Right)
+        { }
+        /// <summary>
+        /// Creates a WpfPaletteset.
+        /// </summary>
+        /// <param name="name">Name of the paletteset to create.</param>
+        /// <param name="guid">Guid of the paletteset to create.</param>
+        /// <param name="size">Size of the paletteset to create.
+        /// Default size is Width: 350, Height: 450.</param>
+        /// <param name="minimumSize">Minimum size of the paletteset to create.
+        /// Default size is Width: 350, Height: 450.</param>
+        /// <param name="dockside">Default side to dock the paletteset is Left.</param>
+        /// <param name="docksideEnabled">Default enabled sides to dock the paletteset are Left, Right, None (floating).</param>
+        public WpfPaletteSet(string name, Guid guid
+            , Size size
+            , Size minimumSize
+            , DockSides dockside
+            , DockSides docksideEnabled)
             : base(name, guid)
         {
             _name = name;
-            Size = size ?? new Size(300, 400);
-            MinimumSize = minimumSize ?? new Size(300, 400);
+            
+            _minimumSize = minimumSize;
+            MinimumSize = minimumSize;
+
+            _size = size;
+            Size = size;
+
+            Dock = dockside;
+            DockEnabled = docksideEnabled;
+        }
+        public WpfPaletteSet(string name, Guid guid
+            , Size? size = null
+            , Size? minimumSize = null
+            , DockSides? dockSide = DockSides.Left
+            , DockSides? dockEnabled = DockSides.None | DockSides.Left | DockSides.Right)
+            : base(name, guid)
+        {
+            _name = name;
+
+            _minimumSize = minimumSize ?? _minimumSize;
+            MinimumSize = _minimumSize;
+            
+            _size = size ?? _minimumSize;
+            Size = _size;
         }
 
         #region Properties ...
+        /// <summary>
+        /// Represents the name of the paletteset.
+        /// </summary>
         public string PaletteSetName
         {
             get { return _name; }
             set { _name = value; }
         }
+        /// <summary>
+        /// A list of all the palettes wich this paletteset contains.
+        /// </summary>
         public List<IPalette> Palettes
         {
             get { return _palettes; }
             set { _palettes = value; }
         }
+        /// <summary>
+        /// Checks whether this paletteset contains a palette with the given name.
+        /// </summary>
+        /// <param name="name">Name of the palette</param>
+        /// <returns>True if the paletteset contains a palette with the given name; Otherwise false.</returns>
         public bool HasPalette(string name)
         {
             foreach (IPalette item in _palettes)

@@ -7,15 +7,10 @@ namespace AcHelper.WPF.Palettes
 {
     public interface IWpfPaletteSetHandler
     {
-        Dictionary<Guid, WpfPaletteSet> PaletteSets { get; }
+        WpfPaletteSet CreatePaletteSet(string name, Guid guid);
+        WpfPaletteSet CreatePaletteSet(string name, Guid guid, Size size, Size minimumSize);
+        WpfPaletteSet CreatePaletteSet(string name, Guid guid, Size size, Size minimumSize, DockSides dockside, DockSides docksideEnabled);
 
-        WpfPaletteSet CreatePaletteSet(Guid guid, string Name
-            , Size? size = null
-            , Size? minimumSize = null
-            , DockSides? dockSide = DockSides.Left
-            , DockSides? dockEnabled = DockSides.None | DockSides.Left | DockSides.Right);
-
-        void AddPaletteSet(Guid guid, WpfPaletteSet paletteSet);
         void HidePaletteSet(Guid guid);
         void ActivatePaletteSet(Guid guid);
     }
