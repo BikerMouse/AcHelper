@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{65CB5BA5
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuerTech.AcHelper.Tests", "BuerTech.AcHelper.Tests\BuerTech.AcHelper.Tests.csproj", "{8EDF4429-251A-416D-BB68-93F227191BCF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcHelper.DemoApp_2017", "AcHelper.DemoApp\AcHelper.DemoApp_2017.csproj", "{D49E5FA4-8DF2-433D-B25B-0BCCFD8B395C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug_2017|Any CPU = Debug_2017|Any CPU
@@ -49,6 +51,14 @@ Global
 		{8EDF4429-251A-416D-BB68-93F227191BCF}.Release_2017|Any CPU.ActiveCfg = Release|Any CPU
 		{8EDF4429-251A-416D-BB68-93F227191BCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8EDF4429-251A-416D-BB68-93F227191BCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D49E5FA4-8DF2-433D-B25B-0BCCFD8B395C}.Debug_2017|Any CPU.ActiveCfg = Debug_2017|Any CPU
+		{D49E5FA4-8DF2-433D-B25B-0BCCFD8B395C}.Debug_2017|Any CPU.Build.0 = Debug_2017|Any CPU
+		{D49E5FA4-8DF2-433D-B25B-0BCCFD8B395C}.Debug|Any CPU.ActiveCfg = Debug_2017|Any CPU
+		{D49E5FA4-8DF2-433D-B25B-0BCCFD8B395C}.Debug|Any CPU.Build.0 = Debug_2017|Any CPU
+		{D49E5FA4-8DF2-433D-B25B-0BCCFD8B395C}.Release_2017|Any CPU.ActiveCfg = Release_2017|Any CPU
+		{D49E5FA4-8DF2-433D-B25B-0BCCFD8B395C}.Release_2017|Any CPU.Build.0 = Release_2017|Any CPU
+		{D49E5FA4-8DF2-433D-B25B-0BCCFD8B395C}.Release|Any CPU.ActiveCfg = Release_2017|Any CPU
+		{D49E5FA4-8DF2-433D-B25B-0BCCFD8B395C}.Release|Any CPU.Build.0 = Release_2017|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -7,50 +7,22 @@ namespace AcHelper.WPF.Themes
 {
     public  static class PaletteControlExtension
     {
-        private const string LIGHTTHEME = "Light";
-        private const string DARKTHEME = "Dark";
-        private const string THEMEPACK = @"{0};component/Resources/{1}Theme.xaml";
-
-        public static ResourceDictionary GetThemeResourceDictionary(string assemblyName, string theme)
-        {
-            if (theme != null)
-            {
-                string packUri = string.Format(THEMEPACK, assemblyName, theme);
-                return Application.LoadComponent(new Uri(packUri, UriKind.Relative)) as ResourceDictionary;
-            }
-            return null;
-        }
+        private static ThemeManager themeManager = ThemeManager.GetInstance();
+        private static ResourceHandler resourceHandler = ResourceHandler.GetInstance();
 
         public static void ApplyTheme(this Application app, string theme)
         {
-            Assembly assembly = Assembly.GetAssembly(app.GetType());
-            ResourceDictionary dictionary = GetThemeResourceDictionary(assembly.GetName().Name, theme);
-
-            if (dictionary != null)
-            {
-                app.Resources.MergedDictionaries.Clear();
-                app.Resources.MergedDictionaries.Add(dictionary);
-            }
+            resourceHandler.SetAppResources(app, theme);
         }
         public static void ApplyTheme(this ContentControl control, string theme)
         {
-            Assembly assembly = Assembly.GetAssembly(control.GetType());
-            ResourceDictionary dictionary = GetThemeResourceDictionary(assembly.GetName().Name, theme);
+            ThemeSet resources = resourceHandler.ThemeSets[theme];
 
-            if (dictionary != null)
+            control.Resources.MergedDictionaries.Clear();
+            foreach (Uri uri in resources.Keys)
             {
-                control.Resources.MergedDictionaries.Clear();
+                ResourceDictionary dictionary = Application.LoadComponent(uri) as ResourceDictionary;
                 control.Resources.MergedDictionaries.Add(dictionary);
-            }
-        }
-
-        public static void AddResourceDictionary(this Application app, string assembly, string dict)
-        {
-            ResourceDictionary res = Application.LoadComponent(new Uri(dict, UriKind.Relative)) as ResourceDictionary;
-
-            if (res != null)
-            {
-                app.Resources.MergedDictionaries.Add(res);
             }
         }
 

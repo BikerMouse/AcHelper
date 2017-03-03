@@ -90,9 +90,10 @@
     <Compile Include="Palettes\WpfPaletteSetEventArgs.cs" />
     <Compile Include="Palettes\WpfPaletteSetsHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ResourceHandler.cs" />
+    <Compile Include="Themes\ResourceHandler.cs" />
     <Compile Include="Themes\PaletteControlExtension.cs" />
     <Compile Include="Themes\ThemeManager.cs" />
+    <Compile Include="Themes\ThemeSet.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AcHelper\AcHelper_2017.csproj">

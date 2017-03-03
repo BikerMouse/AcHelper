@@ -1,12 +1,9 @@
 ﻿using Autodesk.AutoCAD.ApplicationServices;
 using GalaSoft.MvvmLight;
 using System;
-using System.Windows;
 
 namespace AcHelper.WPF.Themes
 {
-    public delegate void ThemeEventHandler(object sender, ThemeChangedEventArgs e);
-
     /// <summary>
     /// ThemeHandler will keep track of the AutoCAD theme changes.
     /// </summary>
@@ -86,15 +83,6 @@ namespace AcHelper.WPF.Themes
                 _instance.CurrentTheme = GetCurrentTheme();
             }
         }
-
-        /// <summary>
-        /// Fires when the Current theme changes.
-        /// </summary>
-        public static event ThemeEventHandler ThemeChanged;
-        protected virtual void OnThemeChanged(ThemeChangedEventArgs e)
-        {
-            ThemeChanged?.Invoke(this, e);
-        }
         #endregion
 
         #region Methods ...
@@ -105,7 +93,7 @@ namespace AcHelper.WPF.Themes
         /// <returns></returns>
         public static string GetCurrentTheme()
         {
-            string theme = (short)Autodesk.AutoCAD.ApplicationServices.Application.GetSystemVariable(COLORTHEME) == 0
+            string theme = (short)Autodesk.AutoCAD.ApplicationServices.Core.Application.GetSystemVariable(COLORTHEME) == 0
                     ? DARK
                     : LIGHT;
             return theme;
@@ -115,14 +103,16 @@ namespace AcHelper.WPF.Themes
         {
             if (!_isTrackingThemes)
             {
-                Autodesk.AutoCAD.ApplicationServices.Application.SystemVariableChanged += Application_SystemVariableChanged;
+                Autodesk.AutoCAD.ApplicationServices.Core.Application.SystemVariableChanged += Application_SystemVariableChanged;
+                _isTrackingThemes = true;
             }
         }
         public static void TurnOffThemeTracker()
         {
             if (_isTrackingThemes)
             {
-                Autodesk.AutoCAD.ApplicationServices.Application.SystemVariableChanged -= Application_SystemVariableChanged;
+                Autodesk.AutoCAD.ApplicationServices.Core.Application.SystemVariableChanged -= Application_SystemVariableChanged;
+                _isTrackingThemes = false;
             }
         }
         #endregion

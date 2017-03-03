@@ -11,6 +11,7 @@ using System.Windows;
 [assembly: CLSCompliant(false)]
 namespace AcHelper.Demo
 {
+    using WPF.Themes;
     ////using AcLog = AcHelper.Logging;
 
     public class DemoApplication : IExtensionApplication
@@ -122,9 +123,26 @@ namespace AcHelper.Demo
         }
         private void SecureResources()
         {
-            App.Resources.MergedDictionaries.Clear();
-            App.Resources.MergedDictionaries.Add(_genericResources);    // Locator
-            Active.WriteMessage("Resources secured ...");
+            WPF.Themes.ResourceHandler rh = WPF.Themes.ResourceHandler.GetInstance();
+
+            ResourceDictionary[] darkSet = new ResourceDictionary[2];
+            darkSet[0] = _genericResources;
+            darkSet[1] = rh.GetThemeResourceDictionary(App.GetType().Assembly.GetName().Name, "Dark");
+
+            ResourceDictionary[] lightSet = new ResourceDictionary[2];
+            lightSet[0] = _genericResources;
+            lightSet[1] = rh.GetThemeResourceDictionary(App.GetType().Assembly.GetName().Name, "Light");
+
+            WPF.Themes.ThemeSet darkTheme = WPF.Themes.ThemeSet.CreateThemeSet(darkSet);
+            WPF.Themes.ThemeSet lightTheme = WPF.Themes.ThemeSet.CreateThemeSet(lightSet);
+
+            rh.ThemeSets.Add("Dark", darkTheme);
+            rh.ThemeSets.Add("Light", lightTheme);
+
+            App.ApplyTheme(ThemeManager.GetCurrentTheme());
+            //App.Resources.MergedDictionaries.Clear();
+            //App.Resources.MergedDictionaries.Add(_genericResources);    // Locator
+            //Active.WriteMessage("Resources secured ...");
         }
 
         private static void SecureAppFile()
