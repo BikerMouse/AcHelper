@@ -1,13 +1,13 @@
 ﻿<UserControl x:Class="AcHelper.Demo.View.MainPaletteView"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:ignore="http://www.ignore.com"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ignore="http://www.ignore.com"
              xmlns:theme="clr-namespace:AcHelper.WPF.Themes;assembly=AcHelper.WPF"
-        mc:Ignorable="d ignore"
+             mc:Ignorable="d ignore"
              theme:PaletteControlExtension.Theme="Light"
-        DataContext="{Binding Main, Source={StaticResource Locator}}">
+             DataContext="{Binding Main, Source={StaticResource Locator}}">
     <!--<UserControl.Resources>
         <ResourceDictionary Source="LightTheme.xaml"/>
     </UserControl.Resources>-->

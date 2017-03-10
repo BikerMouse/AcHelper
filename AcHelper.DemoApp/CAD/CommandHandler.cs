@@ -1,4 +1,4 @@
-﻿using AcHelper.Command;
+﻿using AcHelper.Commands;
 using Autodesk.AutoCAD.Runtime;
 
 namespace AcHelper.DemoApp.CAD
@@ -10,13 +10,14 @@ namespace AcHelper.DemoApp.CAD
     /// Every command gets executed via the <see cref="CommandHandlerBase.ExecuteCommand{T}"/>ExecuteCommand{TCommand}
     /// to catch any uncaught errors and display them through a messagebox.
     /// </summary>
-    internal class CommandHandler : CommandHandlerBase
+    public class CommandHandler : CommandHandlerBase
     {
         // Constant command names to prevend typos.
-        public const string CMD_TESTOBJECTTYPES = "TestVariousTypeCheck";
+        public const string GROUPNAME = "AcHelperDemo";
+        public const string CMD_TESTOBJECTTYPES = "Demo_TestVariousTypeCheck";
 
         // assigning a command with the const variable.
-        [CommandMethod(CMD_TESTOBJECTTYPES)]
+        [CommandMethod(GROUPNAME, CMD_TESTOBJECTTYPES, CommandFlags.Modal)]
         public static void TestVariousTypeCheck()
         {
             // Execute the command with the CommandHandlerBase.ExecuteCommand<TCommand>()

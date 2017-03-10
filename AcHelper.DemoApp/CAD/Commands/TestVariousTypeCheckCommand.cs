@@ -1,11 +1,11 @@
-﻿using Autodesk.AutoCAD.DatabaseServices;
+﻿using AcHelper.Commands;
+using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.EditorInput;
 using Autodesk.AutoCAD.Runtime;
 using System;
 
 namespace AcHelper.DemoApp.CAD.Commands
 {
-    using Command;
     public class TestVariousTypeCheckCommand : IAcadCommand
     {
         public void Execute()
