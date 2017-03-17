@@ -7,22 +7,17 @@ namespace AcHelper.WPF.Themes
 {
     public  static class PaletteControlExtension
     {
-        private static ThemeManager themeManager = ThemeManager.GetInstance();
-        private static ResourceHandler resourceHandler = ResourceHandler.GetInstance();
+        //private static ThemeManager themeManager = ThemeManager.GetInstance();
+        private static readonly ResourceHandler resourceHandler = ResourceHandler.GetInstance();
 
-        public static void ApplyTheme(this Application app, string theme)
-        {
-            resourceHandler.SetAppResources(app, theme);
-        }
         public static void ApplyTheme(this ContentControl control, string theme)
         {
             ThemeSet resources = resourceHandler.ThemeSets[theme];
 
             control.Resources.MergedDictionaries.Clear();
-            foreach (Uri uri in resources.Keys)
+            foreach (ResourceDictionary dict in resources.Values)
             {
-                ResourceDictionary dictionary = Application.LoadComponent(uri) as ResourceDictionary;
-                control.Resources.MergedDictionaries.Add(dictionary);
+                control.Resources.MergedDictionaries.Add(dict);
             }
         }
 

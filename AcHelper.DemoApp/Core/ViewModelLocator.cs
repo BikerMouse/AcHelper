@@ -32,16 +32,7 @@ namespace AcHelper.DemoApp.Core
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
-            if (ViewModelBase.IsInDesignModeStatic)
-            {
-                //
-            }
-            else
-            {
-                //
-            }
-
-            SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<PaletteViewModel>();
         }
 
         /// <summary>
@@ -50,11 +41,11 @@ namespace AcHelper.DemoApp.Core
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
             "CA1822:MarkMembersAsStatic",
             Justification = "This non-static member is needed for data binding purposes.")]
-        public MainViewModel Main
+        public PaletteViewModel Main
         {
             get
             {
-                return ServiceLocator.Current.GetInstance<MainViewModel>();
+                return ServiceLocator.Current.GetInstance<PaletteViewModel>();
             }
         }
     }

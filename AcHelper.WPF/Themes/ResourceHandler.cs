@@ -7,8 +7,8 @@ namespace AcHelper.WPF.Themes
 
     public class ResourceHandler
     {
-        private const string DARK = "DARK";
-        private const string LIGHT = "LIGHT";
+        public const string THEME_DARK = "Dark";
+        public const string THEME_LIGHT = "Light";
         private const string THEMEPACK = @"{0};component/Themes/{1}Theme.xaml";
         private const string GENERICPACK = @"{0};component/Themes/Generic.xaml";
 
@@ -61,27 +61,6 @@ namespace AcHelper.WPF.Themes
         {
             string themePack = string.Format(THEMEPACK, assemblyName, theme);
             return Application.LoadComponent(new Uri(themePack, UriKind.Relative)) as ResourceDictionary;
-        }
-
-        public void SetAppResources(Application app, string theme)
-        {
-            app.Resources.MergedDictionaries.Clear();
-            ThemeSet themeset = ThemeSets[theme];
-            foreach (Uri uri in themeset.Keys)
-            {
-                ResourceDictionary dictionary = Application.LoadComponent(uri) as ResourceDictionary;
-                app.Resources.MergedDictionaries.Add(dictionary);
-            }
-        }
-        public void SetAppResources(string theme)
-        {
-            App.Resources.MergedDictionaries.Clear();
-            ThemeSet themeset = ThemeSets[theme];
-            foreach (Uri uri in themeset.Keys)
-            {
-                ResourceDictionary dictionary = Application.LoadComponent(uri) as ResourceDictionary;
-                App.Resources.MergedDictionaries.Add(dictionary);
-            }
         }
     }
 }

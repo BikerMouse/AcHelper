@@ -1,0 +1,25 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:AcHelper.DemoApp.Themes">
+    
+    <!--#region Textblock-->
+    <Style TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+        <Setter Property="Foreground" Value="White"/>
+    </Style>
+    <!--#endregion-->
+    
+    <!--#region Module border-->
+    <SolidColorBrush x:Key="ModuleBorderBackgroundBrush" Color="Black"/>
+    <SolidColorBrush x:Key="ModuleBorderBorderBrush" Color="White"/>
+    
+    <Style x:Key="ModuleBorder" TargetType="Border">
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="Background" Value="{StaticResource ModuleBorderBackgroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource ModuleBorderBorderBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="Margin" Value="10"/>
+    </Style>
+    <!--#endregion-->
+</ResourceDictionary>
