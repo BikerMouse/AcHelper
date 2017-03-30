@@ -25,7 +25,6 @@ namespace AcHelper.WPF.Palettes
             AutoSize = true;
             SetAutoSizeMode(System.Windows.Forms.AutoSizeMode.GrowAndShrink);
             Child = _view;
-            
 
             _closed = false;
 

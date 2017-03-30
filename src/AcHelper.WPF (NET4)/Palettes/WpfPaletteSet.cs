@@ -20,6 +20,8 @@ namespace AcHelper.WPF.Palettes
         private string _name = string.Empty;
         private List<IPalette> _palettes = new List<IPalette>();
         private static Size _size, _minimumSize = Size.Empty;
+        private bool _firstTimeVisible = true;
+        private DockSides _dock = DockSides.None;
 
         /// <summary>
         /// Creates a WpfPaletteset.
@@ -59,7 +61,7 @@ namespace AcHelper.WPF.Palettes
             , Size minimumSize
             , DockSides dockside
             , DockSides docksideEnabled)
-            : base(name, guid)
+            : base(name, null, guid)
         {
             _name = name;
             
@@ -69,24 +71,29 @@ namespace AcHelper.WPF.Palettes
             _size = size;
             Size = size;
 
+            _dock = dockside;
             Dock = dockside;
             DockEnabled = docksideEnabled;
-        }
-        public WpfPaletteSet(string name, Guid guid
-            , Size? size = null
-            , Size? minimumSize = null
-            , DockSides? dockSide = DockSides.Left
-            , DockSides? dockEnabled = DockSides.None | DockSides.Left | DockSides.Right)
-            : base(name, guid)
-        {
-            _name = name;
 
-            _minimumSize = minimumSize ?? _minimumSize;
-            MinimumSize = _minimumSize;
-            
-            _size = size ?? _minimumSize;
-            Size = _size;
+            Style = PaletteSetStyles.ShowAutoHideButton
+                | PaletteSetStyles.ShowCloseButton
+                | PaletteSetStyles.Snappable;
         }
+        //public WpfPaletteSet(string name, Guid guid
+        //    , Size? size = null
+        //    , Size? minimumSize = null
+        //    , DockSides? dockSide = DockSides.Left
+        //    , DockSides? dockEnabled = DockSides.None | DockSides.Left | DockSides.Right)
+        //    : base(name, null, guid)
+        //{
+        //    _name = name;
+
+        //    _minimumSize = minimumSize ?? _minimumSize;
+        //    MinimumSize = _minimumSize;
+            
+        //    _size = size ?? _minimumSize;
+        //    Size = _size;
+        //}
 
         #region Properties ...
         /// <summary>
@@ -129,7 +136,7 @@ namespace AcHelper.WPF.Palettes
         {
             get { return _palettes.Count; }
         }
-        public IPalette this[int index]
+        new public IPalette this[int index]
         {
             get
             {
@@ -209,6 +216,19 @@ namespace AcHelper.WPF.Palettes
                 {
                     throw new WpfPaletteSetException(error_message, PaletteSetName, ex);
                 }
+            }
+        }
+        #endregion
+
+        #region Methods ...
+        public void ActivatePaletteSet()
+        {
+            Visible = true;
+            if (_firstTimeVisible)
+            {
+                Size = _size;
+                Dock = _dock;
+                _firstTimeVisible = false;
             }
         }
         #endregion

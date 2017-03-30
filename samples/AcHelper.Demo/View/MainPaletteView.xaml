@@ -8,9 +8,9 @@
              mc:Ignorable="d ignore"
              theme:PaletteControlExtension.Theme="Light"
              DataContext="{Binding Main, Source={StaticResource Locator}}">
-    <!--<UserControl.Resources>
+    <UserControl.Resources>
         <ResourceDictionary Source="LightTheme.xaml"/>
-    </UserControl.Resources>-->
+    </UserControl.Resources>
 
     <Grid>
         <Grid.Resources>

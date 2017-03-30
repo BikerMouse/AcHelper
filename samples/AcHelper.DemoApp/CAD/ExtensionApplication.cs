@@ -1,19 +1,19 @@
 ﻿using Autodesk.AutoCAD.Runtime;
 using BuerTech.Utilities.Logger;
+using System.Windows;
 
 [assembly: ExtensionApplication(typeof(AcHelper.DemoApp.CAD.ExtensionApplication))]
 [assembly: CommandClass(typeof(AcHelper.DemoApp.CAD.CommandHandler))]
 namespace AcHelper.DemoApp.CAD
 {
-    using System;
     using Core;
+    using WPF.Palettes;
     using WPF.Themes;
-    using System.Windows;
-    using System.Reflection;
 
     public class ExtensionApplication : IExtensionApplication
     {
-        private readonly ResourceHandler _resourceHandler = ResourceHandler.GetInstance();
+        public static readonly ResourceHandler ResourceHandler = ResourceHandler.GetInstance();
+        public static readonly WpfPaletteSetsHandler PalettesetsHandler = WpfPaletteSetsHandler.GetInstance();
 
         #region IExtensionApplication members ...
         public void Initialize()
@@ -26,6 +26,8 @@ namespace AcHelper.DemoApp.CAD
 
             SetupEvents();
 
+            PreparePalettes();
+
             Active.WriteMessage("{0} initialized ...", Constants.APPLICATION_NAME);
         }
 
@@ -33,24 +35,6 @@ namespace AcHelper.DemoApp.CAD
         {
             Logger.Dispose();
         }
-        #endregion
-
-        #region [           Properties          ]
-        #region Assembly name ...
-        private string _assemblyName;
-
-        public string AssemblyPackName
-        {
-            get { return _assemblyName ?? GetAssemblyName(); }
-            set { _assemblyName = value; }
-        }
-
-        private string GetAssemblyName()
-        {
-            return AssemblyName.GetAssemblyName(Assembly.GetExecutingAssembly().FullName).Name;
-        }
-
-        #endregion
         #endregion
 
         #region Private methods ...
@@ -65,18 +49,46 @@ namespace AcHelper.DemoApp.CAD
             };
             Logger.Initialize(setup);
         }
+        private void SetupViewModelLocator()
+        {
+            ViewModelLocator.Initialize();
+            // Secure the generic.xaml file for the Locator.
+            ResourceHandler.SetGenericResourceDictionary(GetAssemblyName());
+        } 
         private void SetupThemes()
         {
-            ResourceDictionary dictionaryDark = _resourceHandler.GetThemeResourceDictionary(GetAssemblyName(), ResourceHandler.THEME_DARK);
+            ResourceDictionary[] darkTheme = new ResourceDictionary[1];
+            ResourceDictionary[] lightTheme = new ResourceDictionary[1];
+
+            // Dark
+            darkTheme[0] = ResourceHandler.GetThemeResourceDictionary(GetAssemblyName(), ResourceHandler.THEME_DARK);
+            ThemeSet darkSet = ThemeSet.CreateThemeSet(darkTheme);
+            ResourceHandler.ThemeSets.Add(ResourceHandler.THEME_DARK, darkSet);
+
+            // Light
+            lightTheme[0] = ResourceHandler.GetThemeResourceDictionary(GetAssemblyName(), ResourceHandler.THEME_LIGHT);
+            ThemeSet lightSet = ThemeSet.CreateThemeSet(lightTheme);
+            ResourceHandler.ThemeSets.Add(ResourceHandler.THEME_LIGHT, lightSet);
+
+            ThemeManager.TurnOnThemeTracker();
         }
         private void SetupEvents()
         {
             ThemeManager.TurnOnThemeTracker();
         }
-        private void SetupViewModelLocator()
+        private void PreparePalettes()
         {
-            ViewModelLocator.Initialize();
-        } 
+            WpfPaletteSet paletteset = PalettesetsHandler.CreatePaletteSet(Constants.APPLICATION_NAME, Constants.GUID_PALETTESET);
+            WpfPalette mainPalette = new WpfPalette(new GUI.Views.PaletteView(), Constants.NAME_MAINPALETTE);
+            WpfPalette secondPalette = new WpfPalette(new GUI.Views.SecondPaletteView(), "Second Palette");
+
+            paletteset.AddPalette(mainPalette);
+            paletteset.AddPalette(secondPalette);
+        }
+        private string GetAssemblyName()
+        {
+            return typeof(ExtensionApplication).Assembly.GetName().Name;
+        }
         #endregion
     }
 }

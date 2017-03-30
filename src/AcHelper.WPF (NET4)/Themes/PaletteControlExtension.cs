@@ -1,6 +1,4 @@
-﻿using System;
-using System.Reflection;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
 namespace AcHelper.WPF.Themes
@@ -15,7 +13,7 @@ namespace AcHelper.WPF.Themes
             ThemeSet resources = resourceHandler.ThemeSets[theme];
 
             control.Resources.MergedDictionaries.Clear();
-            foreach (ResourceDictionary dict in resources.Values)
+            foreach (ResourceDictionary dict in resources)//.Values)
             {
                 control.Resources.MergedDictionaries.Add(dict);
             }

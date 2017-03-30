@@ -1,20 +1,29 @@
-﻿<UserControl x:Class="AcHelper.DemoApp.GUI.Views.PaletteView"
+﻿<controls:PaletteControl x:Class="AcHelper.DemoApp.GUI.Views.PaletteView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AcHelper.DemoApp.GUI.Views"
              xmlns:theme="clr-namespace:AcHelper.WPF.Themes;assembly=AcHelper.WPF"
+             xmlns:controls="clr-namespace:AcHelper.WPF.Controls;assembly=AcHelper.WPF"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
              theme:PaletteControlExtension.Theme="{Binding ThemeManager.CurrentTheme}"
              DataContext="{Binding Main, Source={StaticResource Locator}}">
-    <UserControl.Resources>
+    <!--<UserControl.Resources>
         <ResourceDictionary xmlns:core="clr-namespace:AcHelper.DemoApp.Core">
-            <core:ViewModelLocator x:Key="Locator"/>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/AcHelper.DemoApp;component/Themes/DarkTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-    </UserControl.Resources>
-    <Grid>
-            
+    </UserControl.Resources>-->
+    <Grid Background="Blue">
+        <Border Style="{DynamicResource ModuleBorder}">
+            <TextBlock Text="Main palette"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="28"
+                       Foreground="White"/>
+        </Border>
     </Grid>
-</UserControl>
+</controls:PaletteControl>

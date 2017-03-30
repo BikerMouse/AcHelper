@@ -13,16 +13,13 @@ namespace AcHelper.WPF.Palettes
         /// <summary>
         /// Static instance of WpfPaletteSetsHandler.
         /// </summary>
-        public static WpfPaletteSetsHandler Instance
+        public static WpfPaletteSetsHandler GetInstance()
         {
-            get
+            if (_instance == null)
             {
-                if (_instance == null)
-                {
-                    _instance = new WpfPaletteSetsHandler();
-                }
-                return _instance;
+                _instance = new WpfPaletteSetsHandler();
             }
+            return _instance;
         }
         #endregion
 
@@ -88,7 +85,7 @@ namespace AcHelper.WPF.Palettes
         /// <param name="guid"></param>
         public void ActivatePaletteSet(Guid guid)
         {
-            this[guid].Visible = true;
+            this[guid].ActivatePaletteSet();
         }
         #endregion
     }

@@ -139,7 +139,7 @@ namespace AcHelper.Demo
             rh.ThemeSets.Add("Dark", darkTheme);
             rh.ThemeSets.Add("Light", lightTheme);
 
-            App.ApplyTheme(ThemeManager.GetCurrentTheme());
+            //App.ApplyTheme(ThemeManager.GetCurrentTheme());
             //App.Resources.MergedDictionaries.Clear();
             //App.Resources.MergedDictionaries.Add(_genericResources);    // Locator
             //Active.WriteMessage("Resources secured ...");

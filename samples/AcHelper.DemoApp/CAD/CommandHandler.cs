@@ -15,6 +15,7 @@ namespace AcHelper.DemoApp.CAD
         // Constant command names to prevend typos.
         public const string GROUPNAME = "AcHelperDemo";
         public const string CMD_TESTOBJECTTYPES = "Demo_TestVariousTypeCheck";
+        public const string CMD_OPENTOOLPALETTE = "Demo_OpenToolpalette";
 
         // assigning a command with the const variable.
         [CommandMethod(GROUPNAME, CMD_TESTOBJECTTYPES, CommandFlags.Modal)]
@@ -22,6 +23,12 @@ namespace AcHelper.DemoApp.CAD
         {
             // Execute the command with the CommandHandlerBase.ExecuteCommand<TCommand>()
             ExecuteCommand<TestVariousTypeCheckCommand>();
+        }
+
+        [CommandMethod(GROUPNAME, CMD_OPENTOOLPALETTE, CommandFlags.Modal)]
+        public static void OpenToolpalette()
+        {
+            ExecuteCommand<OpenToolpaletteCommand>();
         }
     }
 }

@@ -17,9 +17,9 @@
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="Background" Value="{StaticResource ModuleBorderBackgroundBrush}"/>
         <Setter Property="BorderBrush" Value="{StaticResource ModuleBorderBorderBrush}"/>
-        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderThickness" Value="2"/>
         <Setter Property="Padding" Value="5"/>
-        <Setter Property="Margin" Value="10"/>
+        <Setter Property="Margin" Value="20"/>
     </Style>
     <!--#endregion-->
 </ResourceDictionary>

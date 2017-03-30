@@ -1,1 +1,2 @@
-﻿NETLOAD "C:\GitHub\AcHelper\bin\Debug_2017\AcHelper.DemoApp.dll"
+﻿NETLOAD "C:\GitHub\AcHelper\samples\AcHelper.DemoApp\bin\debug\2017\AcHelper.DemoApp.dll"
+Demo_OpenToolpalette
