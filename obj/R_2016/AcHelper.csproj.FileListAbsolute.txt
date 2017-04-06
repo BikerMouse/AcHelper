@@ -1,8 +1,0 @@
-C:\Users\sbu\Documents\Visual Studio 2012\Projects\AcWPF\AcWPF\obj\R_2016\AcHelper.csprojResolveAssemblyReference.cache
-C:\Users\sbu\Documents\Visual Studio 2012\Projects\AcWPF\AcWPF\obj\R_2016\AcHelper.dll
-C:\Users\sbu\Documents\Visual Studio 2012\Projects\AcWPF\AcWPF\obj\R_2016\AcHelper.pdb
-C:\Users\sbu\Documents\4. References\R_2016\AcHelper.dll
-C:\Users\sbu\Documents\4. References\R_2016\AcHelper.pdb
-C:\Users\sbu\Documents\Visual Studio 2012\Projects\AcHelper\AcWPF\obj\R_2016\AcHelper.csprojResolveAssemblyReference.cache
-C:\Users\sbu\Documents\Visual Studio 2012\Projects\AcHelper\AcWPF\obj\R_2016\AcHelper.dll
-C:\Users\sbu\Documents\Visual Studio 2012\Projects\AcHelper\AcWPF\obj\R_2016\AcHelper.pdb

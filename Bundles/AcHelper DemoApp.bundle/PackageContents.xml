@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationPackage  SchemaVersion="1.0" AppVersion="1.1.0" Name="NLCS2IMGeo" AutodeskProduct="AutoCAD" HelpFile="./Contents/Resources/Help.html" Author="Sander van Bueren" Description="Converteer tekeningen gebaseerd op NLCS naar IMGeo standaarden." Icon="./Contents/Resources/icon.png">
+  <CompanyDetails Name="BuerTech B.V." Phone="" Url="" Email=""/>
+  <RuntimeRequirements OS="Win64" Platform="Map|Civil3D" SeriesMin="R21.0" SeriesMax="R21.0"/>
+  <Components Description="AutoCAD 2017">
+    <RuntimeRequirements SupportPath="./Contents/Resources" OS="Win64" Platform="Map|Civil3D" SeriesMin="R21.0" SeriesMax="R21.0"/>
+    <ComponentEntry AppName="NLCS2IMGeo" Version="1.1.0" ModuleName="./Contents/Resources/NLCS2IMGeo.cuix" AppDescription="Ribbon" LoadOnAppearance="True"/>
+    <ComponentEntry AppName="NLCS2IMGeo" Version="1.1.0" ModuleName="./Contents/Windows/2017/NedGraphics.NLCS2IMGeo.dll" AppDescription="Main .Net module" LoadOnCommandInvocation="True">
+      <Commands>
+        <Command Local="Wos_NIC_OpenToolPalette" Global="Wos_NIC_OpenToolPalette"/>
+      </Commands>
+    </ComponentEntry>
+    <ComponentEntry AppName="NLCS2IMGeo" Version="1.1.0" ModuleName="./Contents/Windows/2017/System.Windows.Interactivity.dll" AppDescription="System.Windows.Interactivity" />
+    <ComponentEntry AppName="NLCS2IMGeo" Version="1.1.0" ModuleName="./Contents/Windows/2017/NedGraphics.Styles.dll" AppDescription="NedGraphics Styles" />
+  </Components>
+</ApplicationPackage>
