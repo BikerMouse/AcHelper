@@ -51,8 +51,8 @@ namespace AcHelper.WPF.Themes
 
         public Dictionary<string, ThemeSet> ThemeSets
         {
-            get { return _themeSets; }
-            set { _themeSets = value; }
+            get => _themeSets;
+            set => _themeSets = value;
         }
         #endregion
         #endregion
@@ -61,7 +61,7 @@ namespace AcHelper.WPF.Themes
         {
             string themePack = string.Format(THEMEPACK, assemblyName, theme);
             Uri source = new Uri(themePack, UriKind.Relative);
-            return Application.LoadComponent(new Uri(themePack, UriKind.Relative)) as ResourceDictionary;
+            return Application.LoadComponent(source) as ResourceDictionary;
         }
 
         public bool SetGenericResourceDictionary(string assemblyName)
