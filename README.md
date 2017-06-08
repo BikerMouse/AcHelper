@@ -9,3 +9,5 @@ Some features:
 - Active-class which contains the active document/editor/database objects.
 
 This is just a little summary, full ReadMe file is in progress.
+
+<h1>TEST Header</h1>
