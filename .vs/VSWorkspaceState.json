@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\src",
+    "\\src\\AcHelper.WPF"
   ],
+  "SelectedNode": "\\src\\AcHelper.WPF\\AcHelper.WPF.sln",
   "PreviewInSolutionExplorer": false
 }

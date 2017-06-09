@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>BuerTech.AcHelper.Extra</id>
+    <version>20.0.0.0</version>
+    <authors>Sander van Bueren (BuerTech)</authors>
+    <owners>BuerTech</owners>
+    <projectUrl>https://github.com/BikerMouse/AcHelper</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Assembly which simplifies the use of some AutoCAD functions for the developer.</description>
+    <releaseNotes>Fixed CadRegistryHandler to actually read the AutoCAD Registrykeys.</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>autocad net buertech</tags>
+    <dependencies>
+      <dependency id="AutoCAD.Net" version="20.0.0" />
+    </dependencies>
+  </metadata>
+</package>

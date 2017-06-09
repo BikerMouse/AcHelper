@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>BuerTech.AcHelper</id>
+    <version>22.0.0.0</version>
+    <authors>Sander van Bueren (BuerTech)</authors>
+    <owners>Sander van Bueren (BuerTech)</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Assembly which simplifies the use of some AutoCAD functions for the developer.</description>
+    <releaseNotes>First release for AutoCAD 2018.</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <dependencies>
+      <dependency id="AutoCAD.Net" version="22.0.0" />
+    </dependencies>
+  </metadata>
+</package>

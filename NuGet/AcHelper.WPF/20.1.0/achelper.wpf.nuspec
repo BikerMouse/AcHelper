@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>buertech.achelper.wpf</id>
-    <version>20.1.0-beta</version>
+    <version>20.1.0</version>
     <authors>Sander van Bueren (BuerTech)</authors>
     <owners>Sander van Bueren (BuerTech)</owners>
     <projectUrl>https://github.com/BikerMouse/AcHelper</projectUrl>
