@@ -3,7 +3,7 @@ using System.Text;
 
 namespace AcHelper
 {
-    public class ExceptionHandler
+    public static class ExceptionHandler
     {
         private const string START_EXCEPTION = "***  Exception  ***";
         private const string END_EXCEPTION = "*** End Exception ***";

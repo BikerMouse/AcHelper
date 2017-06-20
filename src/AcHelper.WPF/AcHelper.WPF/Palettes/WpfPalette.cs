@@ -8,11 +8,11 @@ namespace AcHelper.WPF.Palettes
     {
         #region Fields ...
         private UserControl _view = null;
-        private string _name = string.Empty;
+        private string _name;
 
         private VisibleState _visible_state = VisibleState.Show;
         private WpfPaletteSet _parent = null;
-        private bool _closed = true;
+        private bool _closed;
         #endregion
 
         #region Ctor ...
@@ -27,7 +27,6 @@ namespace AcHelper.WPF.Palettes
             Child = _view;
 
             _closed = false;
-
         }
         #endregion
 
@@ -42,9 +41,9 @@ namespace AcHelper.WPF.Palettes
             {
                 if (_visible_state != value)
                 {
+                    _visible_state = value; 
                     OnVisibleStateChanged(value);
                 }
-                _visible_state = value; 
             }
         }
         /// <summary>
@@ -52,16 +51,16 @@ namespace AcHelper.WPF.Palettes
         /// </summary>
         public string PaletteName
         {
-            get { return _name; }
-            set { _name = value; }
+            get => _name;
+            set => _name = value;
         }
         /// <summary>
         ///  Sets and gets the parent paletteset.
         /// </summary>
         public WpfPaletteSet PaletteSet
         {
-            get { return _parent; }
-            set { _parent = value; }
+            get => _parent;
+            set => _parent = value;
         }
         #endregion
 
@@ -104,9 +103,11 @@ namespace AcHelper.WPF.Palettes
         }
         #endregion
 
+
+
         #region Dispose ...
         private bool disposed = false;
-        public void Dispose()
+        public new void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this);
@@ -129,7 +130,7 @@ namespace AcHelper.WPF.Palettes
                 }
                 if (_parent != null)
                 {
-                    _parent = null;
+                    Parent = null;
                 }
             }
 

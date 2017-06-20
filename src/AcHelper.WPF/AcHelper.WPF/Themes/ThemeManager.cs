@@ -123,7 +123,7 @@ namespace AcHelper.WPF.Themes
     /// </summary>
     public class ThemeChangedEventArgs : EventArgs
     {
-        private string _theme;
+        private readonly string _theme;
         /// <summary>
         /// Constructs the ThemeChangedEventArgs.
         /// </summary>
