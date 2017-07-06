@@ -27,6 +27,7 @@ namespace AcHelper.WPF.Themes
 
         #region [           Properties          ]
         #region Application File ...
+        [Obsolete("Use WpfFile instead.")]
         public Application App
         {
             get
@@ -38,11 +39,22 @@ namespace AcHelper.WPF.Themes
                 return Application.Current;
             }
         }
-
+        [Obsolete("Use SecureWpfAppFile instead.")]
         private void SecureAppFile()
         {
             Application app = new Application();
             app.ShutdownMode = ShutdownMode.OnExplicitShutdown;
+        }
+
+        public Application WpfApp
+        {
+            get => Application.Current ?? SecureWpfAppFile();
+        }
+        private Application SecureWpfAppFile()
+        {
+            Application app = new Application();
+            app.ShutdownMode = ShutdownMode.OnExplicitShutdown;
+            return app;
         }
         #endregion
 
