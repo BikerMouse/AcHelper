@@ -2,7 +2,7 @@
 using Autodesk.AutoCAD.DatabaseServices;
 using System;
 
-namespace AcHelper.Utilities
+namespace AcHelper.Wrappers
 {
     public class AcTransaction : IDisposable
     {

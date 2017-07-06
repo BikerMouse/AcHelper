@@ -6,7 +6,7 @@ namespace AcHelper.Commands
     /// <summary>
     /// The CommandHandlerBase provides base functionalities for the class containing AutoCAD commands. 
     /// </summary>
-    public static class CommandHandlerBase
+    public class CommandHandlerBase
     {
         private const string WHITESPACE = " ";
         private const string NEWLINE = "\n";
