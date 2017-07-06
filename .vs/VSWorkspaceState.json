@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\src\\AcHelper",
+    "\\src\\AcHelper.WPF",
+    "\\src\\AcHelper\\AcHelper"
   ],
   "PreviewInSolutionExplorer": false
 }
