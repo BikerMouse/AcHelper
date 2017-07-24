@@ -103,8 +103,6 @@ namespace AcHelper.WPF.Palettes
         }
         #endregion
 
-
-
         #region Dispose ...
         private bool disposed = false;
         public new void Dispose()
