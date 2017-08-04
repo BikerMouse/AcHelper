@@ -2,7 +2,7 @@
 using Autodesk.AutoCAD.DatabaseServices;
 using System;
 
-namespace AcHelper.Utilities
+namespace AcHelper.Wrappers
 {
     public class WriteEnabler : IDisposable
     {
@@ -18,7 +18,7 @@ namespace AcHelper.Utilities
         /// Opens a DBObject for write within the current Document.
         /// </summary>
         /// <param name="dbObject">Object to open for write.</param>
-        /// <exception cref="AcHelper.Utilities.WriteEnablerException"/>
+        /// <exception cref="AcHelper.Wrappers.WriteEnablerException"/>
         /// <exception cref="Autodesk.AutoCAD.Runtime.Exception"/>
         public WriteEnabler(DBObject dbObject)
             : this(Active.Document, dbObject)
@@ -28,7 +28,7 @@ namespace AcHelper.Utilities
         /// </summary>
         /// <param name="doc">Document where the object is being found.</param>
         /// <param name="dbObject">Object to open for write.</param>
-        /// <exception cref="AcHelper.Utilities.WriteEnablerException"/>
+        /// <exception cref="AcHelper.Wrappers.WriteEnablerException"/>
         /// <exception cref="Autodesk.AutoCAD.Runtime.Exception"/>
         public WriteEnabler(Document doc, DBObject dbObject)
         {
@@ -48,8 +48,7 @@ namespace AcHelper.Utilities
                             {
                                 // is the object an entity?
                                 // if yes, unlock layer.
-                                Entity entity = dbObject as Entity;
-                                if (entity != null)
+                                if (dbObject is Entity entity)
                                 {
                                     UnlockLayer(entity.LayerId);
                                 }
