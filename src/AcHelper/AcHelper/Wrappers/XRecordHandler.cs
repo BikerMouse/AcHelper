@@ -2,7 +2,7 @@
 using Autodesk.AutoCAD.DatabaseServices;
 using System;
 
-namespace AcHelper.Utilities
+namespace AcHelper.Wrappers
 {
     public class XRecordHandler : IDisposable
     {
@@ -85,7 +85,7 @@ namespace AcHelper.Utilities
         /// <param name="dictionaryName">Name of Named Objects Dictionary</param>
         /// <param name="xKey">Key of Xrecord</param>
         /// <returns>ResultBuffer with data or Null if nothing found.</returns>
-        /// <exception cref="AcHelper.Utilities.XRecordException"/>
+        /// <exception cref="AcHelper.Wrappers.XRecordException"/>
         public ResultBuffer GetXrecord(string dictionaryName, string xKey)
         {
             ResultBuffer result = null;
@@ -507,13 +507,13 @@ namespace AcHelper.Utilities
         {
             _error_code = errorCode;
         }
-        public XRecordHandlerException(string dictionaryName, string xKey, string message, ErrorCode errorCode = Utilities.ErrorCode.Error) : base(message)
+        public XRecordHandlerException(string dictionaryName, string xKey, string message, ErrorCode errorCode = Wrappers.ErrorCode.Error) : base(message)
         {
             _dictionary_name = dictionaryName;
             _key = xKey;
             _error_code = errorCode;
         }
-        public XRecordHandlerException(string dictionaryName, string xKey, string message, System.Exception inner, ErrorCode errorCode = Utilities.ErrorCode.Error)
+        public XRecordHandlerException(string dictionaryName, string xKey, string message, System.Exception inner, ErrorCode errorCode = Wrappers.ErrorCode.Error)
             : base(message, inner)
         {
             _key = xKey;

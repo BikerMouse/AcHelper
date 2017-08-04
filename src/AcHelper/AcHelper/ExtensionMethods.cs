@@ -93,7 +93,7 @@ namespace AcHelper
         /// <param name="document"></param>
         /// <param name="action"></param>
         /// <param name="CommandName"></param>
-        public static void UsingModelSpace(this Document document, Action<Utilities.AcTransaction, BlockTableRecord> action, string CommandName = "")
+        public static void UsingModelSpace(this Document document, Action<Wrappers.AcTransaction, BlockTableRecord> action, string CommandName = "")
         {
             Common.UsingModelSpace(document, CommandName, action);
         }
@@ -103,7 +103,7 @@ namespace AcHelper
         /// <param name="document"></param>
         /// <param name="action"></param>
         /// <param name="commandName"></param>
-        public static void UsingTransaction(this Document document, Action<Utilities.AcTransaction> action, string commandName = "")
+        public static void UsingTransaction(this Document document, Action<Wrappers.AcTransaction> action, string commandName = "")
         {
             Common.UsingTransaction(document, commandName, action);
         }
