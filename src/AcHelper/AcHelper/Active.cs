@@ -31,6 +31,7 @@ namespace AcHelper
         {
             get { return Document.Editor; }
         }
+
         /// <summary>
         /// Returns the Name of the active document.
         /// </summary>
@@ -48,8 +49,7 @@ namespace AcHelper
         {
             get
             {
-                DirectoryInfo dir = new FileInfo(Document.Name).Directory;
-                return dir.FullName;
+                return new FileInfo(Document.Name).Directory.FullName;
             }
         }
         /// <summary>
@@ -59,8 +59,7 @@ namespace AcHelper
         {
             get
             {
-                FileInfo path = new FileInfo(Document.Name);
-                return path.FullName;
+                return new FileInfo(Document.Name).FullName;
             }
         }
 
@@ -76,11 +75,19 @@ namespace AcHelper
         /// Sends a string to the command line in the active Editor using String.Format.
         /// </summary>
         /// <param name="message">The message containing format specifications.</param>
-        /// <param name="parameter">The variables to substitue into the format string.</param>
-        public static void WriteMessage(string message, params object[] parameter)
+        /// <param name="parameters">The variables to substitue into the format string.</param>
+        public static void WriteMessage(string message, params object[] parameters)
         {
-            Editor.WriteMessage("\n" + message, parameter);
+            Editor.WriteMessage("\n" + message, parameters);
         }
+		public static void WriteMessageInLine(string message)
+		{
+			Editor.WriteMessage(message);
+		}
+		public static void WriteMessageInLine(string message, params object[] parameters)
+		{
+			Editor.WriteMessage(message, parameters);
+		}
         /// <summary>
         /// Regenerates active modelspace. Equivalent of Editor.Regen().
         /// </summary>
