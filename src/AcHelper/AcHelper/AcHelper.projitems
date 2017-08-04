@@ -23,6 +23,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)LoggerNotInitializedException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Logging.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Properties\AssemblyInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\SendStringToExecuteException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utilities\AcTransaction.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utilities\WriteEnabler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utilities\XRecordHandler.cs" />
