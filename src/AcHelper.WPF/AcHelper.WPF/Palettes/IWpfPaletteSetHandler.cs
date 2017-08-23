@@ -1,7 +1,6 @@
-﻿using Autodesk.AutoCAD.Windows;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Drawing;
+using Autodesk.AutoCAD.Windows;
 
 namespace AcHelper.WPF.Palettes
 {

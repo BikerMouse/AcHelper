@@ -77,7 +77,7 @@ namespace AcHelper.WPF.Palettes
             OnPaletteClosing(PaletteName);
 
             VisibleStateChanged = null;
-            VisibleState = Palettes.VisibleState.Hide;
+            VisibleState = VisibleState.Hide;
             _closed = true;
 
             OnPaletteClosed(PaletteName);
@@ -103,10 +103,8 @@ namespace AcHelper.WPF.Palettes
         }
         #endregion
 
-
-
         #region Dispose ...
-        private bool disposed = false;
+        private bool _disposed = false;
         public new void Dispose()
         {
             Dispose(true);
@@ -114,7 +112,7 @@ namespace AcHelper.WPF.Palettes
         }
         protected virtual void Dispose(bool disposing)
         {
-            if (disposed)
+            if (_disposed)
             {
                 return;
             }
@@ -124,17 +122,11 @@ namespace AcHelper.WPF.Palettes
                 {
                     Close();
                 }
-                if (_view != null)
-                {
-                    _view = null;
-                }
-                if (_parent != null)
-                {
-                    Parent = null;
-                }
+                _view = null;
+                Parent = null;
             }
 
-            disposed = true;
+            _disposed = true;
         }
         #endregion
     }

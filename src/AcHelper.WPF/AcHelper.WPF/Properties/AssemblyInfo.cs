@@ -25,7 +25,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("AcHelper.WPF")]
 [assembly: AssemblyDescription("Contains functionalities for WPF in AutoCAD.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("BuerTech")]
+[assembly: AssemblyCompany("Sander van Bueren (BuerTech)")]
 [assembly: AssemblyProduct("Acad WPF Helper")]
 [assembly: AssemblyCopyright("Copyright © BuerTech 2017")]
 [assembly: AssemblyTrademark("")]

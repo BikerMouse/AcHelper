@@ -13,14 +13,8 @@ namespace AcHelper.WPF.Palettes
             _new_visible_state = newVisibleState;
         }
 
-        public VisibleState NewVisibleState
-        {
-            get { return _new_visible_state; }
-        }
-        public VisibleState OldVisibleState
-        {
-            get { return _old_visible_state; }
-        }
+        public VisibleState NewVisibleState => _new_visible_state;
+        public VisibleState OldVisibleState => _old_visible_state;
     }
     public class WpfPaletteClosingEventArgs : EventArgs
     {
@@ -31,10 +25,7 @@ namespace AcHelper.WPF.Palettes
             _name = paletteName;
         }
 
-        public string PaletteName
-        {
-            get { return _name; }
-        }
+        public string PaletteName => _name;
     }
     public class WpfPaletteClosedEventArgs : EventArgs
     {
@@ -45,9 +36,6 @@ namespace AcHelper.WPF.Palettes
             _name = paletteName;
         }
 
-        public string PaletteName
-        {
-            get { return _name; }
-        }
+        public string PaletteName => _name;
     }
 }

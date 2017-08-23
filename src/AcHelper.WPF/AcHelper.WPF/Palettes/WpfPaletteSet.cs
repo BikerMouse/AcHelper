@@ -15,6 +15,9 @@ namespace AcHelper.WPF.Palettes
     /// <param name="arg">A WpfPaletteSetVisibleStatChangedEventArgs that contains the event data.</param>
     public delegate void WpfPaletteSetVisibleStateChangedEventHandler(object sender, WpfPaletteSetVisibleStateChangedEventArgs arg);
 
+    /// <summary>
+    /// Paletteset containing (multiple) palettes; Optimized for WPF.
+    /// </summary>
     public class WpfPaletteSet : PaletteSet
     {
         private string _name = string.Empty;
@@ -79,21 +82,6 @@ namespace AcHelper.WPF.Palettes
                 | PaletteSetStyles.ShowCloseButton
                 | PaletteSetStyles.Snappable;
         }
-        //public WpfPaletteSet(string name, Guid guid
-        //    , Size? size = null
-        //    , Size? minimumSize = null
-        //    , DockSides? dockSide = DockSides.Left
-        //    , DockSides? dockEnabled = DockSides.None | DockSides.Left | DockSides.Right)
-        //    : base(name, null, guid)
-        //{
-        //    _name = name;
-
-        //    _minimumSize = minimumSize ?? _minimumSize;
-        //    MinimumSize = _minimumSize;
-            
-        //    _size = size ?? _minimumSize;
-        //    Size = _size;
-        //}
 
         #region Properties ...
         /// <summary>
@@ -121,21 +109,34 @@ namespace AcHelper.WPF.Palettes
         {
             foreach (IPalette item in _palettes)
             {
-                if (item.PaletteName.ToUpper() == name.ToUpper())
+                if (string.Equals(item.PaletteName, name, StringComparison.InvariantCultureIgnoreCase))
                 {
                     return true;
                 }
             }
             return false;
         }
+        /// <summary>
+        /// Gets the palette with the given name.
+        /// </summary>
+        /// <param name="name">Name of the palette to return.</param>
+        /// <returns></returns>
         public IPalette GetPalette(string name)
         {
-            return _palettes.FirstOrDefault(p => p.PaletteName.ToUpper() == name.ToUpper());
+            return _palettes.FirstOrDefault(p => string.Equals(p.PaletteName, name, StringComparison.InvariantCultureIgnoreCase));
         }
+        /// <summary>
+        /// Counts the amount of palettes assigned to this paletteset.
+        /// </summary>
         public override int Count
         {
             get { return _palettes.Count; }
         }
+        /// <summary>
+        /// Gets the palette on the given index within this paletteset.
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         new public IPalette this[int index]
         {
             get
@@ -151,7 +152,7 @@ namespace AcHelper.WPF.Palettes
         /// Add palette to paletteset
         /// </summary>
         /// <param name="palette"></param>
-        /// <exception cref="AcHelper.Wpf.Palettes.WpfPaletteSetException"/>
+        /// <exception cref="WpfPaletteSetException"/>
         public void AddPalette(IPalette palette)
         {
             string error_message = string.Format("Could not add palette '{0}' to the paletteset '{1}'", palette.PaletteName, PaletteSetName);
@@ -178,18 +179,18 @@ namespace AcHelper.WPF.Palettes
         /// Removes palette from paletteset.
         /// </summary>
         /// <param name="name"></param>
-        /// <exception cref="AcHelper.WPF.Palettes.WpfPaletteSetException"/>
+        /// <exception cref="WpfPaletteSetException"/>
         public void RemovePalette(string name)
         {
             string error_message = string.Format("Something went wrong while removing palette: '{0}'", name);
 
-            IPalette palette = _palettes.FirstOrDefault(p => p.PaletteName.ToUpper() == name.ToUpper());
+            IPalette palette = _palettes.FirstOrDefault(p => string.Equals(p.PaletteName, name, StringComparison.InvariantCultureIgnoreCase));
             if (palette != null)
             {
                 try
                 {
                     int i = _palettes.IndexOf(palette);
-                    this.Remove(i);
+                    Remove(i);
                     _palettes.RemoveAt(i);
                     palette.Dispose();
 
@@ -197,20 +198,6 @@ namespace AcHelper.WPF.Palettes
                     {
                         Visible = false;
                     }
-                    #region old ...
-                    ////Control control = palette as Control;
-                    ////if (control != null)
-                    ////{
-                    ////    this.Remove(i);
-                    ////    _palettes.RemoveAt(i);
-                    ////    control.Dispose();
-
-                    ////    if (Count == 0)
-                    ////    {
-                    ////        Visible = false;
-                    ////    }
-                    ////}
-                    #endregion
                 }
                 catch (Exception ex)
                 {
@@ -234,26 +221,54 @@ namespace AcHelper.WPF.Palettes
         #endregion
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     [Serializable]
     public class WpfPaletteSetException : Exception
     {
         private string _paletteset_name;
-
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="paletteSetName"></param>
+        /// <param name="inner"></param>
         public WpfPaletteSetException(string message, string paletteSetName, Exception inner)
             : base(message, inner)
         {
             _paletteset_name = paletteSetName;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string PaletteSetName
         {
             get { return _paletteset_name; }
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         public WpfPaletteSetException() { }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="message"></param>
         public WpfPaletteSetException(string message) : base(message) { }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="inner"></param>
         public WpfPaletteSetException(string message, Exception inner) : base(message, inner) { }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="info"></param>
+        /// <param name="context"></param>
         protected WpfPaletteSetException(
           System.Runtime.Serialization.SerializationInfo info,
           System.Runtime.Serialization.StreamingContext context)

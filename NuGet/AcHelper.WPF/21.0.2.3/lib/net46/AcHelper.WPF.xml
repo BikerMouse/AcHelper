@@ -1,0 +1,295 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AcHelper.WPF</name>
+    </assembly>
+    <members>
+        <member name="T:AcHelper.WPF.Palettes.WpfPaletteVisibleStateChangedEventHandler">
+            <summary>
+            Represents the method that will handle an event that handles the
+            <see cref="E:AcHelper.WPF.Palettes.IPalette.VisibleStateChanged"/> event of a WpfPalette.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="arg">A <see cref="T:AcHelper.WPF.Palettes.WpfPaletteVisibleStateChangedEventArgs"/>WpfPaletteVisibleStateChangedEventArgs that contains the event data.</param>
+        </member>
+        <member name="T:AcHelper.WPF.Palettes.WpfPaletteClosingEventHandler">
+            <summary>
+            Represents the method that will handle an event that handles the
+            <see cref="E:AcHelper.WPF.Palettes.IPalette.WpfPaletteClosing"/> event of a WpfPalette.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="arg">A <see cref="T:AcHelper.WPF.Palettes.WpfPaletteClosingEventArgs"/>WpfPaletteClosingEventArgs that contains the event data.</param>
+        </member>
+        <member name="T:AcHelper.WPF.Palettes.WpfPaletteClosedEventHandler">
+            <summary>
+            Represents the method that will handle an event that handles the
+            <see cref="E:AcHelper.WPF.Palettes.IPalette.WpfPaletteClosed"/> event of a WpfPalette.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="arg">A <see cref="T:AcHelper.WPF.Palettes.WpfPaletteClosedEventArgs"/>WpfPaletteClosedEventArgs that contains the event data.</param>
+        </member>
+        <member name="T:AcHelper.WPF.Palettes.VisibleState">
+            <summary>
+            Enum that represents the visible state of a WpfPalette.
+            </summary>
+        </member>
+        <member name="P:AcHelper.WPF.Palettes.IPalette.VisibleState">
+            <summary>
+            The visible state of the WpfPalette.
+            </summary>
+        </member>
+        <member name="P:AcHelper.WPF.Palettes.IPalette.PaletteName">
+            <summary>
+            The name of the WpfPalette.
+            </summary>
+        </member>
+        <member name="P:AcHelper.WPF.Palettes.IPalette.PaletteSet">
+            <summary>
+            The parent WpfPaletteset wich contains this WpfPalette
+            </summary>
+        </member>
+        <member name="M:AcHelper.WPF.Palettes.IPalette.ClosePaletteSet">
+            <summary>
+            Closes the paletteset.
+            </summary>
+        </member>
+        <member name="M:AcHelper.WPF.Palettes.IPalette.Close">
+            <summary>
+            Closes the WpfPalette
+            </summary>
+        </member>
+        <member name="P:AcHelper.WPF.Palettes.WpfPalette.VisibleState">
+            <summary>
+            Sets and gets the VisibleState.
+            </summary>
+        </member>
+        <member name="P:AcHelper.WPF.Palettes.WpfPalette.PaletteName">
+            <summary>
+            Sets and gets the Palette name.
+            </summary>
+        </member>
+        <member name="P:AcHelper.WPF.Palettes.WpfPalette.PaletteSet">
+            <summary>
+             Sets and gets the parent paletteset.
+            </summary>
+        </member>
+        <member name="T:AcHelper.WPF.Palettes.WpfPaletteSetVisibleStateChangedEventHandler">
+            <summary>
+            Represents the method that handles the 
+            WpfPalet5teSetVisibleStateChanged event of a WpfPaletteset.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="arg">A WpfPaletteSetVisibleStatChangedEventArgs that contains the event data.</param>
+        </member>
+        <member name="M:AcHelper.WPF.Palettes.WpfPaletteSet.#ctor(System.String,System.Guid)">
+            <summary>
+            Creates a WpfPaletteset.
+            </summary>
+            <param name="name">Name of the paletteset to create.</param>
+            <param name="guid">Guid of the paletteset to create.</param>
+        </member>
+        <member name="M:AcHelper.WPF.Palettes.WpfPaletteSet.#ctor(System.String,System.Guid,System.Drawing.Size,System.Drawing.Size)">
+            <summary>
+            Creates a WpfPaletteset.
+            </summary>
+            <param name="name">Name of the paletteset to create.</param>
+            <param name="guid">Guid of the paletteset to create.</param>
+            <param name="size">Size of the paletteset to create.
+            Default size is Width: 350, Height: 450.</param>
+            <param name="minimumSize">Minimum size of the paletteset to create.
+            Default size is Width: 350, Height: 450.</param>
+        </member>
+        <member name="M:AcHelper.WPF.Palettes.WpfPaletteSet.#ctor(System.String,System.Guid,System.Drawing.Size,System.Drawing.Size,Autodesk.AutoCAD.Windows.DockSides,Autodesk.AutoCAD.Windows.DockSides)">
+            <summary>
+            Creates a WpfPaletteset.
+            </summary>
+            <param name="name">Name of the paletteset to create.</param>
+            <param name="guid">Guid of the paletteset to create.</param>
+            <param name="size">Size of the paletteset to create.
+            Default size is Width: 350, Height: 450.</param>
+            <param name="minimumSize">Minimum size of the paletteset to create.
+            Default size is Width: 350, Height: 450.</param>
+            <param name="dockside">Default side to dock the paletteset is Left.</param>
+            <param name="docksideEnabled">Default enabled sides to dock the paletteset are Left, Right, None (floating).</param>
+        </member>
+        <member name="P:AcHelper.WPF.Palettes.WpfPaletteSet.PaletteSetName">
+            <summary>
+            Represents the name of the paletteset.
+            </summary>
+        </member>
+        <member name="P:AcHelper.WPF.Palettes.WpfPaletteSet.Palettes">
+            <summary>
+            A list of all the palettes wich this paletteset contains.
+            </summary>
+        </member>
+        <member name="M:AcHelper.WPF.Palettes.WpfPaletteSet.HasPalette(System.String)">
+            <summary>
+            Checks whether this paletteset contains a palette with the given name.
+            </summary>
+            <param name="name">Name of the palette</param>
+            <returns>True if the paletteset contains a palette with the given name; Otherwise false.</returns>
+        </member>
+        <member name="M:AcHelper.WPF.Palettes.WpfPaletteSet.AddPalette(AcHelper.WPF.Palettes.IPalette)">
+            <summary>
+            Add palette to paletteset
+            </summary>
+            <param name="palette"></param>
+            <exception cref="!:AcHelper.Wpf.Palettes.WpfPaletteSetException"/>
+        </member>
+        <member name="M:AcHelper.WPF.Palettes.WpfPaletteSet.RemovePalette(System.String)">
+            <summary>
+            Removes palette from paletteset.
+            </summary>
+            <param name="name"></param>
+            <exception cref="T:AcHelper.WPF.Palettes.WpfPaletteSetException"/>
+        </member>
+        <member name="M:AcHelper.WPF.Palettes.WpfPaletteSetsHandler.GetInstance">
+            <summary>
+            Static instance of WpfPaletteSetsHandler.
+            </summary>
+        </member>
+        <member name="M:AcHelper.WPF.Palettes.WpfPaletteSetsHandler.CreatePaletteSet(System.String,System.Guid)">
+            <summary>
+            Creates a new <see cref="T:AcHelper.WPF.Palettes.WpfPaletteSet"/>WpfPaletteSet and adds it to the dictionary.
+            </summary>
+            <param name="name"></param>
+            <param name="guid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AcHelper.WPF.Palettes.WpfPaletteSetsHandler.CreatePaletteSet(System.String,System.Guid,System.Drawing.Size,System.Drawing.Size)">
+            <summary>
+            Creates a new <see cref="T:AcHelper.WPF.Palettes.WpfPaletteSet"/>WpfPaletteSet and adds it to the dictionary.
+            </summary>
+            <param name="name"></param>
+            <param name="guid"></param>
+            <param name="size"></param>
+            <param name="minimumSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AcHelper.WPF.Palettes.WpfPaletteSetsHandler.CreatePaletteSet(System.String,System.Guid,System.Drawing.Size,System.Drawing.Size,Autodesk.AutoCAD.Windows.DockSides,Autodesk.AutoCAD.Windows.DockSides)">
+            <summary>
+            Creates a new <see cref="T:AcHelper.WPF.Palettes.WpfPaletteSet"/>WpfPaletteSet and adds it to the dictionary.
+            </summary>
+            <param name="name"></param>
+            <param name="guid"></param>
+            <param name="size"></param>
+            <param name="minimumSize"></param>
+            <param name="dockside"></param>
+            <param name="docksideEnabled"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AcHelper.WPF.Palettes.WpfPaletteSetsHandler.HidePaletteSet(System.Guid)">
+            <summary>
+            Turn off visibility of given <see cref="T:AcHelper.WPF.Palettes.WpfPaletteSet"/>WpfPaletteSet.
+            </summary>
+            <param name="guid"></param>
+        </member>
+        <member name="M:AcHelper.WPF.Palettes.WpfPaletteSetsHandler.ActivatePaletteSet(System.Guid)">
+            <summary>
+            Turn on visibility of the given <see cref="T:AcHelper.WPF.Palettes.WpfPaletteSet"/>WpfPaletteSet.
+            </summary>
+            <param name="guid"></param>
+        </member>
+        <member name="T:AcHelper.WPF.Themes.AppTheme">
+            <summary>
+            Represents the Theme of the application
+            </summary>
+        </member>
+        <member name="P:AcHelper.WPF.Themes.AppTheme.Resources">
+            <summary>
+            Gets the ResourceDictionary that represents this application theme.
+            </summary>
+        </member>
+        <member name="P:AcHelper.WPF.Themes.AppTheme.Name">
+            <summary>
+            Gets the name of the application Theme.
+            </summary>
+        </member>
+        <member name="M:AcHelper.WPF.Themes.AppTheme.#ctor(System.String,System.Uri)">
+            <summary>
+            Creates an AppTheme
+            </summary>
+            <param name="name">Name of the theme.</param>
+            <param name="resourceAddress">address to the resourceDictionary representing the theme.</param>
+        </member>
+        <member name="F:AcHelper.WPF.Themes.PaletteControlExtension.ThemeProperty">
+            <summary>
+            Theme Attached Dependency Property
+            </summary>
+        </member>
+        <member name="M:AcHelper.WPF.Themes.PaletteControlExtension.GetTheme(System.Windows.DependencyObject)">
+            <summary>
+            Gets the Theme property.  This dependency property 
+            indicates ....
+            </summary>
+        </member>
+        <member name="M:AcHelper.WPF.Themes.PaletteControlExtension.SetTheme(System.Windows.DependencyObject,System.String)">
+            <summary>
+            Sets the Theme property.  This dependency property 
+            indicates ....
+            </summary>
+        </member>
+        <member name="M:AcHelper.WPF.Themes.PaletteControlExtension.OnThemeChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>
+            Handles changes to the Theme property.
+            </summary>
+        </member>
+        <member name="T:AcHelper.WPF.Themes.ThemeManager">
+            <summary>
+            ThemeHandler will keep track of the AutoCAD theme changes.
+            </summary>
+        </member>
+        <member name="M:AcHelper.WPF.Themes.ThemeManager.GetInstance">
+            <summary>
+            Gets the singleton ThemeHandler
+            </summary>
+            <returns>ThemeHandler Instance</returns>
+        </member>
+        <member name="F:AcHelper.WPF.Themes.ThemeManager.CurrentThemePropertyName">
+            <summary>
+            The <see cref="P:AcHelper.WPF.Themes.ThemeManager.CurrentTheme" /> property's name.
+            </summary>
+        </member>
+        <member name="P:AcHelper.WPF.Themes.ThemeManager.CurrentTheme">
+            <summary>
+            Sets and gets the CurrentTheme property.
+            Changes to that property's value raise the PropertyChanged event. 
+            </summary>
+        </member>
+        <member name="M:AcHelper.WPF.Themes.ThemeManager.GetCurrentTheme">
+            <summary>
+            Gets the current theme of AutoCAD
+            This will be recieved through the AutoCAD System variable COLORTHEME.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:AcHelper.WPF.Themes.ThemeChangedEventArgs">
+            <summary>
+            Event arguments for the Theme Changed event.
+            </summary>
+        </member>
+        <member name="M:AcHelper.WPF.Themes.ThemeChangedEventArgs.#ctor(System.String)">
+            <summary>
+            Constructs the ThemeChangedEventArgs.
+            </summary>
+            <param name="theme">Dark or Light</param>
+        </member>
+        <member name="P:AcHelper.WPF.Themes.ThemeChangedEventArgs.Theme">
+            <summary>
+            New theme used by AutoCAD.
+            </summary>
+        </member>
+        <member name="T:AcHelper.WPF.Themes.ThemeSet">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:AcHelper.WPF.Themes.ThemeSet.CreateThemeSet(System.Windows.ResourceDictionary[])">
+            <summary>
+            
+            </summary>
+            <param name="resources"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
