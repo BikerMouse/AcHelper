@@ -5,7 +5,7 @@ namespace AcHelper.WPF.Themes
 {
     public interface IPluginResourcesCollection
     {
-        string Name { get; }
+        string PluginName { get; }
         IDictionary<string, ResourceDictionary> Themes { get; }
         IList<ResourceDictionary> Resources { get; }
         ResourceDictionary Locator { get; }

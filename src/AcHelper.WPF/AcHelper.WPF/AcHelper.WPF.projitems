@@ -19,12 +19,15 @@
     <Compile Include="$(MSBuildThisFileDirectory)Palettes\WpfPaletteSet.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Palettes\WpfPaletteSetEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Palettes\WpfPaletteSetsHandler.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)PaletteViewModelBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\PaletteViewModelBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Properties\AssemblyInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Themes\IPluginResourcesCollection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Themes\PaletteThemeExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Themes\PluginResourcesCollection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Themes\PluginResourcesNotRegisteredException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Themes\ThemeManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)ViewModels\" />
   </ItemGroup>
 </Project>

@@ -39,7 +39,7 @@ namespace AcHelper.WPF.CAD
         /// <summary>
         /// Gets the current AutoCAD ColorTheme.
         /// </summary>
-        public string Name
+        public string CurrentCadTheme
         {
             get => _name;
             private set => SetName(value);
@@ -67,13 +67,14 @@ namespace AcHelper.WPF.CAD
         }
         private void SystemVariableChangedHandler(object sender, Autodesk.AutoCAD.ApplicationServices.SystemVariableChangedEventArgs e)
         {
-            if (string.Equals(e.Name, COLORTHEME, StringComparison.InvariantCultureIgnoreCase) && e.Changed)
+            if (string.Equals(e.Name, COLORTHEME, StringComparison.InvariantCultureIgnoreCase) 
+                && e.Changed)
             {
-                Name = GetColorThemeVariable();
+                CurrentCadTheme = GetColorThemeVariable();
             }
         }
         /// <summary>
-        /// Fires when <see cref="Name"/> changes.
+        /// Fires when <see cref="CurrentCadTheme"/> changes.
         /// </summary>
         /// <param name="newTheme"></param>
         protected virtual void OnCadThemeChanged(string newTheme)

@@ -1,9 +1,8 @@
-﻿using AcHelper.WPF.CAD;
+﻿using System;
 using System.Collections.Generic;
-using System.Windows;
-using System;
 using System.Linq;
-using System.Runtime.Serialization;
+using System.Windows;
+using AcHelper.WPF.CAD;
 
 namespace AcHelper.WPF.Themes
 {
@@ -148,15 +147,16 @@ namespace AcHelper.WPF.Themes
 
     public class ThemeManager
     {
-        static Application _application;
-        static ThemeManager _current;
-        static ThemeWatcher _watcher;
-        readonly Dictionary<string, IPluginResourcesCollection> _resourcesCollection;
-        bool _isTrackingCadThemes;
+        private static Application _application;
+        private static ThemeManager _current;
+        private static ThemeWatcher _watcher;
+        private readonly Dictionary<string, IPluginResourcesCollection> _resourcesCollection;
+        private bool _isTrackingCadThemes;
 
         private ThemeManager()
         {
             _resourcesCollection = new Dictionary<string, IPluginResourcesCollection>();
+            _isTrackingCadThemes = true;
         }
         static ThemeManager()
         {
@@ -166,8 +166,8 @@ namespace AcHelper.WPF.Themes
         }
 
         public static ThemeManager Current => _current;
-        public static Application Application => _application;
-        public ThemeWatcher Watcher => _watcher;
+        public static Application SystemApplication => _application;
+        public ThemeWatcher CadThemeWatcher => _watcher;
         public Dictionary<string, IPluginResourcesCollection> ResourcesCollection => _resourcesCollection;
         public bool IsTrackingCadThemes
         {
@@ -183,11 +183,11 @@ namespace AcHelper.WPF.Themes
         public bool RegisterPluginResourcesCollection(IPluginResourcesCollection collection)
         {
             // Only continue if plugin name is not registered yet.
-            if (!_resourcesCollection.ContainsKey(collection.Name))
+            if (!_resourcesCollection.ContainsKey(collection.PluginName))
             {
                 // Add Locator to the System.Windows.Application.Resources.
-                Application.Resources.MergedDictionaries.Add(collection.Locator);
-                _resourcesCollection.Add(collection.Name, collection);
+                SystemApplication.Resources.MergedDictionaries.Add(collection.Locator);
+                _resourcesCollection.Add(collection.PluginName, collection);
                 return true;
             }
             return false;
@@ -246,7 +246,7 @@ namespace AcHelper.WPF.Themes
         /// </summary>
         /// <param name="pluginName"></param>
         /// <returns></returns>
-        public List<string> GetThemes(string pluginName)
+        public List<string> GetThemeNames(string pluginName)
         {
             IPluginResourcesCollection collection = GetResourceCollection(pluginName);
             return collection.Themes.Keys.ToList();
@@ -255,19 +255,19 @@ namespace AcHelper.WPF.Themes
         {
             if (value)
             {
-                Watcher.CadThemeChanged += CadThemeChangedHandler;
+                CadThemeWatcher.CadThemeChanged += CadThemeChangedHandler;
             }
             else
             {
-                Watcher.CadThemeChanged -= CadThemeChangedHandler;
+                CadThemeWatcher.CadThemeChanged -= CadThemeChangedHandler;
             }
         }
 
         private void CadThemeChangedHandler(object sender, CadThemeChangedArgs e)
         {
-            if (_isTrackingCadThemes)
+            if (_isTrackingCadThemes) // Check just in case ...
             {
-                
+                // Todo: what happens when autocad theme changes?
             }
         }
     }

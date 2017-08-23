@@ -11,11 +11,11 @@ namespace AcHelper.WPF
     /// </summary>
     public static class Extensions
     {
-        private readonly static ThemeManager Manager;
+        private readonly static ThemeManager _manager;
 
         static Extensions()
         {
-            Manager = ThemeManager.Current;
+            _manager = ThemeManager.Current;
         }
 
         /// <summary>
@@ -30,13 +30,17 @@ namespace AcHelper.WPF
             {
                 throw new ArgumentNullException("newTheme");
             }
+            if (string.Equals(oldTheme, newTheme, StringComparison.CurrentCulture))
+            {
+                return;
+            }
 
             // Get plugin name from Assembly to get the associated resourcesCollection
             string pluginName = GetAssemblyName(control);
-            IPluginResourcesCollection collection = Manager.GetResourceCollection(pluginName);
-            ResourceDictionary newPluginTheme = Manager.GetPluginTheme(pluginName, newTheme);
+            IPluginResourcesCollection collection = _manager.GetResourceCollection(pluginName);
+            ResourceDictionary newPluginTheme = _manager.GetPluginTheme(pluginName, newTheme);
 
-            // Check if new theme isn't active already
+            // Check if new theme isn't accidentally active already
             if ((control.Resources.MergedDictionaries
                 .FirstOrDefault(x => Equals(x.Source, newPluginTheme.Source)) != null))
             {
@@ -46,7 +50,7 @@ namespace AcHelper.WPF
             // Remove old theme
             if (!string.IsNullOrEmpty(oldTheme))
             {
-                ResourceDictionary oldPluginTheme = Manager.GetPluginTheme(pluginName, oldTheme);
+                ResourceDictionary oldPluginTheme = _manager.GetPluginTheme(pluginName, oldTheme);
                 if (control.Resources.MergedDictionaries
                     .FirstOrDefault(x => Equals(x.Source, oldPluginTheme.Source)) is ResourceDictionary dict)
                 {
@@ -65,7 +69,7 @@ namespace AcHelper.WPF
         {
             // Get plugin name from assembly to get the associated resourcesCollection
             string pluginName = GetAssemblyName(control);
-            IPluginResourcesCollection coll = Manager.GetResourceCollection(pluginName);
+            IPluginResourcesCollection coll = _manager.GetResourceCollection(pluginName);
 
             foreach (ResourceDictionary dict in coll.Resources)
             {

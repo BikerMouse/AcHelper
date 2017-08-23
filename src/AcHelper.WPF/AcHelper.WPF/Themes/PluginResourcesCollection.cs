@@ -38,7 +38,7 @@ namespace AcHelper.WPF.Themes
         /// <summary>
         /// Gets the name of the plugin associated to these resources.
         /// </summary>
-        public string Name => _name;
+        public string PluginName => _name;
         /// <summary>
         /// Gets a dictionary with all registered theme resource dictionaries.
         /// </summary>
@@ -61,9 +61,9 @@ namespace AcHelper.WPF.Themes
         {
             ResourceDictionary dict = CreateResourceDictionary(relativeAddress);
 
-            if (!(Resources.FirstOrDefault(x => Equals(x.Source, dict.Source)) is ResourceDictionary res))
+            // Only add when the resource dictionary doesn't exist yet.
+            if (!(Resources.FirstOrDefault(x => Equals(x.Source, dict.Source)) is ResourceDictionary))
             {
-                // Only add when the resource dictionary doesn't exist yet.
                 Resources.Add(dict);
                 return true;
             }
