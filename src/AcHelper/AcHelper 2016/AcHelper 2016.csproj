@@ -101,18 +101,12 @@
       <HintPath>..\packages\AutoCAD.NET.20.1.0\lib\45\AdWindows.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="BuerTech.Logger, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\BuerTech.Logger.1.0.1\lib\net45\BuerTech.Logger.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="LiteDB, Version=2.0.4.0, Culture=neutral, PublicKeyToken=4ee40123013c9f27, processorArchitecture=MSIL">
-      <HintPath>..\packages\LiteDB.2.0.4\lib\net35\LiteDB.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="BuerTech.Logger, Version=2.0.4.1, Culture=neutral, PublicKeyToken=2e781e3e8c2f74b9, processorArchitecture=MSIL">
+      <HintPath>..\packages\BuerTech.Logger.2.0.4.1\lib\net45\BuerTech.Logger.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

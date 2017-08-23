@@ -1,17 +1,18 @@
-﻿using BuerTech.Utilities.Logger;
+﻿using BuerTech.Logger;
+using BuerTech.Logger.Models;
 using System;
 
 namespace AcHelper
 {
     /// <summary>
-    /// The logger provides an easy access to the <see cref="BuerTech.Utilities.Logger.LogWriter"/>.
+    /// The logger provides an easy access to the <see cref="LogWriter"/>.
     /// </summary>
     public class Logger
     {
         private readonly LogWriter _logwriter;
         private static Logger _instance;
 
-        private Logger(LogSetup setup)
+        private Logger(ILogSetup setup)
         {
             // Create the LogWriter
             _logwriter = new LogWriter(setup);
@@ -20,7 +21,7 @@ namespace AcHelper
         /// Initializes the Logger before it's available for use.
         /// </summary>
         /// <param name="setup"></param>
-        public static void Initialize(LogSetup setup)
+        public static void Initialize(ILogSetup setup)
         {
             if (_instance == null)
             {
@@ -38,12 +39,7 @@ namespace AcHelper
         {
             if (_instance == null)
             {
-                LogSetup setup = new LogSetup();
-                setup.ApplicationName = application;
-                setup.MaxAge = maxAge;
-                setup.MaxQueueSize = maxQueueSize;
-                setup.SaveLocation = saveLocation;
-
+                ILogSetup setup = new LogSetup(application, maxAge, maxQueueSize, saveLocation);
                 _instance = new Logger(setup);
             }
         }
@@ -52,7 +48,7 @@ namespace AcHelper
         /// </summary>
         /// <param name="message"></param>
         /// <param name="priority"></param>
-        public static void WriteToLog(string message, LogPrior priority = LogPrior.Info)
+        public static void WriteToLog(string message, LogPrior priority = LogPrior.INFO)
         {
             if (_instance != null)
             {
@@ -68,7 +64,7 @@ namespace AcHelper
         /// </summary>
         /// <param name="exception"></param>
         /// <param name="priority"></param>
-        public static void WriteToLog(Exception exception, LogPrior priority = LogPrior.Error)
+        public static void WriteToLog(Exception exception, LogPrior priority = LogPrior.ERROR)
         {
             if (_instance != null)
             {
@@ -87,7 +83,7 @@ namespace AcHelper
         {
             if (_instance != null)
             {
-                _instance._logwriter.WriteToLog(message, LogPrior.Debug);
+                _instance._logwriter.Debug(message);
             }
         }
 

@@ -23,7 +23,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("AcHelper")]
 [assembly: AssemblyDescription("Assembly which simplifies the use of some AutoCAD functions for the developer.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("BuerTech")]
+[assembly: AssemblyCompany("Sander van Bueren (BuerTech)")]
 [assembly: AssemblyProduct("AcHelper")]
 [assembly: AssemblyCopyright("Copyright © BuerTech 2017")]
 [assembly: AssemblyTrademark("")]

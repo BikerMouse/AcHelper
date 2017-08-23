@@ -1,4 +1,4 @@
-﻿using BuerTech.Utilities.Logger;
+﻿using BuerTech.Logger;
 using System;
 using System.Text;
 
@@ -30,7 +30,7 @@ namespace AcHelper.Commands
             {
                 ExceptionHandler.ShowDialog(ex, true, true);
 
-                Logger.WriteToLog(ex, LogPrior.Critical);
+                Logger.WriteToLog(ex, LogPrior.CRITICAL);
             }
         }
         /// <summary>
@@ -85,7 +85,7 @@ namespace AcHelper.Commands
 				SendStringToExecuteException e = new SendStringToExecuteException(cmd, ex);
                 ExceptionHandler.ShowDialog(e, true, true);
 
-                Logger.WriteToLog(e, LogPrior.Error);
+                Logger.WriteToLog(e, LogPrior.ERROR);
             }
         }
     }
