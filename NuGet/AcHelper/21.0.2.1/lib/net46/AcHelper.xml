@@ -364,7 +364,7 @@
             The logger provides an easy access to the <see cref="T:BuerTech.Logger.LogWriter"/>.
             </summary>
         </member>
-        <member name="M:AcHelper.Logger.Initialize(BuerTech.Logger.Models.LogSetup)">
+        <member name="M:AcHelper.Logger.Initialize(BuerTech.Logger.Models.ILogSetup)">
             <summary>
             Initializes the Logger before it's available for use.
             </summary>
