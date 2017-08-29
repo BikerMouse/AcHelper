@@ -12,10 +12,7 @@ namespace AcHelper.Extra
         private readonly string _applicationName;
         private readonly RegistryHive _hive = RegistryHive.CurrentUser;
 
-        private bool GetApplicationRootKeyExists()
-        {
-            return Registry.CheckKeyExistance(RegistryHive.CurrentUser, RootKey);
-        }
+        
 
         /// <summary>
         /// Constructor.
@@ -27,24 +24,19 @@ namespace AcHelper.Extra
             {
                 throw new RegistryHandlerException(ERROR_NOROOTKEY);
             }
-            //else if (GetApplicationRootKeyExists())
-            //{
-            //    throw new RegistryHandlerException(string.Format(ERROR_NOROOTKEYINREGISTRY, RootKey));
-            //}
-            else
+            if (!Registry.CheckKeyExistance(RegistryHive.CurrentUser, CreateRootKey(applicationName)))
             {
-                _applicationName = applicationName;
+                throw new RegistryHandlerException(ERROR_NOROOTKEYINREGISTRY);
             }
+            
+            _applicationName = applicationName;
         }
 
         #region [           PROPERTIES          ]
         /// <summary>
         /// Full path to the subkey of the provided application name.
         /// </summary>
-        public string RootKey
-        {
-            get => string.Format("{0}\\{1}", HostApplicationServices.Current.UserRegistryProductRootKey, _applicationName);
-        }
+        public string RootKey => CreateRootKey(_applicationName);
         /// <summary>
         /// LocalUser Hive.
         /// </summary>
@@ -72,6 +64,17 @@ namespace AcHelper.Extra
         public void SetValue(string valuename, object value, RegistryValueKind valueType)
         {
             Registry.SetValueToRegistry(Hive, RootKey, valuename, value, valueType);
+        }
+        #endregion
+
+        #region [           Helpers         ]
+        private string CreateRootKey(string applicationName)
+        {
+            return string.Concat(HostApplicationServices.Current.UserRegistryProductRootKey, @"\", applicationName);
+        }
+        private bool CheckApplicationRootKeyExistance()
+        {
+            return Registry.CheckKeyExistance(RegistryHive.CurrentUser, RootKey);
         }
         #endregion
 

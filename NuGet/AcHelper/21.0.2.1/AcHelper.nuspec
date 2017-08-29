@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>AcHelper</id>
+    <version>21.0.2.1</version>
+    <authors>Sander van Bueren (BuerTech)</authors>
+    <owners>Sander van Bueren (BuerTech)</owners>
+    <projectUrl>https://github.com/BikerMouse/AcHelper</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Assembly which simplifies the use of some AutoCAD functions for the developer.</description>
+    <releaseNotes>New logger implemented.</releaseNotes>
+    <copyright>Copyright BuerTech 2017</copyright>
+    <dependencies>
+      <dependency id="BuerTech.Logger" version="2.0.4.1" />
+    </dependencies>
+  </metadata>
+</package>

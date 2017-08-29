@@ -9,6 +9,10 @@
     <Import_RootNamespace>AcHelper.WPF</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)CAD\CadThemeChangedArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CAD\ThemeWatcher.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Constants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Palettes\IPalette.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Palettes\IWpfPaletteSetHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Palettes\WpfPalette.cs" />
@@ -16,11 +20,15 @@
     <Compile Include="$(MSBuildThisFileDirectory)Palettes\WpfPaletteSet.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Palettes\WpfPaletteSetEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Palettes\WpfPaletteSetsHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\PaletteViewModelBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Properties\AssemblyInfo.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Themes\AppTheme.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Themes\PaletteControlExtension.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Themes\ResourceHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Themes\IPluginResourcesCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Themes\PaletteThemeExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Themes\PluginResourcesCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Themes\PluginResourcesNotRegisteredException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Themes\ThemeManager.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Themes\ThemeSet.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)ViewModels\" />
   </ItemGroup>
 </Project>

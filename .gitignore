@@ -157,5 +157,12 @@ $RECYCLE.BIN/
 /BuerTech.AcHelper.Tests
 
 src/packages/
+src/AcHelper/packages/
+src/AcHelper.WPF/packages/
+src/AcHelper.Extra/packages/
 
 tests/packages/
+/NuGet/AcHelper/21.0.2.1
+/NuGet/AcHelper/21.0.2.1
+*.dll
+*.nupkg

@@ -1,12 +1,13 @@
-﻿using BuerTech.Utilities.Logger;
+﻿using BuerTech.Logger;
 using System;
+using System.Text;
 
 namespace AcHelper.Commands
 {
-    /// <summary>
-    /// The CommandHandlerBase provides base functionalities for the class containing AutoCAD commands. 
-    /// </summary>
-    public static class CommandHandlerBase
+	/// <summary>
+	/// The CommandHandlerBase provides base functionalities for the class containing AutoCAD commands. 
+	/// </summary>
+	public abstract class CommandHandlerBase
     {
         private const string WHITESPACE = " ";
         private const string NEWLINE = "\n";
@@ -29,7 +30,7 @@ namespace AcHelper.Commands
             {
                 ExceptionHandler.ShowDialog(ex, true, true);
 
-                Logger.WriteToLog(ex, LogPrior.Critical);
+                Logger.WriteToLog(ex, LogPrior.CRITICAL);
             }
         }
         /// <summary>
@@ -49,7 +50,14 @@ namespace AcHelper.Commands
         /// <param name="parameters">Optional parameters.</param>
         public static void ExecuteFromCommandLine(bool echo, string cmd, params object[] parameters)
         {
-            // Prepare Command and potential parameters.
+			if (string.IsNullOrEmpty(cmd))
+			{
+				throw new ArgumentNullException("cmd");
+			}
+
+			// Prepare Command and potential parameters.
+			StringBuilder executeBuilder = new StringBuilder(cmd);
+			executeBuilder.Append(NEWLINE);
             string execute = cmd;
             execute += NEWLINE;
             // Check for potential parameters
@@ -61,19 +69,23 @@ namespace AcHelper.Commands
                 {
                     // end parameter with a whitespace so it will be executed.
                     execute += item.ToString() + WHITESPACE;
+					executeBuilder.Append(item.ToString());
+					executeBuilder.Append(WHITESPACE);
                 }
             }
 
             try
             {
-                // Execute
-                Active.Document.SendStringToExecute(execute, true, false, echo);
+				// Execute
+				// Active.Document.SendStringToExecute(execute, true, false, echo);
+				Active.Document.SendStringToExecute(executeBuilder.ToString(), true, false, echo);
             }
             catch (Exception ex)
             {
-                ExceptionHandler.ShowDialog(ex, true, true);
+				SendStringToExecuteException e = new SendStringToExecuteException(cmd, ex);
+                ExceptionHandler.ShowDialog(e, true, true);
 
-                Logger.WriteToLog(ex, LogPrior.Error);
+                Logger.WriteToLog(e, LogPrior.ERROR);
             }
         }
     }

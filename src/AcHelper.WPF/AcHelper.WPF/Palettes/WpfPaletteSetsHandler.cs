@@ -5,6 +5,9 @@ using System.Drawing;
 
 namespace AcHelper.WPF.Palettes
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class WpfPaletteSetsHandler : Dictionary<Guid, WpfPaletteSet>, IWpfPaletteSetHandler
     {
         #region Singleton ...
