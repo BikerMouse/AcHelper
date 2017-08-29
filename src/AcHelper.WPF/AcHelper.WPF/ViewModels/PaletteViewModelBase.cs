@@ -3,15 +3,14 @@
 namespace AcHelper.WPF.ViewModels
 {
     using System;
+    using AcHelper.WPF.CAD;
     using Themes;
 
     public abstract class PaletteViewModelBase : ViewModelBase
     {
-        private readonly ThemeManager _themeManager;
         public PaletteViewModelBase()
         {
-            _themeManager = ThemeManager.Current;
-            _theme = _themeManager.CadThemeWatcher.CurrentCadTheme;
+            _theme = ThemeManager.CadThemeWatcher.CurrentCadTheme;
             MessengerInstance.Register<string>(this, Constants.ThemeChangedToken, ChangeTheme);
         }
 
