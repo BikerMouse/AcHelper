@@ -7,7 +7,7 @@
     <ProjectGuid>{48FD20B4-AC23-4505-97DC-F2F0F6216E38}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>AcHelper</RootNamespace>
-    <AssemblyName>AcHelper</AssemblyName>
+    <AssemblyName>AcHelper.2</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -31,7 +31,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\bin\Release\2018\AcHelper.xml</DocumentationFile>
+    <DocumentationFile>..\bin\Release\2018\AcHelper.2.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
@@ -48,7 +48,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutputPath>..\bin\x64\Release\2018\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
-    <DocumentationFile>..\bin\x64\Release\2018\AcHelper.xml</DocumentationFile>
+    <DocumentationFile>..\bin\x64\Release\2018\AcHelper.2.xml</DocumentationFile>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>x64</PlatformTarget>
@@ -56,13 +56,13 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>AcHelper.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="AcHelper.pfx" />
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
