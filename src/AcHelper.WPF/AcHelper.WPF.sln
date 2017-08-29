@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.15
+VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AcHelper.WPF", "AcHelper.WPF\AcHelper.WPF.shproj", "{A488FACE-AB3E-4B43-8A59-6BADFF552876}"
 EndProject
@@ -13,11 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcHelper.WPF 2017", "AcHelp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcHelper.WPF 2018", "AcHelper.WPF 2018\AcHelper.WPF 2018.csproj", "{B2986FB0-A1E1-4CE9-8D13-F89DB5DD91AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcHelper.WPF 2014", "AcHelper.WPF 2014\AcHelper.WPF 2014.csproj", "{506F81AA-BEF6-4C1F-8064-2865E48830F7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcTestLibrary", "..\..\..\..\..\Projects\AcTestLibrary\AcTestLibrary.csproj", "{7422D9CC-CB54-4CF4-B0AD-97D32A1CC62D}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		AcHelper.WPF\AcHelper.WPF.projitems*{506f81aa-bef6-4c1f-8064-2865e48830f7}*SharedItemsImports = 4
 		AcHelper.WPF\AcHelper.WPF.projitems*{6a517e10-3e40-4804-8cf6-c5423b9d76b9}*SharedItemsImports = 4
 		AcHelper.WPF\AcHelper.WPF.projitems*{a488face-ab3e-4b43-8a59-6badff552876}*SharedItemsImports = 13
 		AcHelper.WPF\AcHelper.WPF.projitems*{ad5a846d-4bec-41e9-9b2f-673dcc6cf9b0}*SharedItemsImports = 4
@@ -63,10 +62,14 @@ Global
 		{B2986FB0-A1E1-4CE9-8D13-F89DB5DD91AF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B2986FB0-A1E1-4CE9-8D13-F89DB5DD91AF}.Release|x64.ActiveCfg = Release|x64
 		{B2986FB0-A1E1-4CE9-8D13-F89DB5DD91AF}.Release|x64.Build.0 = Release|x64
-		{506F81AA-BEF6-4C1F-8064-2865E48830F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{506F81AA-BEF6-4C1F-8064-2865E48830F7}.Debug|x64.ActiveCfg = Debug|x64
-		{506F81AA-BEF6-4C1F-8064-2865E48830F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{506F81AA-BEF6-4C1F-8064-2865E48830F7}.Release|x64.ActiveCfg = Release|x64
+		{7422D9CC-CB54-4CF4-B0AD-97D32A1CC62D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7422D9CC-CB54-4CF4-B0AD-97D32A1CC62D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7422D9CC-CB54-4CF4-B0AD-97D32A1CC62D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7422D9CC-CB54-4CF4-B0AD-97D32A1CC62D}.Debug|x64.Build.0 = Debug|Any CPU
+		{7422D9CC-CB54-4CF4-B0AD-97D32A1CC62D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7422D9CC-CB54-4CF4-B0AD-97D32A1CC62D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7422D9CC-CB54-4CF4-B0AD-97D32A1CC62D}.Release|x64.ActiveCfg = Release|Any CPU
+		{7422D9CC-CB54-4CF4-B0AD-97D32A1CC62D}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

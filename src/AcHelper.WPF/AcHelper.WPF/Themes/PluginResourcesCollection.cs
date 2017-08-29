@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Windows;
 
 namespace AcHelper.WPF.Themes
@@ -90,17 +91,23 @@ namespace AcHelper.WPF.Themes
             return false;
         }
 
-        private ResourceDictionary CreateResourceDictionary(string relativeAddress)
+        public static ResourceDictionary CreateResourceDictionary(string relativeAddress)
         {
-            string PACKFORMAT = "pack://application,,,";
+            Assembly caller = Assembly.GetCallingAssembly();
+            string name = caller.GetName().Name;
+            string PACKFORMAT = string.Concat("pack://application:,,,/", name, ";component");
 
             if (string.IsNullOrEmpty(relativeAddress))
             {
                 throw new ArgumentNullException("relativeAddress");
             }
+            if (!relativeAddress.StartsWith("/"))
+            {
+                relativeAddress = "/" + relativeAddress;
+            }
 
             string pack = string.Concat(PACKFORMAT, relativeAddress);
-            Uri uri = new Uri(pack, UriKind.Relative);
+            Uri uri = new Uri(pack, UriKind.RelativeOrAbsolute);
 
             return new ResourceDictionary { Source = uri };
         }

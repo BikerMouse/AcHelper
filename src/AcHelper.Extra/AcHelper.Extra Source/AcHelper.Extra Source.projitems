@@ -11,6 +11,7 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)CadRegistryHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GlobalSuppressions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Properties\AssemblyInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Registry.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)RegistryHandlerException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)RegistryHive.cs" />
