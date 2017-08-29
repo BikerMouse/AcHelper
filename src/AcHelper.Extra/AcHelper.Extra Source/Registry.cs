@@ -14,15 +14,14 @@ namespace AcHelper.Extra
         /// <returns>Value from the registry subkey cast to type T.</returns>
         public static T ReadFromCurrentUser<T>(string subkey, string valuename)
         {
-            RegistryKey key = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(subkey);
-            if (key != null)
+            RegistryKey currentuser = Microsoft.Win32.Registry.CurrentUser;
+            if (currentuser.OpenSubKey(subkey) is RegistryKey key)
             {
                 using (key)
                 {
-                    object value = key.GetValue(valuename);
-                    if (value != null)
+                    if (key.GetValue(valuename) is T value)
                     {
-                        return (T)value;
+                        return value;
                     }
                 }
             }
@@ -37,15 +36,14 @@ namespace AcHelper.Extra
         /// <returns>Value from the registry subkey cast to type T.</returns>
         public static T ReadFromLocalMachine<T>(string subKey, string valueName)
         {
-            RegistryKey key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(subKey);
-            if (key != null)
+            RegistryKey localmachine = Microsoft.Win32.Registry.LocalMachine;
+            if (localmachine.OpenSubKey(subKey) is RegistryKey key)
             {
                 using (key)
                 {
-                    object value = key.GetValue(valueName);
-                    if (value != null)
+                    if (key.GetValue(valueName) is T value)
                     {
-                        return (T)value;
+                        return value;
                     }
                 }
             }
@@ -61,16 +59,22 @@ namespace AcHelper.Extra
         /// <returns>Value from the registry subkey cast to type T.</returns>
         public static T TryReadFromRegistry<T>(RegistryHive hive, string subkey, string valuename)
         {
+            if (string.IsNullOrEmpty(subkey))
+            {
+                throw new ArgumentNullException("subkey");
+            }
+            if (string.IsNullOrEmpty(valuename))
+            {
+                throw new ArgumentNullException("valuename");
+            }
+
             T value = default(T);
 
-            if (!string.IsNullOrEmpty(valuename))
+            UseRegistryKey(hive, subkey, key =>
             {
-                UseRegistryKey(hive, subkey, key =>
-                {
-                    object o = key.GetValue(valuename, value);
-                    value = (T)o;
-                });
-            }
+                object obj = key.GetValue(valuename, value);
+                value = (T)obj;
+            });
             return value;
         }
         /// <summary>
@@ -98,7 +102,6 @@ namespace AcHelper.Extra
         public static bool CheckKeyExistance(RegistryHive hive, string subkey)
         {
             RegistryKey key = GetRegistryKey(hive, subkey);
-
             return key != null;
         }
         /// <summary>

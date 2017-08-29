@@ -1,5 +1,5 @@
-﻿using Autodesk.AutoCAD.ApplicationServices.Core;
-using System;
+﻿using System;
+using System.Windows;
 
 namespace AcHelper.WPF.CAD
 {
@@ -25,7 +25,7 @@ namespace AcHelper.WPF.CAD
         private ThemeWatcher()
         {
             _name = GetColorThemeVariable();
-            Application.SystemVariableChanged += SystemVariableChangedHandler;
+            Autodesk.AutoCAD.ApplicationServices.Application.SystemVariableChanged += new Autodesk.AutoCAD.ApplicationServices.SystemVariableChangedEventHandler(SystemVariableChangedHandler);
         }
         static ThemeWatcher()
         {
@@ -53,7 +53,7 @@ namespace AcHelper.WPF.CAD
         /// <returns></returns>
         public static string GetColorThemeVariable()
         {
-            return (short)Application.GetSystemVariable(COLORTHEME) == 0
+            return (short)Autodesk.AutoCAD.ApplicationServices.Core.Application.GetSystemVariable(COLORTHEME) == 0
                 ? DARK
                 : LIGHT;
         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using AcHelper.WPF.CAD;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace AcHelper.WPF.Themes
 {
@@ -156,13 +157,14 @@ namespace AcHelper.WPF.Themes
         private ThemeManager()
         {
             _resourcesCollection = new Dictionary<string, IPluginResourcesCollection>();
-            _isTrackingCadThemes = true;
+            IsTrackingCadThemes = true;
         }
+
         static ThemeManager()
         {
             _application = Application.Current ?? new Application() { ShutdownMode = ShutdownMode.OnExplicitShutdown };
-            _current = new ThemeManager();
             _watcher = ThemeWatcher.Current;
+            _current = new ThemeManager();
         }
 
         public static ThemeManager Current => _current;
@@ -253,13 +255,17 @@ namespace AcHelper.WPF.Themes
         }
         private void SetTracker(bool value)
         {
-            if (value)
+            if (value != _isTrackingCadThemes)
             {
-                CadThemeWatcher.CadThemeChanged += CadThemeChangedHandler;
-            }
-            else
-            {
-                CadThemeWatcher.CadThemeChanged -= CadThemeChangedHandler;
+                _isTrackingCadThemes = value;
+                if (value)
+                {
+                    CadThemeWatcher.CadThemeChanged += CadThemeChangedHandler;
+                }
+                else
+                {
+                    CadThemeWatcher.CadThemeChanged -= CadThemeChangedHandler;
+                }
             }
         }
 
@@ -267,8 +273,10 @@ namespace AcHelper.WPF.Themes
         {
             if (_isTrackingCadThemes) // Check just in case ...
             {
-                // Todo: what happens when autocad theme changes?
+                Messenger.Default.Send(e.Theme, Constants.ThemeChangedToken);
             }
         }
     }
+
+
 }

@@ -7,7 +7,7 @@
     <ProjectGuid>{CBF7C7E5-6086-497B-84E9-2DE68AC1DF84}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>AcHelper.WPF</RootNamespace>
-    <AssemblyName>AcHelper.WPF</AssemblyName>
+    <AssemblyName>AcHelper.WPF.4</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -31,7 +31,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\bin\Release\2017\AcHelper.WPF.xml</DocumentationFile>
+    <DocumentationFile>..\bin\Release\2017\AcHelper.WPF.4.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
@@ -44,7 +44,7 @@
     <PlatformTarget>x64</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>bin\x64\Debug\AcHelper.WPF.xml</DocumentationFile>
+    <DocumentationFile>bin\x64\Debug\AcHelper.WPF.4.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutputPath>..\bin\x64\Release\2017\</OutputPath>
@@ -54,16 +54,16 @@
     <PlatformTarget>x64</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>..\bin\x64\Release\2017\AcHelper.WPF.xml</DocumentationFile>
+    <DocumentationFile>..\bin\x64\Release\2017\AcHelper.WPF.4.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>AcHelper.WPF.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="AcHelper.WPF.pfx" />
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>

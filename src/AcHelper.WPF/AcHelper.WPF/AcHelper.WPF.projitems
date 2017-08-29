@@ -11,6 +11,7 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)CAD\CadThemeChangedArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CAD\ThemeWatcher.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Constants.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Palettes\IPalette.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Palettes\IWpfPaletteSetHandler.cs" />
