@@ -57,13 +57,13 @@
     <DocumentationFile>..\bin\x64\Release\2017\AcHelper.Extra.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>AcHelper.Extra.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="AcHelper.Extra.pfx" />
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
