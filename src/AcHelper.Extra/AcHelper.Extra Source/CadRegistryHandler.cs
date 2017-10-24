@@ -12,8 +12,6 @@ namespace AcHelper.Extra
         private readonly string _applicationName;
         private readonly RegistryHive _hive = RegistryHive.CurrentUser;
 
-        
-
         /// <summary>
         /// Constructor.
         /// </summary>
@@ -68,7 +66,7 @@ namespace AcHelper.Extra
         #endregion
 
         #region [           Helpers         ]
-        private string CreateRootKey(string applicationName)
+        public static string CreateRootKey(string applicationName)
         {
             return string.Concat(HostApplicationServices.Current.UserRegistryProductRootKey, @"\", applicationName);
         }

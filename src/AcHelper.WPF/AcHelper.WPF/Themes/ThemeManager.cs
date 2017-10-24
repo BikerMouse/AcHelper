@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Windows;
 using AcHelper.WPF.CAD;
 using GalaSoft.MvvmLight.Messaging;
@@ -149,28 +150,26 @@ namespace AcHelper.WPF.Themes
     public class ThemeManager
     {
         private static Application _application;
-        private static ThemeManager _current;
         private static ThemeWatcher _watcher;
-        private readonly Dictionary<string, IPluginResourcesCollection> _resourcesCollection;
+        private static readonly Dictionary<string, IPluginResourcesCollection> _resourcesCollection;
         private bool _isTrackingCadThemes;
 
-        private ThemeManager()
+        public ThemeManager(IPluginResourcesCollection resourceCollection, bool trackCadThemes = true)
         {
-            _resourcesCollection = new Dictionary<string, IPluginResourcesCollection>();
-            IsTrackingCadThemes = true;
+            RegisterPluginResourcesCollection(resourceCollection);
+            IsTrackingCadThemes = trackCadThemes;
         }
 
         static ThemeManager()
         {
             _application = Application.Current ?? new Application() { ShutdownMode = ShutdownMode.OnExplicitShutdown };
+            _resourcesCollection = new Dictionary<string, IPluginResourcesCollection>();
             _watcher = ThemeWatcher.Current;
-            _current = new ThemeManager();
         }
 
-        public static ThemeManager Current => _current;
         public static Application SystemApplication => _application;
-        public ThemeWatcher CadThemeWatcher => _watcher;
-        public Dictionary<string, IPluginResourcesCollection> ResourcesCollection => _resourcesCollection;
+        public static ThemeWatcher CadThemeWatcher => _watcher;
+        public static Dictionary<string, IPluginResourcesCollection> ResourcesCollection => _resourcesCollection;
         public bool IsTrackingCadThemes
         {
             get => _isTrackingCadThemes;
@@ -182,7 +181,7 @@ namespace AcHelper.WPF.Themes
         /// </summary>
         /// <param name="collection"></param>
         /// <returns>True if the collection don't exeist already and can be registered; Otherwise false.</returns>
-        public bool RegisterPluginResourcesCollection(IPluginResourcesCollection collection)
+        public static bool RegisterPluginResourcesCollection(IPluginResourcesCollection collection)
         {
             // Only continue if plugin name is not registered yet.
             if (!_resourcesCollection.ContainsKey(collection.PluginName))
@@ -202,7 +201,7 @@ namespace AcHelper.WPF.Themes
         /// <returns>PluginResourcesSet if the plugin is registered; otherwise it throws a <see cref="PluginResourcesNotRegisteredException"/></returns>
         /// <exception cref="ArgumentNullException"/>
         /// <exception cref="PluginResourcesNotRegisteredException"/>
-        public IPluginResourcesCollection GetResourceCollection(string pluginName)
+        public static IPluginResourcesCollection GetResourceCollection(string pluginName)
         {
             if (string.IsNullOrEmpty(pluginName))
             {
@@ -226,7 +225,7 @@ namespace AcHelper.WPF.Themes
         /// <returns>PluginTheme if exists; Otherwise it returns null.</returns>
         /// <exception cref="ArgumentNullException"/>
         /// <exception cref="PluginResourcesNotRegisteredException"/>
-        public ResourceDictionary GetPluginTheme(string pluginName, string themeName)
+        public static ResourceDictionary GetPluginTheme(string pluginName, string themeName)
         {
             if (string.IsNullOrEmpty(pluginName))
             {
@@ -248,7 +247,7 @@ namespace AcHelper.WPF.Themes
         /// </summary>
         /// <param name="pluginName"></param>
         /// <returns></returns>
-        public List<string> GetThemeNames(string pluginName)
+        public static List<string> GetThemeNames(string pluginName)
         {
             IPluginResourcesCollection collection = GetResourceCollection(pluginName);
             return collection.Themes.Keys.ToList();

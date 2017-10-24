@@ -16,16 +16,17 @@ namespace AcHelper.WPF.Themes
         /// <summary>
         /// Constructs an instance of <see cref="IPluginResourcesCollection"/>.
         /// </summary>
-        /// <param name="pluginName">Name of the plugin associated with the resources.</param>
         /// <param name="resources">List of relative addresses of the resources. 
         /// </param>
         /// <param name="themes">Dictionary of themenames and relative addresses of the themes.</param>
         /// <param name="locator">Relative address of the ResourceDictionary containing the ModelViewLocator source.</param>
+        /// 
         /// <remarks>
         /// Format relative address: /[assembly];component/[namespace].[filename].xaml
         /// </remarks>
-        public PluginResourcesCollection(string pluginName, List<ResourceDictionary> resources, Dictionary<string, ResourceDictionary> themes, ResourceDictionary locator)
+        public PluginResourcesCollection(List<ResourceDictionary> resources, Dictionary<string, ResourceDictionary> themes, ResourceDictionary locator)
         {
+            string pluginName = Assembly.GetCallingAssembly().GetName().Name;
             if (string.IsNullOrEmpty(pluginName))
             {
                 throw new ArgumentNullException("pluginName");

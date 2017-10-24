@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.12
+VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AcHelper.Extra Source", "AcHelper.Extra Source\AcHelper.Extra Source.shproj", "{F1EE147E-2AD0-4895-8405-869C4BC23872}"
 EndProject
@@ -13,12 +13,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcHelper.Extra 2017", "AcHe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcHelper.Extra 2018", "AcHelper.Extra 2018\AcHelper.Extra 2018.csproj", "{1A169248-E6D7-4876-949A-5819C57ED9A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcHelper.Extra 2014", "AcHelper.Extra 2014\AcHelper.Extra 2014.csproj", "{86C1A1A4-9000-4D85-9DF1-E84F20C2FC4D}"
-EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		AcHelper.Extra Source\AcHelper.Extra Source.projitems*{1a169248-e6d7-4876-949a-5819c57ed9a8}*SharedItemsImports = 4
-		AcHelper.Extra Source\AcHelper.Extra Source.projitems*{86c1a1a4-9000-4d85-9df1-e84f20c2fc4d}*SharedItemsImports = 4
 		AcHelper.Extra Source\AcHelper.Extra Source.projitems*{9240beb2-da36-4501-aa35-bdecb0781582}*SharedItemsImports = 4
 		AcHelper.Extra Source\AcHelper.Extra Source.projitems*{c2d8372a-d00d-4f3a-b977-1742a210150c}*SharedItemsImports = 4
 		AcHelper.Extra Source\AcHelper.Extra Source.projitems*{e3cff8d9-5a21-4661-9c00-95920f3c3a20}*SharedItemsImports = 4
@@ -63,14 +60,6 @@ Global
 		{1A169248-E6D7-4876-949A-5819C57ED9A8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1A169248-E6D7-4876-949A-5819C57ED9A8}.Release|x64.ActiveCfg = Release|x64
 		{1A169248-E6D7-4876-949A-5819C57ED9A8}.Release|x64.Build.0 = Release|x64
-		{86C1A1A4-9000-4D85-9DF1-E84F20C2FC4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{86C1A1A4-9000-4D85-9DF1-E84F20C2FC4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{86C1A1A4-9000-4D85-9DF1-E84F20C2FC4D}.Debug|x64.ActiveCfg = Debug|x64
-		{86C1A1A4-9000-4D85-9DF1-E84F20C2FC4D}.Debug|x64.Build.0 = Debug|x64
-		{86C1A1A4-9000-4D85-9DF1-E84F20C2FC4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{86C1A1A4-9000-4D85-9DF1-E84F20C2FC4D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{86C1A1A4-9000-4D85-9DF1-E84F20C2FC4D}.Release|x64.ActiveCfg = Release|x64
-		{86C1A1A4-9000-4D85-9DF1-E84F20C2FC4D}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

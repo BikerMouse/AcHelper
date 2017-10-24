@@ -11,13 +11,6 @@ namespace AcHelper.WPF
     /// </summary>
     public static class Extensions
     {
-        private readonly static ThemeManager _manager;
-
-        static Extensions()
-        {
-            _manager = ThemeManager.Current;
-        }
-
         /// <summary>
         /// Applies the given theme to the UserControl
         /// </summary>
@@ -37,8 +30,8 @@ namespace AcHelper.WPF
 
             // Get plugin name from Assembly to get the associated resourcesCollection
             string pluginName = GetAssemblyName(control);
-            IPluginResourcesCollection collection = _manager.GetResourceCollection(pluginName);
-            ResourceDictionary newPluginTheme = _manager.GetPluginTheme(pluginName, newTheme);
+            IPluginResourcesCollection collection = ThemeManager.GetResourceCollection(pluginName);
+            ResourceDictionary newPluginTheme = ThemeManager.GetPluginTheme(pluginName, newTheme);
 
             // Check if new theme isn't accidentally active already
             if ((control.Resources.MergedDictionaries
@@ -50,7 +43,7 @@ namespace AcHelper.WPF
             // Remove old theme
             if (!string.IsNullOrEmpty(oldTheme))
             {
-                ResourceDictionary oldPluginTheme = _manager.GetPluginTheme(pluginName, oldTheme);
+                ResourceDictionary oldPluginTheme = ThemeManager.GetPluginTheme(pluginName, oldTheme);
                 if (control.Resources.MergedDictionaries
                     .FirstOrDefault(x => Equals(x.Source, oldPluginTheme.Source)) is ResourceDictionary dict)
                 {
@@ -69,7 +62,7 @@ namespace AcHelper.WPF
         {
             // Get plugin name from assembly to get the associated resourcesCollection
             string pluginName = GetAssemblyName(control);
-            IPluginResourcesCollection coll = _manager.GetResourceCollection(pluginName);
+            IPluginResourcesCollection coll = ThemeManager.GetResourceCollection(pluginName);
 
             foreach (ResourceDictionary dict in coll.Resources)
             {
