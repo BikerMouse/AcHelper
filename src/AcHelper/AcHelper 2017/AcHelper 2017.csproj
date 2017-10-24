@@ -64,9 +64,6 @@
     </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -80,9 +77,19 @@
   <ItemGroup>
     <PackageReference Include="AutoCAD.NET">
       <Version>21.0.2</Version>
+      <ExcludeAssets>runtime</ExcludeAssets>
+    </PackageReference>
+    <PackageReference Include="AutoCAD.NET.Core">
+      <Version>21.0.2</Version>
+      <ExcludeAssets>runtime</ExcludeAssets>
+    </PackageReference>
+    <PackageReference Include="AutoCAD.NET.Model">
+      <Version>21.0.2</Version>
+      <ExcludeAssets>runtime</ExcludeAssets>
     </PackageReference>
     <PackageReference Include="BuerTech.Logger">
-      <Version>2.0.4.1</Version>
+      <Version>2.0.4.3</Version>
+      <ExcludeAssets>runtime</ExcludeAssets>
     </PackageReference>
   </ItemGroup>
   <Import Project="..\AcHelper\AcHelper.projitems" Label="Shared" />
