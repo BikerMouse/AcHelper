@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AcHelper.Extra
 {
-    class SystemVariable
+    public class SystemVariable
     {
     }
 }
