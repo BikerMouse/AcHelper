@@ -1,0 +1,1 @@
+Get-Content AssemblyInfo.cs

@@ -13,6 +13,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcHelper.Extra 2017", "AcHe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcHelper.Extra 2018", "AcHelper.Extra 2018\AcHelper.Extra 2018.csproj", "{1A169248-E6D7-4876-949A-5819C57ED9A8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{38258DB7-D129-44A3-80FA-99047BD6889D}"
+	ProjectSection(SolutionItems) = preProject
+		ReadAssemblyFile.ps1 = ReadAssemblyFile.ps1
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		AcHelper.Extra Source\AcHelper.Extra Source.projitems*{1a169248-e6d7-4876-949a-5819c57ed9a8}*SharedItemsImports = 4
