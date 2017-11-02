@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-using Autodesk.AutoCAD.ApplicationServices;
-using Autodesk.AutoCAD.DatabaseServices;
+﻿using Autodesk.AutoCAD.ApplicationServices;
+using System;
 
 namespace AcHelper
 {
+    [Obsolete("Functions can be found in Active. This class wil be removed next version.", true)]
     public static class AcDocument
     {
 

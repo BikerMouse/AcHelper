@@ -43,6 +43,12 @@ namespace AcHelper
                 _instance = new Logger(setup);
             }
         }
+
+        internal static void WriteToLog(string v, object wARNING)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// Logs a message to the logfile.
         /// </summary>

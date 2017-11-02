@@ -1,5 +1,6 @@
 ﻿using AcHelper.Enumerables;
 using Autodesk.AutoCAD.ApplicationServices;
+using Autodesk.AutoCAD.Colors;
 using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.Runtime;
 using System;
@@ -121,6 +122,19 @@ namespace AcHelper
         {
             T dbObject = tr.GetObject(objectId, openMode, openErased) as T;
             return dbObject;
+        }
+
+        /// <summary>
+        /// Resets the entity's properties.
+        /// </summary>
+        /// <param name="entity">Entity to reset.</param>
+        /// <param name="newLayer">Name of the layer to set to the entity.</param>
+        public static void ResetProperties(this Entity entity, string newLayer)
+        {
+            Color newColor = Color.FromColorIndex(ColorMethod.ByAci, 256);
+            entity.Color = newColor;
+            entity.Layer = newLayer;
+            entity.Linetype = Constants.BYLAYER;
         }
     }
 }

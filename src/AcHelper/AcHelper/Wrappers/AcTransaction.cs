@@ -48,7 +48,7 @@ namespace AcHelper.Wrappers
                     {
                         // no current transaction running; create one
                         _db = _document.Database;
-                        _transaction = _document.TransactionManager.StartTransaction();
+                        _transaction = _document.TransactionManager.StartOpenCloseTransaction();
                         _model_space = GetModelSpace();
                         _started = true;
                     }
@@ -58,9 +58,13 @@ namespace AcHelper.Wrappers
                     }
                 }
             }
-            catch (System.Exception)
+            catch (Autodesk.AutoCAD.Runtime.Exception acEx)
             {
-                throw;
+                throw new AcTransactionException("No Active document for a valid transaction", acEx);
+            }
+            catch (Exception ex)
+            {
+                throw new AcTransactionException("An unexpected error occured while starting a transaction.", ex);
             }
         }
         #endregion

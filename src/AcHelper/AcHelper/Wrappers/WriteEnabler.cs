@@ -28,7 +28,7 @@ namespace AcHelper.Wrappers
         /// </summary>
         /// <param name="doc">Document where the object is being found.</param>
         /// <param name="dbObject">Object to open for write.</param>
-        /// <exception cref="AcHelper.Wrappers.WriteEnablerException"/>
+        /// <exception cref="WriteEnablerException"/>
         /// <exception cref="Autodesk.AutoCAD.Runtime.Exception"/>
         public WriteEnabler(Document doc, DBObject dbObject)
         {
@@ -159,17 +159,5 @@ namespace AcHelper.Wrappers
             } //if
         }
         #endregion
-    }
-
-    [Serializable]
-    public class WriteEnablerException : Exception
-    {
-        public WriteEnablerException() { }
-        public WriteEnablerException(string message) : base(message) { }
-        public WriteEnablerException(string message, Exception inner) : base(message, inner) { }
-        protected WriteEnablerException(
-          System.Runtime.Serialization.SerializationInfo info,
-          System.Runtime.Serialization.StreamingContext context)
-            : base(info, context) { }
     }
 }

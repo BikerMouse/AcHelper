@@ -4,6 +4,11 @@ using System;
 
 namespace AcHelper.Wrappers
 {
+    using Collections;
+
+    /// <summary>
+    /// 
+    /// </summary>
     public class XRecordHandler : IDisposable
     {
         #region Fields ...
@@ -13,21 +18,19 @@ namespace AcHelper.Wrappers
         #endregion
 
         #region Ctor ...
+        /// <summary>
+        /// Initializes the Xrecord handler assosiated with Active Document.
+        /// </summary>
         public XRecordHandler()
-            : this(Active.Document)
-        { }
-        public XRecordHandler(Document doc)
         {
-            if (doc != null && doc.IsActive)
-            {
-                _document = doc;
-                _database = doc.Database;
-                _nodId = _database.NamedObjectsDictionaryId;
-            }
+            _document = Active.Document ?? throw new XRecordHandlerException("There is no Active Document present");
+            _database = Active.Database;
+            _nodId = _database.NamedObjectsDictionaryId;
         }
         #endregion
 
         #region Properties ...
+        [Obsolete("Use the method from AcHelper.Collections.Dictionary class.", true)]
         /// <summary>
         /// Gets a Named Objects Dictionary with the given key
         /// If the collection does not contain the key, it will create a new Named Objects Dictionary instance.
@@ -41,7 +44,7 @@ namespace AcHelper.Wrappers
 
             try
             {
-                Common.UsingTransaction(_document, tr =>
+                _document.StartTransaction(tr =>
                 {
                     Transaction t = tr.Transaction;
                     nod_collection = t.GetObject<DBDictionary>(_nodId, OpenMode.ForRead);
@@ -58,17 +61,14 @@ namespace AcHelper.Wrappers
                             if (nod_collection.IsWriteEnabled)
                             {
                                 nod = new DBDictionary();
-                                if (nod != null)
-                                {
-                                    nod_collection.SetAt(key, nod);
-                                    t.AddNewlyCreatedDBObject(nod, true);
-                                }
+                                nod_collection.SetAt(key, nod);
+                                t.AddNewlyCreatedDBObject(nod, true);
                             }
                         }
                     }
                 });
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 string err_message = string.Format("DBDictionary named: '{0}' could not be found.", key);
                 throw new XRecordHandlerException(err_message, ex);
@@ -85,7 +85,7 @@ namespace AcHelper.Wrappers
         /// <param name="dictionaryName">Name of Named Objects Dictionary</param>
         /// <param name="xKey">Key of Xrecord</param>
         /// <returns>ResultBuffer with data or Null if nothing found.</returns>
-        /// <exception cref="AcHelper.Wrappers.XRecordException"/>
+        /// <exception cref="Wrappers.XRecordException"/>
         public ResultBuffer GetXrecord(string dictionaryName, string xKey)
         {
             ResultBuffer result = null;
@@ -94,10 +94,10 @@ namespace AcHelper.Wrappers
             {
                 if (_document != null)
                 {
-                    Common.UsingTransaction(_document, tr =>
+                    _document.StartTransaction(tr =>
                     {
                         Transaction t = tr.Transaction;
-                        using (DBDictionary nod = GetNamedObjectsDictionary(dictionaryName))
+                        using (DBDictionary nod = Dictionaries.GetNamedObjectsDictionary(dictionaryName))
                         {
                             if (nod != null && nod.Contains(xKey))
                             {
@@ -112,7 +112,7 @@ namespace AcHelper.Wrappers
                 }
             }
             catch (XRecordHandlerException) { throw; }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 string err_message = string.Format("Unexpected error occured while retrieving xRecord '{0}' from Named Objects Dictionary '{1}'.", xKey, dictionaryName);
                 throw new XRecordHandlerException(dictionaryName, xKey, err_message, ex, ErrorCode.XrecordNotFound);
@@ -124,7 +124,6 @@ namespace AcHelper.Wrappers
         /// Gets the data from an Entity Xrecord.
         /// </summary>
         /// <param name="entityId">ObjectId of the entity</param>
-        /// 
         /// <param name="xKey"></param>
         /// <returns></returns>
         public ResultBuffer GetEntityXrecord(ObjectId entityId, string xKey)
@@ -177,6 +176,13 @@ namespace AcHelper.Wrappers
         #endregion
 
         #region Update ...
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dictionaryName"></param>
+        /// <param name="xKey"></param>
+        /// <param name="resbuf"></param>
+        /// <returns></returns>
         public bool UpdateDocumentXrecord(string dictionaryName, string xKey, ResultBuffer resbuf)
         {
             bool result = false;
@@ -189,7 +195,7 @@ namespace AcHelper.Wrappers
                     Common.UsingTransaction(_document, tr =>
                     {
                         Transaction t = tr.Transaction;
-                        using (DBDictionary nod = GetNamedObjectsDictionary(dictionaryName))
+                        using (DBDictionary nod = Dictionaries.GetNamedObjectsDictionary(dictionaryName))
                         {
                             result = UpdateXrecord(t, nod, xKey, resbuf);
                         }
@@ -200,7 +206,7 @@ namespace AcHelper.Wrappers
             {
                 throw ex;
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 err_message = string.Format("An unexpected error occured while updating Xrecord '{0}' in Named Objects Dictionary '{1}'.", xKey, dictionaryName);
                 throw new XRecordHandlerException(dictionaryName, xKey, err_message, ex);
@@ -208,6 +214,13 @@ namespace AcHelper.Wrappers
 
             return result;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="entityId"></param>
+        /// <param name="xKey"></param>
+        /// <param name="resbuf"></param>
+        /// <returns></returns>
         public bool UpdateEntityXrecord(ObjectId entityId, string xKey, ResultBuffer resbuf)
         {
             string errMessage = string.Empty;
@@ -262,7 +275,7 @@ namespace AcHelper.Wrappers
         {
             string errMessage = string.Empty;
 
-            using (WriteEnabler we_nod = new WriteEnabler(_document, nod))
+            using (new WriteEnabler(_document, nod))
             {
                 if (nod.IsWriteEnabled)
                 {
@@ -332,7 +345,7 @@ namespace AcHelper.Wrappers
                 Common.UsingTransaction(_document, tr =>
                 {
                     Transaction t = tr.Transaction;
-                    using (DBDictionary nod = GetNamedObjectsDictionary(dictionaryName))
+                    using (DBDictionary nod = Dictionaries.GetNamedObjectsDictionary(dictionaryName))
                     {
                         result = RemoveXrecord(nod, dictionaryName, xKey);
                     }
@@ -341,9 +354,9 @@ namespace AcHelper.Wrappers
             }
             catch (WriteEnablerException)
             {
-                throw;
+                throw new XRecordHandlerException(dictionaryName, xKey, "WriteEnabler countered an exception.", ErrorCode.Error);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 err_message = string.Format("An unexpected error occured while removing Xrecord '{0}' from Named Objects Dictionary '{1}'", xKey, dictionaryName);
                 throw new XRecordHandlerException(dictionaryName, xKey, err_message, ex);
@@ -362,14 +375,14 @@ namespace AcHelper.Wrappers
 
             try
             {
-                Common.UsingTransaction(_document, tr =>
+                _document.StartTransaction(tr => 
                 {
                     Transaction t = tr.Transaction;
                     using (var ent = t.GetObject<Entity>(entityId, OpenMode.ForRead))
                     {
                         if (ent != null)
                         {
-                            using (var we_ent = new WriteEnabler(_document, ent))
+                            using (new WriteEnabler(_document, ent))
                             {
                                 if (ent.IsWriteEnabled)
                                 {
@@ -395,9 +408,9 @@ namespace AcHelper.Wrappers
             }
             catch (WriteEnablerException)
             {
-                throw;
+                throw new XRecordHandlerException(entityId.ToString(), xKey, "WriteEnabler countered an exception.", ErrorCode.Error);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 err_message = string.Format("An unexpected error occured while removing Xrecord '{0}' from Named Objects Dictionary", xKey);
                 throw new XRecordHandlerException(err_message, ex);
@@ -422,7 +435,7 @@ namespace AcHelper.Wrappers
                     return false;
                 }
 
-                using (WriteEnabler we = new WriteEnabler(nod))
+                using (new WriteEnabler(_document, nod))
                 {
                     if (nod.IsWriteEnabled)
                     {
@@ -470,64 +483,5 @@ namespace AcHelper.Wrappers
             Dispose(true);
         }
         #endregion
-    }
-
-    public enum ErrorCode
-    {
-        Error,
-        NodNotFound,
-        XrecordNotFound,
-        NodLockedForWrite,
-        NotAnEntity
-    }
-
-    [System.Serializable]
-    public class XRecordHandlerException : System.Exception
-    {
-        
-        private string _key;
-        private string _dictionary_name;
-        private ErrorCode _error_code;
-
-        public string Key
-        {
-            get { return _key; }
-        }
-        public string DictionaryName
-        {
-            get { return _dictionary_name; }
-        }
-        public ErrorCode ErrorCode
-        {
-            get { return _error_code; }
-        }
-
-        public XRecordHandlerException(string message, ErrorCode errorCode)
-            : base(message)
-        {
-            _error_code = errorCode;
-        }
-        public XRecordHandlerException(string dictionaryName, string xKey, string message, ErrorCode errorCode = Wrappers.ErrorCode.Error) : base(message)
-        {
-            _dictionary_name = dictionaryName;
-            _key = xKey;
-            _error_code = errorCode;
-        }
-        public XRecordHandlerException(string dictionaryName, string xKey, string message, System.Exception inner, ErrorCode errorCode = Wrappers.ErrorCode.Error)
-            : base(message, inner)
-        {
-            _key = xKey;
-            _dictionary_name = dictionaryName;
-            _error_code = errorCode;
-        }
-
-
-        public XRecordHandlerException() { }
-        public XRecordHandlerException(string message) : base(message) { }
-        public XRecordHandlerException(string message, System.Exception inner) : base(message, inner) { }
-        protected XRecordHandlerException(
-          System.Runtime.Serialization.SerializationInfo info,
-          System.Runtime.Serialization.StreamingContext context)
-            : base(info, context) { }
     }
 }
