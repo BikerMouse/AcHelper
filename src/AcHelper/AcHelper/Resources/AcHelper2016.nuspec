@@ -25,10 +25,10 @@
   </metadata>
 
   <files>
-    <file src="bin\Release\2016\**" target="lib\net45"/>
-    <file src="bin\Release\2016\**" target="build\x86"/>
+    <file src="Release\2016\**" target="lib\net45"/>
+    <file src="Release\2016\**" target="build\x86"/>
 
-    <file src="bin\x64\Release\2016\**" target="build\x64"/>
+    <file src="x64\Release\2016\**" target="build\x64"/>
 
     <file src="AcHelper.props" target="build\net45"/>
   </files>
