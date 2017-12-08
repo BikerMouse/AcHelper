@@ -94,6 +94,7 @@ namespace AcHelper
         /// <param name="document"></param>
         /// <param name="action"></param>
         /// <param name="CommandName"></param>
+        [Obsolete("Use Document.StartTransaction() instead. This extension will be removed next version.")]
         public static void UsingModelSpace(this Document document, Action<Wrappers.AcTransaction, BlockTableRecord> action, string CommandName = "")
         {
             Common.UsingModelSpace(document, CommandName, action);
@@ -104,6 +105,7 @@ namespace AcHelper
         /// <param name="document"></param>
         /// <param name="action"></param>
         /// <param name="commandName"></param>
+        [Obsolete("Use Document.StartTransaction() instead. This extension will be removed next version.")]
         public static void UsingTransaction(this Document document, Action<Wrappers.AcTransaction> action, string commandName = "")
         {
             Common.UsingTransaction(document, commandName, action);
@@ -122,19 +124,6 @@ namespace AcHelper
         {
             T dbObject = tr.GetObject(objectId, openMode, openErased) as T;
             return dbObject;
-        }
-
-        /// <summary>
-        /// Resets the entity's properties.
-        /// </summary>
-        /// <param name="entity">Entity to reset.</param>
-        /// <param name="newLayer">Name of the layer to set to the entity.</param>
-        public static void ResetProperties(this Entity entity, string newLayer)
-        {
-            Color newColor = Color.FromColorIndex(ColorMethod.ByAci, 256);
-            entity.Color = newColor;
-            entity.Layer = newLayer;
-            entity.Linetype = Constants.BYLAYER;
         }
     }
 }

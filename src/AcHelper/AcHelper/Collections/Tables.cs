@@ -37,7 +37,7 @@ namespace AcHelper.Collections
             return null;
         }
 
-        public static void AddTextStyle(AcTextStyle textStyle)
+        public static void AddTextStyle(TextStyle textStyle)
         {
             Document document = Active.Document;
             Database database = document.Database;
@@ -154,7 +154,7 @@ namespace AcHelper.Collections
             return null;
         }
 
-        public static void AddDimStyle(AcDimStyle dimStyle)
+        public static void AddDimStyle(DimStyle dimStyle)
         {
             Document document = Active.Document;
             Database database = document.Database;
@@ -305,7 +305,7 @@ namespace AcHelper.Collections
             }
             return null;
         }
-        public static void AddLineType(Transaction transaction, AcLineType lineType)
+        public static void AddLineType(Transaction transaction, LineType lineType)
         {
             Document document = Active.Document;
             Database db = document.Database;
@@ -340,7 +340,7 @@ namespace AcHelper.Collections
 
             return layertable.Has(layerName);
         }
-        public static void AddLayer(Transaction transaction, AcLayer layer)
+        public static void AddLayer(Transaction transaction, Layer layer)
         {
             Database db = Active.Database;
 

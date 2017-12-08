@@ -3,7 +3,7 @@
     /// <summary>
     /// 
     /// </summary>
-    public struct AcTextStyle
+    public struct TextStyle
     {
         public string Name;
         public string FileName;
@@ -13,7 +13,7 @@
     /// <summary>
     /// 
     /// </summary>
-    public struct AcDimStyle
+    public struct DimStyle
     {
         public string Name;
         public string TextStyle;
@@ -24,7 +24,7 @@
     /// <summary>
     /// 
     /// </summary>
-    public struct AcLayer
+    public struct Layer
     {
         public string Name;
         public string LineType;
@@ -35,7 +35,7 @@
     /// <summary>
     /// 
     /// </summary>
-    public struct AcLineType
+    public struct LineType
     {
         public string Name;
         public string FileName;
