@@ -18,9 +18,9 @@
 
     <dependencies>
       <dependency id="BuerTech.Logger" version="2.0.4.3" />
-      <dependency id="AutoCAD.Net" version="20.0.0" />
-      <dependency id="AutoCAD.Net.Core" version="20.0.0" />
-      <dependency id="AutoCAD.Net.Model" version="20.0.0" />
+      <dependency id="AutoCAD.Net" version="22.0.0" />
+      <dependency id="AutoCAD.Net.Core" version="22.0.0" />
+      <dependency id="AutoCAD.Net.Model" version="22.0.0" />
     </dependencies>
   </metadata>
 

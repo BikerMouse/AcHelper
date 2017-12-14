@@ -168,3 +168,4 @@ tests/packages/
 *.nupkg
 /NuGet
 /NuGet
+/src/AcHelper/.vs/AcHelper/v15/Server/sqlite3
