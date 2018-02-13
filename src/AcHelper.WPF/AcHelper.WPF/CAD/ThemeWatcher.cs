@@ -45,6 +45,9 @@ namespace AcHelper.WPF.CAD
             private set => SetName(value);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public event CadThemeChangedHandler CadThemeChanged;
 
         /// <summary>

@@ -7,7 +7,7 @@
     <ProjectGuid>{F43CA0BC-96FF-46E9-AF99-AAB95773FE7F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>AcHelper</RootNamespace>
-    <AssemblyName>AcHelper.2</AssemblyName>
+    <AssemblyName>AcHelper</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -31,7 +31,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\bin\Release\2016\AcHelper.2.xml</DocumentationFile>
+    <DocumentationFile>..\bin\Release\2016\AcHelper.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
@@ -49,7 +49,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutputPath>..\bin\x64\Release\2016\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
-    <DocumentationFile>..\bin\x64\Release\2016\AcHelper.2.xml</DocumentationFile>
+    <DocumentationFile>..\bin\x64\Release\2016\AcHelper.xml</DocumentationFile>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>x64</PlatformTarget>

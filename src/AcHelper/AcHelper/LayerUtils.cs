@@ -13,7 +13,7 @@ namespace AcHelper
         /// Resetlayers for unlocking, unfreeze and show all layers
         /// in the current document.
         /// </summary>
-        public static void Resetlayers()
+        public static void ResetAlllayers()
         {
             Database database = Active.Database;
 
@@ -34,7 +34,40 @@ namespace AcHelper
                         }
                         else
                         {
-                            Logger.WriteToLog(string.Concat("Could not reset layer: ", layer.Name), LogPrior.WARNING);
+                            string message = string.Concat("Could not reset layer: ", layer.Name);
+                            Logger.WriteToLog(message, LogPrior.WARNING);
+                            Active.WriteMessage(message);
+                        }
+                    }
+                }
+            });
+        }
+
+        public static void ResetLayers(ObjectIdCollection layerIds)
+        {
+            Database db = Active.Database;
+
+            Active.Document.StartTransaction(tr =>
+            {
+                Transaction transaction = tr.Transaction;
+                foreach (ObjectId oid in layerIds)
+                {
+                    if (transaction.GetObject<LayerTableRecord>(oid, OpenMode.ForRead) is LayerTableRecord layer)
+                    {
+                        using (new WriteEnabler(layer))
+                        {
+                            if (layer.IsWriteEnabled)
+                            {
+                                layer.IsFrozen = false;
+                                layer.IsLocked = false;
+                                layer.IsOff = false;
+                            }
+                            else
+                            {
+                                string message = string.Concat("Could not reset layer: ", layer.Name);
+                                Logger.WriteToLog(message, LogPrior.WARNING);
+                                Active.WriteMessage(message);
+                            }
                         }
                     }
                 }

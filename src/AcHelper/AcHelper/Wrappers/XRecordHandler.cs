@@ -190,17 +190,26 @@ namespace AcHelper.Wrappers
 
             try
             {
-                if (_document != null)
+                _document?.StartTransaction(tr =>
                 {
-                    Common.UsingTransaction(_document, tr =>
+                    Transaction t = tr.Transaction;
+                    using (DBDictionary nod = Dictionaries.GetNamedObjectsDictionary(dictionaryName))
                     {
-                        Transaction t = tr.Transaction;
-                        using (DBDictionary nod = Dictionaries.GetNamedObjectsDictionary(dictionaryName))
-                        {
-                            result = UpdateXrecord(t, nod, xKey, resbuf);
-                        }
-                    });
-                }
+                        result = UpdateXrecord(t, nod, xKey, resbuf);
+                    }
+                });
+
+                //if (_document != null)
+                //{
+                //    Common.UsingTransaction(_document, tr =>
+                //    {
+                //        Transaction t = tr.Transaction;
+                //        using (DBDictionary nod = Dictionaries.GetNamedObjectsDictionary(dictionaryName))
+                //        {
+                //            result = UpdateXrecord(t, nod, xKey, resbuf);
+                //        }
+                //    });
+                //}
             }
             catch (XRecordHandlerException ex)
             {

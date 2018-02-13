@@ -73,6 +73,7 @@
   <ItemGroup>
     <PackageReference Include="AutoCAD.NET">
       <Version>21.0.2</Version>
+      <ExcludeAssets>runtime</ExcludeAssets>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

@@ -20,9 +20,9 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("AcHelper")]
+//[assembly: AssemblyTitle("AcHelper 2015")]
 [assembly: AssemblyDescription("Assembly which simplifies the use of some AutoCAD functions for the developer.")]
-[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyConfiguration("Release")]
 [assembly: AssemblyCompany("Sander van Bueren (BuerTech)")]
 [assembly: AssemblyProduct("AcHelper")]
 [assembly: AssemblyCopyright("Copyright © BuerTech 2017")]

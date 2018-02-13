@@ -36,7 +36,7 @@ namespace AcHelper.Wrappers
         /// </summary>
         /// <param name="doc"></param>
         /// <exception cref="Autodesk.AutoCAD.Runtime.Exception"/>
-        public AcTransaction(Document doc)
+        internal AcTransaction(Document doc)
         {
             try
             {
@@ -71,7 +71,7 @@ namespace AcHelper.Wrappers
 
         #region Properties ...
         /// <summary>
-        /// <see cref="Autodesk.AutoCAD.DatabaseServices.Database.Transaction"/>
+        /// <see cref="Database.Transaction"/>
         /// </summary>
         public Transaction Transaction
         {

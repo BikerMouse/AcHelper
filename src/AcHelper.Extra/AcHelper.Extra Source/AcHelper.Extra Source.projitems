@@ -17,4 +17,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)RegistryHive.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SystemVariable.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Resources\AcHelper.Extra.props" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\AcHelper2015.nuspec" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\AcHelper2016.nuspec" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\AcHelper2017.nuspec" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\AcHelper2018.nuspec" />
+  </ItemGroup>
 </Project>

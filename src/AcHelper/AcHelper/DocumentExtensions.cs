@@ -48,7 +48,6 @@ namespace AcHelper
                 throw;
             }
         }
-
         /// <summary>
         /// Starts a transaction for this document
         /// and executes an action with AcTransaction and ModelSpace as parameters.
@@ -62,6 +61,7 @@ namespace AcHelper
         /// <summary>
         /// Starts a transaction for this document
         /// and executes an action with AcTransaction and ModelSpace as parameters.
+        /// The document will be locked before the transaction starts.
         /// </summary>
         /// <param name="doc">Document.</param>
         /// <param name="command">Command name under which the action is executed.</param>
@@ -98,8 +98,58 @@ namespace AcHelper
             }
         }
 
+        public static void StartNestedTransaction(this Document doc, Action<NestableAcTransaction> action)
+        {
+            doc.StartNestedTransaction(DEFAULTCOMMAND, action);
+        }
+        public static void StartNestedTransaction(this Document doc, string command, Action<NestableAcTransaction> action)
+        {
+            command = command ?? DEFAULTCOMMAND;
+            using (NestableAcTransaction tr = new NestableAcTransaction(doc))
+            {
+                action(tr);
+            }
+        }
+        public static void StartNestedTransaction(this Document doc, Action<NestableAcTransaction, BlockTableRecord> action)
+        {
+            doc.StartNestedTransaction(DEFAULTCOMMAND, action);
+        }
+        public static void StartNestedTransaction(this Document doc, String command, Action<NestableAcTransaction, BlockTableRecord> action)
+        {
+            command = command ?? DEFAULTCOMMAND;
+            doc.TransactionManager.EnableGraphicsFlush(true);
+            try
+            {
+
+                using (NestableAcTransaction tr = new NestableAcTransaction(doc))
+                {
+                    var modelspace = tr.ModelSpace;
+                    using (new WriteEnabler(doc, modelspace))
+                    {
+                        if (modelspace.IsWriteEnabled)
+                        {
+                            action(tr, modelspace);
+                        }
+                        else
+                        {
+                            throw new WriteEnablerException("Couldn't WriteEnable modelspace.");
+                        }
+                    }
+                }
+            }
+            catch (WriteEnablerException weEx)
+            {
+                throw new AcTransactionException("Couldn't start a nested transaction.", weEx);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         /// <summary>
         /// Adds an Entity to the modelspace of this document.
+        /// Using a NestableTransaction so it commits directly after adding the entity.
         /// </summary>
         /// <typeparam name="T">Type of the entity</typeparam>
         /// <param name="doc">Document</param>
@@ -111,7 +161,7 @@ namespace AcHelper
 
             var ent = (T)obj;
 
-            doc.StartTransaction((tr, ms) =>
+            doc.StartNestedTransaction((tr, ms) =>
             {
                 Transaction t = tr.Transaction;
                 ms.AppendEntity(ent);

@@ -19,6 +19,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Common.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DatabaseExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DocumentExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EntityExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enumerables\DbObjectEnumerable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enumerables\DbObjectEnumerator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ErrorCode.cs" />
@@ -34,9 +35,17 @@
     <Compile Include="$(MSBuildThisFileDirectory)Structures.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Wrappers\AcTransaction.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Wrappers\AcTransactionException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Wrappers\NestableAcTransaction.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Wrappers\WriteEnabler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Wrappers\WriteEnablerException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Wrappers\XRecordHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Wrappers\XRecordHandlerException.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Resources\AcHelper.props" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\AcHelper2018.nuspec" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\AcHelper2017.nuspec" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\AcHelper2016.nuspec" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\AcHelper2015.nuspec" />
   </ItemGroup>
 </Project>

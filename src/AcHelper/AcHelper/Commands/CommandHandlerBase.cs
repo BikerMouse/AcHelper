@@ -28,7 +28,7 @@ namespace AcHelper.Commands
             }
             catch (Exception ex)
             {
-                ExceptionHandler.ShowDialog(ex, true, true);
+                ExceptionHandler.ShowDialog(ex, true);
 
                 Logger.WriteToLog(ex, LogPrior.CRITICAL);
             }
@@ -83,7 +83,7 @@ namespace AcHelper.Commands
             catch (Exception ex)
             {
 				SendStringToExecuteException e = new SendStringToExecuteException(cmd, ex);
-                ExceptionHandler.ShowDialog(e, true, true);
+                ExceptionHandler.ShowDialog(e, true);
 
                 Logger.WriteToLog(e, LogPrior.ERROR);
             }
