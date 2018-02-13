@@ -72,6 +72,6 @@
       <ExcludeAssets>runtime</ExcludeAssets>
     </PackageReference>
   </ItemGroup>
-  <Import Project="..\AcHelper.Extra Source\AcHelper.Extra Source.projitems" Label="Shared" />
+  <Import Project="..\AcHelper.Extra\AcHelper.Extra Source.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

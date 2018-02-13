@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AcHelper.Extra Source", "AcHelper.Extra Source\AcHelper.Extra Source.shproj", "{F1EE147E-2AD0-4895-8405-869C4BC23872}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcHelper.Extra 2015", "AcHelper.Extra 2015\AcHelper.Extra 2015.csproj", "{E3CFF8D9-5A21-4661-9C00-95920F3C3A20}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcHelper.Extra 2016", "AcHelper.Extra 2016\AcHelper.Extra 2016.csproj", "{C2D8372A-D00D-4F3A-B977-1742A210150C}"
@@ -17,13 +15,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{B909950F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcHelper.Extra.2018.Tests", "AcHelper.Extra.Tests\AcHelper.Extra.2018.Tests.csproj", "{ACA519B2-890A-43B4-A768-FC3262066BB4}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AcHelper.Extra Source", "AcHelper.Extra\AcHelper.Extra Source.shproj", "{F1EE147E-2AD0-4895-8405-869C4BC23872}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		AcHelper.Extra Source\AcHelper.Extra Source.projitems*{1a169248-e6d7-4876-949a-5819c57ed9a8}*SharedItemsImports = 4
-		AcHelper.Extra Source\AcHelper.Extra Source.projitems*{9240beb2-da36-4501-aa35-bdecb0781582}*SharedItemsImports = 4
-		AcHelper.Extra Source\AcHelper.Extra Source.projitems*{c2d8372a-d00d-4f3a-b977-1742a210150c}*SharedItemsImports = 4
-		AcHelper.Extra Source\AcHelper.Extra Source.projitems*{e3cff8d9-5a21-4661-9c00-95920f3c3a20}*SharedItemsImports = 4
-		AcHelper.Extra Source\AcHelper.Extra Source.projitems*{f1ee147e-2ad0-4895-8405-869c4bc23872}*SharedItemsImports = 13
+		AcHelper.Extra\AcHelper.Extra Source.projitems*{1a169248-e6d7-4876-949a-5819c57ed9a8}*SharedItemsImports = 4
+		AcHelper.Extra\AcHelper.Extra Source.projitems*{9240beb2-da36-4501-aa35-bdecb0781582}*SharedItemsImports = 4
+		AcHelper.Extra\AcHelper.Extra Source.projitems*{c2d8372a-d00d-4f3a-b977-1742a210150c}*SharedItemsImports = 4
+		AcHelper.Extra\AcHelper.Extra Source.projitems*{e3cff8d9-5a21-4661-9c00-95920f3c3a20}*SharedItemsImports = 4
+		AcHelper.Extra\AcHelper.Extra Source.projitems*{f1ee147e-2ad0-4895-8405-869c4bc23872}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
