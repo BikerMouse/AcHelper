@@ -2,8 +2,6 @@
 
 namespace AcHelper.WPF.ViewModels
 {
-    using System;
-    using AcHelper.WPF.CAD;
     using Themes;
 
     public abstract class PaletteViewModelBase : ViewModelBase
