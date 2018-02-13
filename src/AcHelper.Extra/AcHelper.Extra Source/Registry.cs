@@ -3,6 +3,9 @@ using System;
 
 namespace AcHelper.Extra
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static class Registry
     {
         /// <summary>

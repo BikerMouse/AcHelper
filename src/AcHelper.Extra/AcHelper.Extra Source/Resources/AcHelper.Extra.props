@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Reference Include="AcHelper.Extra" Condition="'$(Platform)' == 'Any CPU'">
+      <HintPath>$(MSBuildThisFileDirectory)..\x86\AcHelper.Extra.dll</HintPath>
+    </Reference>
+    <Reference Include="AcHelper.Extra" Condition="'$(Platform)' == 'x86'">
+      <HintPath>$(MSBuildThisFileDirectory)..\x86\AcHelper.Extra.dll</HintPath>
+    </Reference>
+    <Reference Include="AcHelper.Extra" Condition="'$(Platform)' == 'x64'">
+      <HintPath>$(MSBuildThisFileDirectory)..\x64\AcHelper.Extra.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

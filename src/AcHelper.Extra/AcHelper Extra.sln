@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.16
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AcHelper.Extra Source", "AcHelper.Extra Source\AcHelper.Extra Source.shproj", "{F1EE147E-2AD0-4895-8405-869C4BC23872}"
 EndProject
@@ -13,10 +13,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcHelper.Extra 2017", "AcHe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcHelper.Extra 2018", "AcHelper.Extra 2018\AcHelper.Extra 2018.csproj", "{1A169248-E6D7-4876-949A-5819C57ED9A8}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{38258DB7-D129-44A3-80FA-99047BD6889D}"
-	ProjectSection(SolutionItems) = preProject
-		ReadAssemblyFile.ps1 = ReadAssemblyFile.ps1
-	EndProjectSection
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{B909950F-8497-4B8E-A16B-66926493BB26}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcHelper.Extra.2018.Tests", "AcHelper.Extra.Tests\AcHelper.Extra.2018.Tests.csproj", "{ACA519B2-890A-43B4-A768-FC3262066BB4}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -65,8 +64,22 @@ Global
 		{1A169248-E6D7-4876-949A-5819C57ED9A8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1A169248-E6D7-4876-949A-5819C57ED9A8}.Release|x64.ActiveCfg = Release|x64
 		{1A169248-E6D7-4876-949A-5819C57ED9A8}.Release|x64.Build.0 = Release|x64
+		{ACA519B2-890A-43B4-A768-FC3262066BB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACA519B2-890A-43B4-A768-FC3262066BB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACA519B2-890A-43B4-A768-FC3262066BB4}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{ACA519B2-890A-43B4-A768-FC3262066BB4}.Debug|x64.Build.0 = Debug|Any CPU
+		{ACA519B2-890A-43B4-A768-FC3262066BB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACA519B2-890A-43B4-A768-FC3262066BB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACA519B2-890A-43B4-A768-FC3262066BB4}.Release|x64.ActiveCfg = Release|Any CPU
+		{ACA519B2-890A-43B4-A768-FC3262066BB4}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{ACA519B2-890A-43B4-A768-FC3262066BB4} = {B909950F-8497-4B8E-A16B-66926493BB26}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0811A727-644E-4CB9-8848-AB5CE88B7506}
 	EndGlobalSection
 EndGlobal

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<package >
+
+  <metadata>
+    <id>AcHelper.Extra.2016</id>
+    <version>$version$</version>
+    <title>AcHelper Extra</title>
+    <authors>Sander van Bueren (BuerTech)</authors>
+    <owners>BuerTech</owners>
+    <description>Extra utilities to help with programming AutoCAD.</description>
+
+    <projectUrl>https://github.com/BikerMouse/AcHelper</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+
+    <releaseNotes>First release as a version separated assembly.</releaseNotes>
+    <copyright>Copyright © BuerTech 2018</copyright>
+    <tags>AutoCAD BuerTech</tags>
+
+    <dependencies>
+      <dependency id="BuerTech.Logger" version="2.0.4.3" />
+      <dependency id="AutoCAD.Net" version="20.1.0" exclude="runtime" />
+      <dependency id="AutoCAD.Net.Core" version="20.1.0" exclude="runtime" />
+      <dependency id="AutoCAD.Net.Model" version="20.1.0" exclude="runtime" />
+    </dependencies>
+  </metadata>
+
+  <files>
+    <file src="Release\2016\**" target="lib\net45"/>
+    <file src="Release\2016\**" target="build\x86"/>
+
+    <file src="x64\Release\2016\**" target="build\x64"/>
+
+    <file src="AcHelper.Extra.props" target="build\net45"/>
+  </files>
+</package>
