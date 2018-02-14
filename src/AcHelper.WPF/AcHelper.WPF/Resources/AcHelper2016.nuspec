@@ -17,7 +17,7 @@
     <tags>AutoCAD BuerTech</tags>
 
     <dependencies>
-      <dependency id="BuerTech.Logger" version="2.0.4.3" />
+      <dependency id="MvvmLightLibs" version="5.3.0" />
       <dependency id="AutoCAD.Net" version="20.1.0" exclude="runtime" />
       <dependency id="AutoCAD.Net.Core" version="20.1.0" exclude="runtime" />
       <dependency id="AutoCAD.Net.Model" version="20.1.0" exclude="runtime" />
