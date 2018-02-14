@@ -96,6 +96,7 @@
     </PackageReference>
     <PackageReference Include="MvvmLightLibs">
       <Version>5.3.0</Version>
+      <ExcludeAssets>runtime</ExcludeAssets>
     </PackageReference>
   </ItemGroup>
   <Import Project="..\AcHelper.WPF\AcHelper.WPF.projitems" Label="Shared" />
