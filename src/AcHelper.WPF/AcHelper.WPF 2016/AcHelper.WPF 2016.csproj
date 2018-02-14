@@ -7,7 +7,7 @@
     <ProjectGuid>{6A517E10-3E40-4804-8CF6-C5423B9D76B9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>AcHelper.WPF</RootNamespace>
-    <AssemblyName>AcHelper.WPF.6</AssemblyName>
+    <AssemblyName>AcHelper.WPF</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -31,7 +31,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\bin\Release\2016\AcHelper.WPF.6.xml</DocumentationFile>
+    <DocumentationFile>..\bin\Release\2016\AcHelper.WPF.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
@@ -53,7 +53,7 @@
     <PlatformTarget>x64</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>..\bin\x64\Release\2016\AcHelper.WPF.6.xml</DocumentationFile>
+    <DocumentationFile>..\bin\x64\Release\2016\AcHelper.WPF.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -84,6 +84,15 @@
   <ItemGroup>
     <PackageReference Include="AutoCAD.NET">
       <Version>20.1.0</Version>
+      <ExcludeAssets>runtime</ExcludeAssets>
+    </PackageReference>
+    <PackageReference Include="AutoCAD.NET.Core">
+      <Version>20.1.0</Version>
+      <ExcludeAssets>runtime</ExcludeAssets>
+    </PackageReference>
+    <PackageReference Include="AutoCAD.NET.Model">
+      <Version>20.1.0</Version>
+      <ExcludeAssets>runtime</ExcludeAssets>
     </PackageReference>
     <PackageReference Include="MvvmLightLibs">
       <Version>5.3.0</Version>
