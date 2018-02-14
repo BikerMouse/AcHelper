@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.16
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AcHelper.WPF", "AcHelper.WPF\AcHelper.WPF.shproj", "{A488FACE-AB3E-4B43-8A59-6BADFF552876}"
 EndProject
@@ -12,10 +12,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcHelper.WPF 2017", "AcHelper.WPF 2017\AcHelper.WPF 2017.csproj", "{CBF7C7E5-6086-497B-84E9-2DE68AC1DF84}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcHelper.WPF 2018", "AcHelper.WPF 2018\AcHelper.WPF 2018.csproj", "{B2986FB0-A1E1-4CE9-8D13-F89DB5DD91AF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcTestLibrary", "..\..\..\..\..\Projects\AcTestLibrary\AcTestLibrary.csproj", "{7422D9CC-CB54-4CF4-B0AD-97D32A1CC62D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcTestLibrary2", "..\..\..\..\..\Projects\AcTestLibrary2\AcTestLibrary2.csproj", "{F87C8152-C4F7-4CB3-9063-12B562EF7995}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -64,22 +60,11 @@ Global
 		{B2986FB0-A1E1-4CE9-8D13-F89DB5DD91AF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B2986FB0-A1E1-4CE9-8D13-F89DB5DD91AF}.Release|x64.ActiveCfg = Release|x64
 		{B2986FB0-A1E1-4CE9-8D13-F89DB5DD91AF}.Release|x64.Build.0 = Release|x64
-		{7422D9CC-CB54-4CF4-B0AD-97D32A1CC62D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7422D9CC-CB54-4CF4-B0AD-97D32A1CC62D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7422D9CC-CB54-4CF4-B0AD-97D32A1CC62D}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{7422D9CC-CB54-4CF4-B0AD-97D32A1CC62D}.Debug|x64.Build.0 = Debug|Any CPU
-		{7422D9CC-CB54-4CF4-B0AD-97D32A1CC62D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7422D9CC-CB54-4CF4-B0AD-97D32A1CC62D}.Release|x64.ActiveCfg = Release|Any CPU
-		{7422D9CC-CB54-4CF4-B0AD-97D32A1CC62D}.Release|x64.Build.0 = Release|Any CPU
-		{F87C8152-C4F7-4CB3-9063-12B562EF7995}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F87C8152-C4F7-4CB3-9063-12B562EF7995}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F87C8152-C4F7-4CB3-9063-12B562EF7995}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{F87C8152-C4F7-4CB3-9063-12B562EF7995}.Debug|x64.Build.0 = Debug|Any CPU
-		{F87C8152-C4F7-4CB3-9063-12B562EF7995}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F87C8152-C4F7-4CB3-9063-12B562EF7995}.Release|x64.ActiveCfg = Release|Any CPU
-		{F87C8152-C4F7-4CB3-9063-12B562EF7995}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5DD677D6-7994-45F4-87B1-5957C62CDD20}
 	EndGlobalSection
 EndGlobal
