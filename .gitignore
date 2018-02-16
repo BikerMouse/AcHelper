@@ -168,4 +168,10 @@ tests/packages/
 *.nupkg
 /NuGet
 /NuGet
+<<<<<<< HEAD
 /src/AcHelper.Extra/.vs/AcHelper Extra/v15/Server/sqlite3
+=======
+/src/AcHelper/.vs/AcHelper/v15/Server/sqlite3
+/src/AcHelper.Extra/.vs/AcHelper Extra/v15/Server/sqlite3
+/src/AcHelper.WPF/.vs/AcHelper.WPF/v15/Server/sqlite3
+>>>>>>> develop
